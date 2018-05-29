@@ -1,7 +1,10 @@
-<style>.content, .content>.aside, .content>aside, .content>section, .wrapper>section, footer>div, header{
-	padding: 0 5px 0 5px;
+<style>
+.content, .content>.aside, .content>aside, .content>section, .wrapper>section, footer>div, header{
+	padding: 0;
 }
-
+section#main-content{
+    padding: 0 8px 0 8px;
+}
 section#main-content div.ppc-content{
 	margin-bottom: 0;
 }
@@ -12,43 +15,53 @@ section#main-content div.ppc-content h2{
 section#main-content div.ppc-content p:nth-child(4){
     font-size: 11px;
 }
-div.content h2#custRevs.tk-helvetica-neue
-	color: #2d397d;
+h2#custRevs{
+    color: #2d397d;
     border: none;
     font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: -16px;
     padding: 0;
     font-family: sucrose_slantbold;
     font-weight: 700;
     line-height: 1.5rem;
-    margin: 0;
-	font-style: italic;
     text-align: center;
-}
-#ppc-page div.wrapper img{
-	display: block;
-	margin: auto;
 }
 
 button{
     outline: none;
 }
+button.slick-prev.slick-arrow{
+    left: 3px;
+    z-index: 2;
+    outline: none;
+    border: none;
+    position: relative;
+    top: 64px;
+    font-size: 33px;
+    background: transparent;
+    padding: 0;
+	color: #9397B2;
+}
 button.slick-next.slick-arrow{
-    display: inline-block;
-    position: absolute;
     left: 95%;
-    top: 40%;
+    border: none;
+    font-size: 33px;
+    position: relative;
+    top: -95px;
+    background: transparent;
     padding: 0;
     color: #9397B2;
 }
-button.slick-prev.slick-arrow{
-    display: inline-block;
-    position: absolute;
-    left: 4%;
-    top: 40%;
-    padding: 0;
-    z-index: 2;
-	color: #9397B2;
-}
+div.reviewSlideClass{
+    background-image: url(https://s3.amazonaws.com/rr-placeholders/rr-z2-reviews-bkg-mobile.png);
+    background-position: center;
+    width: 100%;
+    padding: 3px 0px 0 0;
+    background-size: 319px 235px;
+    background-repeat: no-repeat;
+    margin: -11px 0 20px -1px;
+	}
 blockquote{
 	border: none;
     outline: none;
@@ -56,25 +69,12 @@ blockquote{
     margin: 0;
     font-size: 17.5px;
 }
-blockquote div.review-comment{
-    font-size: 12px;
-    padding: 0 24px 0 8px;
-    text-align: center;
-}
-blockquote p.author-locale{
-	padding: 0;
-    margin: 0 12px 0 0;
-}
-blockquote p.author-locale span{
-    position: relative;
-    margin: auto;
-    left: 120px;
-    top: 1px;
-}
-blockquote p.author-locale strong{
-	text-align: center;
-    font-size: 10px;
-    margin-left: 46%;
+blockquote div.rating{
+    display: flex;
+    font-size: .75rem;
+    line-height: 1.25rem;
+    color: #b1bddf;
+    margin: 0 0 6px 107px;
     padding: 0;
 }
 blockquote div.rating span.star{	
@@ -83,13 +83,28 @@ blockquote div.rating span.star{
     font-size: 1.5em;
     outline-color: #D53B44;
 }
-blockquote div.rating{
-    display: flex;
-    font-size: .75rem;
-    line-height: 1.25rem;
-    color: #b1bddf;
-    margin-left: 38%;
+blockquote div.review-comment{
+	font-size: 12px;
+    text-align: center;
+    width: 96%;
+    display: block;
+    margin: auto;
+}
+blockquote p.author-locale{
+	padding: 0;
+}
+blockquote p.author-locale span{
+    position: relative;
+    margin: auto;
+    left: 120px;
+    top: 1px;
+}
+blockquote p.author-locale strong{
+    text-align: center;
+    font-size: 10px;
     padding: 0;
+    position: relative;
+    left: 121px;
 }
 button.schedule-service{
     background-color: #506bb7;
@@ -105,21 +120,46 @@ button.schedule-service{
     width: 70%;
     margin: 0 auto;
 }
+.scheduleServiceClass{
+    background-color: #506bb7;
+    border: 2px solid #fff;
+    border-radius: .25rem;
+    bottom: 1.25rem;
+    color: #fff;
+    display: block;
+    font-size: 1.125rem;
+    height: 3rem;
+    line-height: 2rem;
+    text-align: center;
+    width: 16rem;
+    margin: 0 auto;
+    margin-bottom: 6px;
+}
 div.coupon-div{
-	background-color: #D4323B;
+    background-color: #D4323B;
     margin: auto;
     display: inline-block;
-    top: 141%;
-    left: 5%;
-    padding: 6px 0 4px 0;
+    top: 5px;
+    left: 12px;
+    padding: 6px 0 4px;
     font-family: sucrose_slantbold;
     width: 92%;
     position: relative;
 }	
+div.coupon-div img{
+    position: relative;
+    right: -9px;
+    width: 34px;
+    top: -2px;
+}
 a.a-coupon{
-	color: #fff;
+    color: #fff;
     text-decoration: none;
-    padding: 0 0 0 56px;
+    font-size: 12px;
+    float: right;
+    padding: 0;
+    position: relative;
+    left: -15px;
 }
 a#back-to-top{
     clear: both;
@@ -130,9 +170,60 @@ a#back-to-top{
     line-height: 7rem;
     text-align: center;
     text-transform: uppercase;
-    margin-top: 24px;
+    margin-top: 0;
 }
+div.footer-img-container{
+    position: relative;
+    left: 109px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    width: 92px;
+}
+div.footer-img-container img#BBB{
+	display: block;
+    margin: 0;
+    float: left;
+    width: 40px;
+    height: 55px;
+}
+div.footer-img-container img#angies-list{
+    display: block;
+    margin: 0;
+    width: 40px;
+    height: 55px;
+}
+
+
+
+
+MEDIA QUERIES
 @media(min-width:375px){
+	div.reviewSlideClass{
+		background-image: url(https://s3.amazonaws.com/rr-placeholders/rr-z2-reviews-bkg-mobile.png);
+		background-position: center;
+		width: 100%;
+		padding: 57px 0px 0 0;
+		background-size: 375px 235px;
+		background-repeat: no-repeat;
+		margin: -11px 0 20px -1px;
+	}
+	h2#custRevs{
+		color: #2d397d;
+		border: none;
+		font-size: 1.25rem;
+		margin: auto;
+		padding: 0;
+		font-family: sucrose_slantbold;
+		font-weight: 700;
+		line-height: 1.5rem;
+		text-align: center;
+		float: left;
+		position: relative;
+		left: 107px;
+		bottom: 36px;
+	}
+
 	blockquote p.author-locale span{	
 		position: relative;
 		margin: auto;
@@ -187,18 +278,15 @@ a#back-to-top{
 		width: 70%;
 		position: relative;
 	}
-}</style>
+}
+</style>
 <script>
-$(document).find('head').append('<style>.content,.content>.aside,.content>aside,.content>section,.wrapper>section,footer>div,header{padding:0 5px}section#main-content div.ppc-content{margin-bottom:0}section#main-content div.ppc-content h2{text-align:left;font-size:15px}section#main-content div.ppc-content p:nth-child(4){font-size:11px}#ppc-page div.wrapper img{display:block;margin:auto}button{outline:none}button.slick-next.slick-arrow{display:inline-block;position:absolute;left:95%;top:40%;padding:0;color:#9397B2}button.slick-prev.slick-arrow{display:inline-block;position:absolute;left:4%;top:40%;padding:0;z-index:2;color:#9397B2}blockquote{border:none;outline:none;padding:2.5px 13px 10.5px 21px;margin:0;font-size:17.5px}blockquote div.review-comment{font-size:12px;padding:0 24px 0 8px;text-align:center}blockquote p.author-locale{padding:0;margin:0 12px 0 0}blockquote p.author-locale span{position:relative;margin:auto;left:120px;top:1px}blockquote p.author-locale strong{text-align:center;font-size:10px;margin-left:46%;padding:0}blockquote div.rating span.star{color:#D53B44;padding:0;font-size:1.5em;outline-color:#D53B44}blockquote div.rating{display:flex;font-size:.75rem;line-height:1.25rem;color:#b1bddf;margin-left:38%;padding:0}button.schedule-service{background-color:#506bb7;border:2px solid #fff;border-radius:.25rem;bottom:1.25rem;color:#fff;display:block;font-size:1.125rem;height:3rem;line-height:2rem;text-align:center;width:70%;margin:0 auto}div.coupon-div{background-color:#D4323B;margin:auto;display:inline-block;top:141%;left:5%;padding:6px 0 4px;font-family:sucrose_slantbold;width:92%;position:relative}a.a-coupon{color:#fff;text-decoration:none;padding:0 0 0 56px}a#back-to-top{clear:both;color:#3c5aaf;display:block;font-size:1rem;height:7rem;line-height:7rem;text-align:center;text-transform:uppercase;margin-top:24px}@media(min-width:375px){blockquote p.author-locale span{position:relative;margin:auto;left:145px;top:1px}div.coupon-div{background-color:#D4323B;margin:auto;display:inline-block;top:141%;left:12%;padding:6px 0 4px;font-family:sucrose_slantbold;width:80%;position:relative}}@media(min-width:425px){h2#custRevs.tk-helvetivca-neue{color:#2d397d;border:none;font-size:1.25rem;padding:0;font-family:sucrose_slantbold;font-weight:700;line-height:1.5rem;margin:0;position:relative;right:3%}blockquote p.author-locale span{position:relative;margin:auto;left:168px;top:1px}blockquote p.author-locale{padding:0;margin:0 13px 0 0;position:relative;right:4%}div.coupon-div{background-color:#D4323B;margin:auto;display:inline-block;top:141%;left:17%;padding:6px 0 4px;font-family:sucrose_slantbold;width:70%;position:relative}}</style>')
-
-
 $(document).find('head').append('<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>');
 $(document).find('head').append('<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>');
 
 $(document).find('section#reviews').before('<div class="reviewSlideClass" id="reviewSlideId"></div>');
 $(document).find('blockquote').appendTo('#reviewSlideId');
 $(document).find('footer').after('<script>$(document).ready(function(){$(".reviewSlideClass").slick({slidesToShow: 1,infinite: false});});</script>');
-
 
 $(document).find('button.slick-prev').attr('aria-label', "&lsaquo;");
 $(document).find('button.slick-prev').html("&lsaquo;")
@@ -207,13 +295,10 @@ $(document).find('button.slick-next').html("&rsaquo;")
 
 $(document).find('section#reviews h2.tk-helvetica-neue').remove();
 $(document).find('button.slick-prev.slick-arrow').before('<h2 class="tk-helvetica-neue" id="custRevs" style="color: #2d397d;border: none;font-size: 1.25rem;margin-top: 1rem;margin-bottom: 1rem;padding: 0; font-family: HelveticaNeue,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight: 700;line-height: 1.5rem;">Customer Reviews</h2>')
-
-$(document).find('blockquote').attr('style', '"width: 307px;border: none;"')
 $(document).find('blockquote p.author-locale strong').before('<span>&ndash;</span>');
-$(document).find('div.review-comment').attr('style', '"font-size: 11px;color: #838382;font-weight: 600;text-align: center;"');
 
 //Schedule Service Button
-$(document).find('body#ppc-page div.wrapper div.content section#reviews').after('<button class="scheduleServiceClass" id="scheduleServiceId" data-toggle="modal" data-target="#scheduleServiceModal" data-gacategory="eschedule-embedded-form" data-gaaction="click" data-galabel="eschedule-open-modal" style="background-color: #506bb7;border: 2px solid #fff;border-radius: .25rem;bottom: 1.25rem;color: #fff;display: block;font-size: 1.125rem;height: 3rem;line-height: 2rem;text-align: center;width: 16rem;margin: 0 auto"> <span class="tk-sans" style="font-family: &quot;acumin-pro&quot;,&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif;visibility: visible"><i class="material-icons" style="bottom: auto;display: inline-block;font-size: 1.5rem;height: 1.5rem;line-height: 1.5rem;position: relative;top: .375rem;width: 1.75rem;"></i>Schedule Service Online</span></button>');
+$(document).find('body#ppc-page div.wrapper div.content section#reviews').after('<button class="scheduleServiceClass" id="scheduleServiceId" data-toggle="modal" data-target="#scheduleServiceModal" data-gacategory="eschedule-embedded-form" data-gaaction="click" data-galabel="eschedule-open-modal"> <span class="tk-sans" style="font-family: &quot;acumin-pro&quot;,&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif;visibility: visible"><i class="material-icons" style="bottom: auto;display: inline-block;font-size: 1.5rem;height: 1.5rem;line-height: 1.5rem;position: relative;top: .375rem;width: 1.75rem;"></i>Schedule Service Online</span></button>');
 
 //GET $$ Off button -- dynamic serving of discount based on DMA
 var dataAmt = $(document).find('aside#PPCcoupons').find('a.coupon').attr('data-amount');
@@ -221,17 +306,11 @@ var dataSrv = $(document).find('aside#PPCcoupons').find('a.coupon').attr('data-s
 var dataLabel = $(document).find('aside#PPCcoupons').find('a.coupon').attr('data-galabel');
 
 var coupon = '<div class="coupon-div"> <a style="color: #fff; text-decoration: none;" class="a-coupon" href="#" data-toggle="modal" data-target="#couponModal" data-amount="'+dataAmt+'" data-service="'+dataSrv+'" data-gacategory="local-page" data-gaaction="click" data-galabel="'+dataLabel +'">GET '+dataAmt+' OFF YOUR NEXT SERVICE<i class="tk-material-icons"></i></a></div></div>';
-
 $(document).find('button#scheduleServiceId.scheduleServiceClass').after(coupon);
 
+$(document).find('div.content div.coupon-div a.a-coupon').before('<img src="https://s3.amazonaws.com/rr-placeholders/rr-van.png" >')
+$(document).find('div.coupon-div').after('<div class=footer-img-container><img id="BBB" src="https://www.rotorooter.com/images/badges/BBB_A.png"> <img id="angies-list" src="https://www.rotorooter.com/images/Angies-List-Logo.png"></div>')
+
+$(document).find('head').append('<style>div.coupon-div,h2#custRevs{font-family:sucrose_slantbold}.content,.content>.aside,.content>aside,.content>section,.wrapper>section,footer>div,header{padding:0}section#main-content{padding:0 8px}section#main-content div.ppc-content{margin-bottom:0}section#main-content div.ppc-content h2{text-align:left;font-size:15px}section#main-content div.ppc-content p:nth-child(4){font-size:11px}h2#custRevs{color:#2d397d;border:none;font-size:1.25rem;margin-top:1rem;margin-bottom:-16px;padding:0;font-weight:700;line-height:1.5rem;text-align:center}button.slick-next.slick-arrow,button.slick-prev.slick-arrow{font-size:33px;background:0 0;padding:0;color:#9397B2;border:none;position:relative}button{outline:0}button.slick-prev.slick-arrow{left:3px;z-index:2;outline:0;top:64px}button.slick-next.slick-arrow{left:95%;top:-95px}div.reviewSlideClass{background-image:url(https://s3.amazonaws.com/rr-placeholders/rr-z2-reviews-bkg-mobile.png);background-position:center;width:100%;padding:3px 0 0;background-size:319px 235px;background-repeat:no-repeat;margin:-11px 0 20px -1px}blockquote{border:none;outline:0;padding:2.5px 13px 10.5px 21px;margin:0;font-size:17.5px}blockquote div.rating{display:flex;font-size:.75rem;line-height:1.25rem;color:#b1bddf;margin:0 0 6px 107px;padding:0}blockquote div.rating span.star{color:#D53B44;padding:0;font-size:1.5em;outline-color:#D53B44}blockquote div.review-comment{font-size:12px;text-align:center;width:96%;display:block;margin:auto}blockquote p.author-locale{padding:0}blockquote p.author-locale span{position:relative;margin:auto;left:120px;top:1px}blockquote p.author-locale strong{text-align:center;font-size:10px;padding:0;position:relative;left:121px}.scheduleServiceClass,button.schedule-service{background-color:#506bb7;bottom:1.25rem;display:block;font-size:1.125rem;height:3rem;line-height:2rem;color:#fff;text-align:center}button.schedule-service{border:2px solid #fff;border-radius:.25rem;width:70%;margin:0 auto}.scheduleServiceClass{border:2px solid #fff;border-radius:.25rem;width:16rem;margin:0 auto 6px}div.coupon-div{background-color:#D4323B;margin:auto;display:inline-block;top:5px;left:12px;padding:6px 0 4px;width:92%;position:relative}div.coupon-div img{position:relative;right:-9px;width:34px;top:-2px}a.a-coupon{color:#fff;text-decoration:none;font-size:12px;float:right;padding:0;position:relative;left:-15px}a#back-to-top{clear:both;color:#3c5aaf;display:block;font-size:1rem;height:7rem;line-height:7rem;text-align:center;text-transform:uppercase;margin-top:0}div.footer-img-container{position:relative;left:109px;margin-top:14px;display:flex;justify-content:space-between;width:92px}div.footer-img-container img#BBB,div.footer-img-container img#angies-list{display:block;margin:0;width:40px;height:55px}div.footer-img-container img#BBB{float:left}MEDIA QUERIES @media(min-width:375px){blockquote p.author-locale span{position:relative;margin:auto;left:145px;top:1px}div.coupon-div{background-color:#D4323B;margin:auto;display:inline-block;top:141%;left:12%;padding:6px 0 4px;font-family:sucrose_slantbold;width:80%;position:relative}}@media(min-width:425px){div.coupon-div,h2#custRevs.tk-helvetivca-neue{font-family:sucrose_slantbold;position:relative}h2#custRevs.tk-helvetivca-neue{color:#2d397d;border:none;font-size:1.25rem;padding:0;font-weight:700;line-height:1.5rem;margin:0;right:3%}blockquote p.author-locale span{position:relative;margin:auto;left:168px;top:1px}blockquote p.author-locale{padding:0;margin:0 13px 0 0;position:relative;right:4%}div.coupon-div{background-color:#D4323B;margin:auto;display:inline-block;top:141%;left:17%;padding:6px 0 4px;width:70%}}</style>');
+
 </script>
-
-
-
-
-<script>
-//extra code
-
-//original $$ coupon button
-$(document).find('button.schedule-service').before('<a href="#" class="coupon" data-toggle="modal" data-target="#couponModal" data-amount="$100 OFF" data-service="Save $100 on Any Plumbing &amp; Drain Cleaning Service" data-gacategory="local-page" data-gaaction="click" data-galabel="Save $100 on Any Plumbing &amp; Drain Cleaning Service" ><span class="btn view-details">GET $100 OFF YOUR NEXT SERVICE<i class="tk-material-icons" ></i></span> </a>')
-</script> 
