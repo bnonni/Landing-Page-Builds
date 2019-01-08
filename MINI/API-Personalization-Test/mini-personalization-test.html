@@ -1,0 +1,33 @@
+"<script>var simpleDataProvider = {name: 'something',version: '1.0.0',provider: function(callback) {callback(null, {t1: 1});}};window.targetGlobalSettings = {dataProviders: [simpleDataProvider]};</script>"
+
+<script>
+    (function(){
+      console.log("Init Anon Funct");
+      var miniTest = {
+        challenge : function(){
+          console.log("Checking for AT");
+        if(window.adobe.target){
+          console.log("Adobe is ready");
+          var simpleDataProvider = {
+            name: "something",
+            version: "1.0.0",
+            provider: function(callback) {
+              callback(null, {
+                t1: 1
+              });
+            }
+          };
+          window.targetGlobalSettings = {
+            dataProviders: [
+              simpleDataProvider
+            ]
+          };
+        }else{
+          window.setTimeout(function() {
+            miniTest.challenge();
+        }, 1000)}
+      }
+    }
+    miniTest.challenge();
+  })();
+</script>

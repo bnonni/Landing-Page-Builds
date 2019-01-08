@@ -1,0 +1,1991 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<style type="text/css">
+    body#ppc-page header.sticky, body#ppc-page section#hero, body#ppc-page .wrapper div.content { display: none!important; }
+    body#ppc-page { display: none; }
+    body#ppc-page .wrapper { padding-top: 0; }
+    .content, .wrapper>section { width: auto; }
+</style>
+<style>
+    .desktop { display: none !important; }
+
+    /* START New Splash Header Styles */
+    div.new-splash {
+        background-color: #ffffff!important;
+        box-shadow: 7px 7px 7px rgba(0,0,0,0.12);
+        color: #5c5c5c!important;
+        display: block;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-weight: bold;
+        padding: 0!important;
+        margin: 0!important;
+        text-transform: uppercase;
+        top: 0;
+        -webkit-position: sticky;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 1000;
+    }        
+    div.new-splash div.mobile {
+        align-items: center;
+        display: flex!important;
+        flex-grow: 0;
+        justify-content: center;
+        min-height: 4rem;
+        min-width: 320px;
+        max-width: 900px;
+        margin: 0 auto;
+        width: 100%!important;
+    }
+    div.new-splash div.row {
+        align-items: center;
+        display: flex!important;
+        flex-grow: 1;
+        justify-content: center;
+        margin: 0 auto;
+        min-height: 6rem;
+        padding: 0;
+        vertical-align: middle;
+        width: 64.5rem!important;            
+    }
+    div.new-splash div.row a.logo img, div.new-splash div.mobile a.logo img {
+        max-width: 406px;
+        min-width: 200px;
+    }
+    div.new-splash div.mobile a.logo img {
+        width: 90%;
+        margin-left: 2%;
+    }
+    div.new-splash div.row a, div.new-splash div.mobile a {
+        align-items: center;
+        color: #d52d37;
+        flex-grow: 1;
+        text-decoration: none;
+        outline-color: rgba(255,255,255,0);
+        vertical-align: middle;
+    }
+    div.new-splash div.row a.phone-number, div.new-splash div.mobile a.phone-number {
+        align-items: center;
+        display: block;
+        font-family: "HelveticaNeue-CondensedBold","HelveticaNeue","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font-size: 35px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        line-height: 40px;
+        padding-top: 0;
+        padding-left: 40px;
+        position: relative;
+        vertical-align: top;
+    }
+
+    div.new-splash div.mobile a.phone-number {
+        font-size: 25px;
+        line-height: 33px;
+        padding-left: 35px;
+        position: absolute;
+        right: 2%;
+    }
+
+    div.new-splash div.row a.phone-number:before, div.new-splash div.mobile a.phone-number:before {
+        content: ' ';
+        background: url('//rotorooter.com/images/ux-redesign/phone-number.png') no-repeat 0 0;
+        background-size: 180px;
+        display: inline-block;
+        height: 48px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+    }
+
+    div.new-splash div.mobile a.phone-number:before {
+        background-size: 150px;
+        height: 38px;
+        width: 35px;
+    }
+
+    div.new-splash div.row span.city {
+        color: #5c5c5c;
+        font-weight: bold;
+    }
+
+    /*Mobile Only Location Bar*/
+    div.mobile.location-bar {
+        background-color: #eeeeee;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+        color: #3e3e3e;
+        display: flex;
+        min-height: 3rem;
+        height: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+    div.mobile.location-bar .coupon-bar {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        font-weight: bold;
+        justify-content: flex-start;
+        letter-spacing: 0.5px;
+        max-width: 100px;
+        margin-left: 2%;
+        min-width: 160px;            
+        text-align: left;
+    }
+    div.mobile.location-bar .coupon-bar a {
+        color: #3e3e3e;
+        font-size: 16px;
+        font-weight: bold;
+        padding-top: 2px;
+        text-decoration: none;
+        text-decoration-color: rgba(0,0,0,0);
+    }
+    div.mobile.location-bar .coupon-bar a em.tk-material-icons.red-circle {
+        background-color: #d52d37;
+        border-radius: 50%;
+        display: inline-block;
+        height: 22px;
+        padding: 1px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-decoration-color: rgba(0,0,0,0);
+        top: -2px;
+        vertical-align: middle;
+        width: 22px;
+    }    
+    div.mobile.location-bar .coupon-bar a em.tk-material-icons.red-circle svg {
+        fill: #dbdbdb;
+        height: 20px;
+        width: 20px;
+    }    
+    div.mobile.location-bar .location {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        font-size: 16px;
+        font-weight: bold;
+        justify-content: flex-start;
+        letter-spacing: 0.5px;
+        max-width: 900px;
+        margin-left: 0.25%;
+        min-width: 160px;            
+        text-align: left;
+    }
+    /* End Mobile Only Location Bar */
+    /* END New Header Splash Styles */
+
+    /* START New Hero Styles */
+    section#new-hero {
+        background: #2e3b7b url('//rotorooter.com/images/ux-redesign/bau-header.png') no-repeat center center !important;
+        background-size: cover !important;
+        color: #fff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        position: relative;
+        width: 100%;
+        z-index: 5;
+    }
+    section#new-hero div.container-wrapper {
+        color: #fff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        margin: 0 auto;
+        max-width: 1065px;
+        min-height: 500px;
+        position: relative;
+        z-index: 5;
+    }
+    section#new-hero div.left-module {
+        color: #fff;
+        left: 2%;
+        line-height: normal;
+        position: relative;
+        top: 40px;
+        width: 60%;
+    }
+    section#new-hero div.left-module h4 {
+        color: #fff;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 33px;  
+        font-weight: normal;
+        line-height: 36px;
+        margin: 0 0 25px;
+        padding: 0;
+        text-shadow: 7px 7px 7px rgba(0,0,0,0.12);
+    }
+    
+    section#new-hero div.container-wrapper div.left-module h4 a, section#new-hero div.container-wrapper div.left-module h4 a:hover, section#new-hero div.container-wrapper div.left-module h4 a:active, section#new-hero div.container-wrapper div.left-module h4 a:focus {
+        color: #ffffff;
+        cursor: pointer;
+        text-decoration: none;
+        text-decoration-color: rgba(0,0,0,0);
+    }
+    
+    section#new-hero div.left-module h4 a em.tk-material-icons.red-circle {
+        background-color: #d52d37;
+        border-radius: 50%;
+        display: inline-block;
+        height: 40px;
+        padding: 4px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-decoration-color: rgba(0,0,0,0);
+        top: -4px;
+        vertical-align: middle;
+        width: 40px;
+    }
+    
+    section#new-hero div.left-module h4 a em.tk-material-icons.red-circle svg {
+        fill: #2e3b7b;
+        height: 33px;
+        width: 33px;
+    }
+    
+    section#new-hero div.left-module h3 {
+        color: #fff;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 48px;  
+        font-weight: normal;
+        line-height: 48px;
+        margin: 0;
+        padding: 0;
+        text-shadow: 7px 7px 7px rgba(0,0,0,0.12);
+    }
+    
+    section#new-hero div.left-module h3 span.slash, section#coupon-offer div.coupon-clip h3.desktop span.slash, section#coupon-offer div.coupon-clip h3.mobile span.slash {
+        display: inline-block;
+        position: relative;
+    }
+    section#new-hero div.left-module h3 span.slash:after, section#coupon-offer div.coupon-clip h3.desktop span.slash:after, section#coupon-offer div.coupon-clip h3.mobile span.slash:after {
+        background: url('//rotorooter.com/images/ux-redesign/slash.png') no-repeat 0 0;
+        background-size: 72px;
+        content: ' ';
+        display: block;
+        height: 72px;
+        position: absolute;
+        right: -5px;
+        top: 0;
+        width: 73px;
+    }
+    
+    section#coupon-offer div.coupon-clip h3.mobile span.slash:after {
+        background-size: 55px;
+        height: 55px;
+        right: -5px;
+        top: 0;
+        width: 57px;
+    }
+    
+    section#coupon-offer div.coupon-clip h3.desktop span.slash:after {
+        background-size: 30px;
+        height: 30px;
+        right: -3px;
+        top: -4px;
+        width: 32px;
+    }
+
+    section#new-hero span.service-tech {
+        bottom: 0;
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 450px;
+    }
+    section#new-hero span.service-tech img { width: 100%; }
+
+    section#new-hero div.mobile.service-icons {
+        align-items: center;
+        bottom: -85px;
+        display: none;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+    }
+    section#new-hero div.mobile.service-icons div.icon-gold {
+        color: #5c5c5c;
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        font-weight: bold;
+        justify-content: space-around;
+        line-height: 17px;
+        margin: 0 1.5%;
+        text-align: center;
+        width: auto;
+    }
+    section#new-hero div.mobile.service-icons div.icon-gold img {
+        margin: 0 auto;
+        text-align: center;
+        width: 112px;
+    }
+
+    section#new-hero div.desktop.service-icons {
+        background-color: #ececec;
+        bottom: 2px;
+        box-shadow: 14px 12px 12px rgba(0,0,0,0.12);
+        color: #4e4e4e;
+        left: 2%;
+        max-width: 425px;
+        padding: 15px;
+        position: absolute;
+        width: 40%;
+    }
+    section#new-hero div.desktop.service-icons:after {
+        background-color: #ececec;
+        bottom: -20px;
+        box-shadow: 8px 8px 12px rgba(0,0,0,0.12);
+        content: ' ';
+        font-size: 0;
+        height: 40px;
+        left: 60px;
+        line-height: 0;
+        position: absolute;
+        transform: rotate(45deg);
+        width: 40px;
+    }
+    section#new-hero div.desktop.service-icons h4 {
+        color: #4e4e4e;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 21px;
+        margin: 0 0 18px 0;
+        padding: 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    section#new-hero div.desktop.service-icons div.gold-icons {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: auto;
+        z-index: 2;
+    }
+    section#new-hero div.desktop.service-icons div.gold-icons img {
+        color: #4e4e4e;
+        margin: 0 auto;
+        text-align: center;
+        width: 89px;
+    }
+
+    section#callout-hdr.mobile {
+        color: #4e4e4e;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 26px;
+        letter-spacing: 0.75rempx;
+        line-height: 28px;
+        margin: 2% auto 0;
+        overflow: hidden;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    section#callout-hdr.mobile h3 {
+        color: #4e4e4e;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 36px;
+        letter-spacing: 0.05rem;
+        line-height: 38px;
+        margin: 15% auto 0;
+        overflow: hidden;
+        padding: 2% 5%;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    section#callout-hdr.mobile div.schedule-online {
+        align-items: center;
+        background: #2e3b7b;
+        color: #ffffff;
+        display: flex;
+        height: 80px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+    section#callout-hdr.mobile div.schedule-online a.blue.button {
+        background: #2e3b7b;
+        color: #ffffff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 24px;
+        font-weight: bold; 
+        margin-top: -10px;
+        padding-top: 0;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+        text-align: center;
+    }
+    section#callout-hdr.mobile div.schedule-online a.blue.button svg {
+        height: 40px;
+        left: -5px;
+        position: relative;
+        top: 10px;
+        width: 40px;
+    } 
+
+    section#red-callout.desktop {
+        background-color: #d22a36;
+        color: #ffffff;
+        display: block;
+        position: relative;
+        width: 100%;
+        z-index: 4;
+    }
+
+    section#red-callout.desktop div.container-wrapper {
+        align-items: center;
+        color: #ffffff;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 1065px;
+        min-height: 125px;
+        position: relative;
+        width: 100%;
+    }
+    section#red-callout.desktop div.hrs {
+        background: #ffffff;
+        font-size: 0;
+        height: 2px;
+        line-height: 0;
+        margin: 0 8px;
+        width: 5%;
+    }
+    section#red-callout.desktop div.plumbers-standing-by {
+        color: #ffffff;
+        display: inline-block;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 20px;
+        left: 0;
+        line-height: 22px;
+        padding-left: 70px;
+        position: relative;
+    }
+    section#red-callout.desktop div.plumbers-standing-by:before {
+        background: url(//rotorooter.com/images/ux-redesign/footer-sticky-bkg-mobile.png) no-repeat -20px -30px;
+        background-size: 420px;
+        content: ' ';
+        display: block;
+        font-size: 0;
+        height: 70px;
+        left: 0;
+        line-height: 0;
+        position: absolute;
+        top:-12px;
+        width: 70px;
+    }
+    section#red-callout.desktop div.plumbers-standing-by span.city, section#red-callout.desktop div.plumbers-standing-by span.in-city {
+        display: inline-block;
+        font-size: 18px;
+        line-height: 16px;
+        text-transform: uppercase;
+    }
+    section#red-callout.desktop div.plumbers-standing-by span.ftr {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 18px;
+    }
+    section#red-callout.desktop div.estimates {            
+        color: #ffffff;
+        display: inline-block;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        text-align: center;
+    }
+    section#red-callout.desktop div.estimates span.hdr {
+        color: #ffffff;
+        display: block;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    section#red-callout.desktop div.estimates span.phone-number, section#red-callout.desktop div.estimates span.phone-number a {
+        display: block;
+        color: #ffffff;
+        font-family: "HelveticaNeue-CondensedBold","HelveticaNeue","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font-size: 35px;
+        font-weight: bold;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+    }
+    section#red-callout.desktop div.schedule-online {
+        display: inline-block;
+    }
+    section#red-callout.desktop div.schedule-online a.red.button {
+        background: none;
+        border: 2px solid #ffffff;
+        border-radius: 5px;
+        color: #ffffff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        max-width: 200px;  
+        padding: 20px;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+    }
+    section#red-callout.desktop div.schedule-online a.red.button svg {
+        height: 30px;
+        left: -5px;
+        position: relative;
+        top: 8px;
+        width: 30px;
+    }        
+    /* END New Hero Styles */
+
+    /* START New Offers Styles */
+    section#coupon-offer {
+        background: #7d98d8;
+        color: #ffffff;
+        margin: 50px auto;
+        padding: 5px;
+        max-width: 1065px;
+        width: auto;
+    }
+    section#coupon-offer div.coupon-clip {
+        align-items: center;
+        border: 2px dashed #ffffff;
+        color: #ffffff;
+        display: flex;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        justify-content: center;
+        margin: 15px;
+        padding: 15px;
+        position: relative;
+    }
+    section#coupon-offer div.coupon-clip h3 {
+        color: #ffffff;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 35px;
+        font-weight: 500;
+        margin: 0;
+        margin-right: 2%;
+        padding: 0;
+    }
+    section#coupon-offer div.coupon-clip h4 {
+        color: #ffffff;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 25px;
+        font-weight: lighter;
+        margin: 0;
+        margin-right: 2%;
+        padding: 0;
+    }
+    section#coupon-offer div.coupon-clip a.red.button.new-coupon {
+        background: #d22a36;
+        border-radius: 5px;
+        color: #ffffff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        max-width: 200px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+        width: 100%;
+    }
+    /* END New Offers Styles */
+
+    /* START New Page Copy Styles */
+    section#new-copy {
+        background: #dbdbdb url(//rotorooter.com/images/ux-redesign/bau-copy-blocks-bkg-desktop.png) no-repeat center top;
+        background-size: 100%;
+        min-height: 520px;
+        padding: 0;
+        padding-bottom: 2%;
+        position: relative;
+        z-index: 0;
+    }
+
+    section#new-copy div.row.desktop, section#new-copy div.row.mobile {
+        align-content: center;
+        display: flex !important;
+        justify-content: center;
+        margin: 0 auto;
+        padding-top: 18%;
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+    section#new-copy div.row.mobile {
+        display: none !important;
+        padding-top: 18%;
+    }
+
+    section#new-copy div.row div.copy.free-estimates, section#new-copy div.copy.fix-it-right {
+        background: #ffffff;
+        border-radius: 5px;
+        box-shadow: 8px 8px 8px rgba(0,0,0,0.15);
+        color: #666666;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        margin: 0 35px 12px;
+        max-width: 400px;
+        padding: 35px;
+    }
+
+    section#new-copy div.row div.copy.free-estimates h3, section#new-copy div.copy.fix-it-right h3 {
+        color: #2e3b7b;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 28px;
+        letter-spacing: -0.5px;
+        line-height: 30px;
+        margin: 0 0 15px;
+        padding: 0;
+        text-transform: uppercase;
+    }
+
+    section#new-copy div.row div.copy.free-estimates p, section#new-copy div.copy.fix-it-right p {
+        color: #666666;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    section#new-copy div.schedule-service {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+    }
+    section#new-copy div.schedule-service a.red.button {
+        background: #d42731;
+        border-radius: 5px;
+        color: #ffffff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        max-width: 200px;  
+        padding: 20px;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+    }
+    section#new-copy div.schedule-service a.red.button svg {
+        height: 30px;
+        left: -5px;
+        position: relative;
+        top: 8px;
+        width: 30px;
+    } 
+    section#new-copy div.schedule-online {
+        align-items: center;
+        background: #2e3b7b;
+        color: #ffffff;
+        display: flex;
+        height: 80px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+    section#new-copy div.schedule-online a.blue.button {
+        background: #2e3b7b;
+        color: #ffffff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 24px;
+        font-weight: bold; 
+        margin-top: -10px;
+        padding-top: 0;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+        text-align: center;
+    }
+    section#new-copy div.schedule-online a.blue.button svg {
+        height: 40px;
+        left: -5px;
+        position: relative;
+        top: 10px;
+        width: 40px;
+    } 
+    /* END New Page Copy Styles */
+
+    /* START New Customer Reviews Styles */
+    section#customer-reviews {
+        display: block;
+        color: #666666;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        line-height: 22px;
+        margin: 2% auto;
+        padding: 20px 2% 0;
+        position: relative;
+        text-align: center;
+        width: 90%;
+        z-index: 0;
+    }
+    section#customer-reviews div.center-module {
+        margin: 0 auto;
+        max-width: 1065px;
+        width: 100%;
+    }
+    section#customer-reviews div.center-module h3 {
+        color: #2e3b7b;
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 42px;
+    }
+    section#customer-reviews div.center-module div.reviews-slider.desktop, section#customer-reviews div.center-module div.reviews-slider.mobile {
+        align-items: baseline;
+        display: flex !important;
+        justify-content: center;
+        margin: 40px auto;
+        padding: 0;
+        width: 100%;
+    }
+    section#customer-reviews div.center-module div.reviews-slider.mobile {
+        display: none !important;
+    }
+    section#customer-reviews div.center-module div.reviews-slider div.review-slide {
+        background: url(//rotorooter.com/images/ux-redesign/quote.png) no-repeat;
+        background-size: 40px 37px;
+        background-position: 0 0;
+        margin: 0 0.75%;
+        width: 33%;
+    }
+    section#customer-reviews div.center-module div.reviews-slider div.review-slide p {
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 25px;
+        font-weight: normal;
+        line-height: 25px;
+        padding-top: 10px;
+        padding-left: 55px;
+        padding-right: 15px;
+        text-align: left;
+    }
+    section#customer-reviews div.center-module div.reviews-slider div.review-slide strong, section#customer-reviews div.center-module div.reviews-slider div.reviewer-stars strong {
+        font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        line-height: 25px;
+    }
+    section#customer-reviews div.center-module div.reviews-slider div.reviewer-stars {
+        padding-left: 55px;
+        text-align: left;
+    }
+    section#customer-reviews div.center-module div.reviews-slider div.reviewer-stars span.star {
+        background: url(//rotorooter.com/images/ux-redesign/star.png) no-repeat top center;
+        background-size: 18px;
+        display: inline-block;
+        height: 20px;
+        position: relative;
+        top: 4px;
+        width: 20px;
+    }
+    /* END New Custom Reviews Styles */
+
+    /* SLICK Dots */
+    ul.slick-dots {
+        display: flex;
+        flex-direction: row;   
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        min-height: 15px;
+        padding: 0;
+    }
+    ul.slick-dots li {
+        height: 15px;
+        margin: 0 5px;
+        width: 15px;
+    }
+    ul.slick-dots li span {
+        border-radius: 100px;
+        background-color: #c5c5c5;
+        cursor: pointer;
+        display: inline-block;
+        height: 15px;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+        width: 15px;
+    }
+    ul.slick-dots li.slick-active span {
+        background-color: #262262;
+    }
+
+    section#customer-reviews div.center-module div.reviews-slider.mobile .next.btn, section#customer-reviews div.center-module div.reviews-slider.mobile .prev.btn, section#new-copy div.row.mobile .next.btn, section#new-copy div.row.mobile .prev.btn {
+        box-shadow: none;
+        cursor: pointer;
+        position: absolute;
+        width: 65px;
+        z-index: 20;
+    }
+
+    section#customer-reviews div.center-module div.reviews-slider.mobile .next.btn, section#new-copy div.row.mobile .next.btn {
+        right: -25px;
+    }
+
+    section#new-copy div.row.mobile .next.btn {
+        right: -1px;
+    }
+
+    section#customer-reviews div.center-module div.reviews-slider.mobile .next.btn, section#customer-reviews div.center-module div.reviews-slider.mobile .prev.btn  {
+        padding-top: 20px;
+        top: 25%;
+    }
+
+    section#new-copy div.row.mobile .next.btn , section#new-copy div.row.mobile .prev.btn  {
+        top: 55%;
+    }
+
+    section#customer-reviews div.center-module div.reviews-slider.mobile .prev.btn, section#new-copy div.row.mobile .prev.btn {
+        left: -25px;
+    }
+    section#new-copy div.row.mobile .prev.btn {
+        left: -1px;
+    }
+    /* END SLICK Dots */
+
+    /* START New Mobile Sticky Footer Styles */
+    section#sticky-footer, section#sticky-footer-placeholder {
+        background: #d22a36;
+        color: #ffffff;
+        display: block;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        min-height: 150px;
+        padding: 2% 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    section#sticky-footer-placeholder {
+        min-height: 200px;
+        position: relative;
+        z-index: 0;
+    }
+    section#sticky-footer div.content {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        justify-content: center;
+        min-width: 320px;
+        margin: 0 auto;
+        max-width: 600px;
+        position: relative;
+    }
+    section#sticky-footer div.content:before {
+        background: url(//rotorooter.com/images/ux-redesign/footer-sticky-bkg-mobile.png) no-repeat -30px -30px;
+        background-size: 600px;
+        content: ' ';
+        display: block;
+        height: 120px;
+        left: 0;
+        position: absolute;
+        width: 100px;
+    }
+
+    section#sticky-footer div.content h4 {
+        color: #ffffff;
+        font-family: acumin-pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-size: 38px;
+        left: 120px;
+        line-height: 38px;
+        margin: 0;
+        margin-bottom: 4px;
+        padding: 0;
+        position: relative;
+    }
+
+    section#sticky-footer div.content a {
+        color: #fff;
+        font-family: "HelveticaNeue-CondensedBold","HelveticaNeue","Helvetica Neue","Helvetica","Arial",sans-serif;
+        left: 120px;
+        position: relative;
+        text-decoration: none;
+        text-decoration-color: rgba(255,255,255,0);
+    }
+
+    section#sticky-footer div.content a.phone-number {
+        font-family: "HelveticaNeue-CondensedBold","HelveticaNeue","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font-size: 62px;
+        font-weight: 800;
+        line-height: 62px;
+        margin-bottom: 0;
+    }
+
+    section#sticky-footer div.content div.btm-info {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        font-size: 20px;            
+        justify-content: space-between;
+        left: 120px;
+        padding-top: 0;
+        position: relative;
+        width: 80%;
+    }
+    /* END New Mobile Sticky Footer Styles */ 
+    
+    body#ppc-page a#back-to-top {
+        background-color: #ececec;
+        color: #666666;
+        font-size:18px;
+        font-weight: bold;
+        position: relative;
+        top: 1px;
+    }
+    a#back-to-top i.tk-material-icons {
+        border-color: #666666;
+        color: #666666;
+    }
+    a.back-to-top i.tk-material-icons svg, a.back-to-top i.tk-material-icons svg path:first-child {
+        fill: #666666;
+    }
+    
+    @media screen and (max-width: 1064px) {  
+        div.new-splash div.mobile a.logo img {
+            max-width: 266px;
+            min-width: 170px;
+        }     
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 490px;
+        }
+        section#new-hero div.left-module {
+            left: 5%;
+            width: 62%
+        }
+        section#new-hero div.left-module h4 {
+            display: none;
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 84px;
+            line-height: 76px;
+        }
+        section#new-hero span.service-tech {
+            width: 460px;
+        }
+        section#new-hero div.mobile.service-icons {
+            display: flex;
+        }
+        
+        section#callout-hdr.mobile h3 {
+            margin-top: 100px;
+        }
+        section#callout-hdr.mobile div.schedule-online {
+            margin-top: 20px;
+        }
+        
+        section#red-callout.desktop {
+            display: none !important;
+        }
+        section#coupon-offer {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        section#coupon-offer div.coupon-clip {
+            flex-direction: column;
+            padding: 5% 0;
+        }
+        section#coupon-offer div.coupon-clip h3, section#coupon-offer div.coupon-clip h4 {
+            margin: 0 0 4%;
+        }
+        section#coupon-offer div.coupon-clip h3 {
+            font-size: 60px;
+            font-weight: normal;
+            line-height: 60px;
+            padding: 0 2%;
+            text-align: center;
+        }
+        section#coupon-offer div.coupon-clip h4 {
+            font-size: 28px;
+            line-height: 28px;
+            padding: 0 2%;
+            text-align: center;
+        }
+        section#coupon-offer div.coupon-clip a.red.button.new-coupon {
+            font-size: 25px;
+            margin: 0 15%;
+            max-width: 320px;
+            padding: 20px 0;
+        }
+
+        section#new-copy {
+            margin-bottom: 0;
+            min-height: auto;
+            padding-bottom: 0;
+            padding-top: 5%;
+        }
+        
+        section#new-copy div.row.desktop {
+            display: none!important;
+        }
+
+        section#new-copy div.row.mobile {
+            display: block !important;
+        }
+        
+        section#new-copy div.row div.copy.free-estimates, section#new-copy div.copy.fix-it-right {
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+            margin-bottom: 15px;
+            margin-left: 8px;
+            margin-right: 8px;
+            max-width: none;
+            padding: 20px 45px;
+            text-align: center;
+        }
+        
+        section#new-copy div.row div.copy.free-estimates h3, section#new-copy div.copy.fix-it-right h3 {
+            font-size: 26px;
+            line-height: 26px;
+        }
+        
+        section#customer-reviews div.center-module div.reviews-slider.desktop {
+            display: none!important;
+        }
+
+        section#customer-reviews div.center-module div.reviews-slider.mobile {
+            display: block !important;
+            margin-top: -20px;
+        }
+
+        section#customer-reviews div.center-module div.reviews-slider div.review-slide {
+            background: url(//rotorooter.com/images/ux-redesign/quotation-mark.png) no-repeat;
+            background-size: 90px auto;
+            background-position: 5px 0;
+            display: block;
+            margin-bottom: 25px;
+            padding-top: 15px;
+            width: 100%;
+        }
+        section#customer-reviews div.center-module div.reviews-slider div.review-slide p {
+            padding-right: 55px;
+        }
+        
+        section#new-copy div.row.mobile .next.btn, section#new-copy div.row.mobile .prev.btn {
+            top:60%;
+        }
+    }    
+    @media screen and (max-width: 990px) {      
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 420px;
+        }
+        section#new-hero div.left-module {
+            left: 20px;
+            width: 62%
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 74px;
+            line-height: 66px;
+        }
+        section#new-hero span.service-tech {
+            width: 400px;
+        }
+    }    
+    @media screen and (max-width: 875px) {      
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 380px;
+        }
+        section#new-hero div.left-module {
+            left: 20px;
+            width: 62%
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 66px;
+            line-height: 58px;
+        }
+        section#new-hero span.service-tech {
+            width: 360px;
+        }
+    }
+    @media screen and (max-width: 800px) {      
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 340px;
+        }
+        section#new-hero div.left-module {
+            left: 20px;
+            width: 62%
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 60px;
+            line-height: 58px;
+        }
+        section#new-hero span.service-tech {
+            width: 320px;
+        }
+    }
+    @media screen and (max-width: 725px) {
+        section#new-hero div.left-module {
+            left: 20px;
+            width: 66%
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 50px;
+            line-height: 50px;
+        }        
+        section#new-copy {
+            background: #dbdbdb url(//rotorooter.com/images/ux-redesign/bau-copy-blocks-bkg-mobile.png) no-repeat left top;
+            background-size: 100%;
+            padding-top: 5%;
+            padding-bottom: 0;
+        }
+        section#new-copy div.row.mobile {
+            padding-top: 28%;
+        }                
+        section#new-copy div.row.mobile .next.btn, section#new-copy div.row.mobile .prev.btn {
+            top:60%;
+        }
+    }    
+    @media screen and (max-width: 625px) {
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 330px;
+        }
+        section#new-hero div.left-module {
+            left: 20px;
+            top: 30px;
+            width: 95%
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 45px;
+            line-height: 45px;
+        }
+        section#new-hero span.service-tech {
+            width: 300px;
+        }
+        section#sticky-footer div.content {
+            max-width: 515px;
+        }
+        section#sticky-footer div.content h4 {
+            font-size: 28px;
+            line-height: 28px;
+        }
+        section#sticky-footer div.content a.phone-number {
+            font-size: 52px;
+            line-height: 52px;
+        }
+    }
+    @media screen and (max-width: 560px) {
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 290px;
+        }
+        div.new-splash div.mobile a.logo img {
+            width: 190px;
+            min-width: 190px;
+        }
+        div.new-splash div.mobile a.phone-number {
+            font-size: 16px;
+            line-height: 25px;
+            padding-left: 28px;
+        }
+
+        div.new-splash div.mobile a.phone-number:before {
+            background-size: 120px;
+            height: 28px;
+            width: 25px;
+        }
+        
+        div.mobile.location-bar .coupon-bar {
+            margin-left: 5%;
+            min-width: 140px;
+        }
+        
+        section#new-hero div.left-module {
+            left: 5%;
+            top: 30px;
+            width: 98%;
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 40px;
+            line-height: 40px;
+        }
+        section#new-hero div.left-module h3 span.slash:after {
+            background-size: 38px;
+            height: 42px;
+            right: -5px;
+            top: 3px;
+            width: 43px;
+        }
+        section#new-hero div.mobile.service-icons {
+            bottom: -65px;
+        }
+        section#new-hero div.mobile.service-icons div.icon-gold {
+            font-size: 12px;
+            line-height: 12px;
+            margin: 0 3.5%;
+        }
+        section#new-hero div.mobile.service-icons div.icon-gold img {
+            width: 72px;
+        }
+        section#new-hero span.service-tech {
+            width: 265px;
+        }
+        section#callout-hdr.mobile {
+            font-size: 26px;
+            margin-top: 5%;
+        }
+        section#callout-hdr.mobile h3 {
+            font-size: 26px;
+            line-height: 28px;
+        }
+        section#callout-hdr.mobile div.schedule-online, section#new-copy div.schedule-online {
+            margin-top: 20px;
+            height: 60px;
+        }
+        section#callout-hdr.mobile div.schedule-online a.blue.button, section#new-copy div.schedule-online a.blue.button, section#new-copy div.schedule-online a.blue.button {
+            font-size: 16px;
+            line-height: 16px;
+            margin-top: -16px;
+        }
+        section#callout-hdr.mobile div.schedule-online a.blue.button svg, section#new-copy div.schedule-online a.blue.button svg {
+            height: 30px;
+            width: 30px;
+        }
+        
+        section#coupon-offer {
+            padding: 1px;
+        }
+        
+        section#coupon-offer div.coupon-clip {
+            margin: 10px;
+            padding: 0 0 4%;
+        }
+        
+        section#coupon-offer div.coupon-clip h3 {
+            font-size: 35px;
+            line-height: 35px;
+            margin: 5px 0 10px;
+        }
+        
+        section#coupon-offer div.coupon-clip h3.mobile span.slash:after {
+            background-size: 30px;
+            height: 30px;
+            right: 0;
+            top: 3px;
+            width: 30px;
+        }
+        
+        section#coupon-offer div.coupon-clip h4 {
+            font-size: 16px;
+            line-height: 16px;
+            padding: 0 2%;
+        }
+        
+        section#coupon-offer div.coupon-clip a.red.button.new-coupon {
+            font-size: 16px;
+            max-width: 250px;
+            padding: 10px 0;
+        }
+        
+        section#new-copy div.row div.copy.free-estimates, section#new-copy div.copy.fix-it-right {
+            padding: 20px 43px;
+        }
+        
+        section#new-copy div.row div.copy.free-estimates p, section#new-copy div.copy.fix-it-right p {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        
+        section#customer-reviews div.center-module div.reviews-slider div.review-slide p {
+            font-size: 18px;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+        section#customer-reviews div.center-module div.reviews-slider div.reviewer-stars {
+            padding-left: 18px;
+        }
+        
+        section#customer-reviews div.center-module div.reviews-slider div.review-slide strong, section#customer-reviews div.center-module div.reviews-slider div.reviewer-stars strong{
+            font-size: 18px;
+        }
+        
+        section#sticky-footer, section#sticky-footer-placeholder {
+            min-height: 80px;
+            padding: 4% 0;
+        }
+        section#sticky-footer-placeholder {
+            min-height: 120px;
+        }
+        section#sticky-footer div.content {
+            max-width: 450px;
+        }
+        section#sticky-footer div.content:before {
+            background-position: -20px -20px;
+            background-size: 450px;
+            height: 110px;
+            left: 1%;
+            width: 70px;
+        }
+        section#sticky-footer div.content h4 {
+            font-size: 18px;
+            left: 90px;
+            line-height: 18px;
+        }
+        section#sticky-footer div.content a {
+            left: 90px;
+        }
+        section#sticky-footer div.content a.phone-number {
+            font-size: 34px;
+            line-height: 34px;
+        }
+        section#sticky-footer div.content div.btm-info {
+            font-size: 16px;
+            left: 90px;
+            width: 72%;
+        }
+    }
+    @media screen and (max-width: 520px) {
+        section#new-hero div.left-module h4 {
+            font-size: 20px;
+            line-height: 22px
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 35px;
+            line-height: 35px;
+        }
+    }
+    @media screen and (max-width: 450px) {
+        section#new-hero div.left-module h3 {
+            font-size: 28px;
+            line-height: 28px;
+        }
+    }
+    @media screen and (max-width: 420px) {
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 250px;
+        }
+        section#new-hero div.left-module {
+            left: 20px;
+            top: 30px;
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 28px;
+            line-height: 28px;
+        }
+        section#new-hero span.service-tech {
+            width: 230px;
+        }
+        section#callout-hdr.mobile h3 {
+            margin-top: 70px;
+        }
+        section#sticky-footer div.content h4 {
+            font-size: 16px;
+            line-height: 16px;
+        }
+        section#sticky-footer div.content a.phone-number {
+            font-size: 28px;
+            line-height: 28px;
+        }
+        section#sticky-footer div.content div.btm-info {
+            font-size: 14px;
+            width: 68%;
+        }
+    }
+    @media screen and (max-width: 360px) {
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 270px;
+        }
+        div.new-splash div.mobile a.logo img {
+            max-width: 266px;
+            min-width: 160px;
+        }
+        section#new-hero div.left-module {
+            left: 8px;
+            top: 30px;
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 28px;
+            line-height: 28px;
+        }
+        section#new-hero span.service-tech {
+            width: 220px;
+        }
+        section#sticky-footer div.content a.phone-number {
+            font-size: 28px;
+            line-height: 28px;
+        }
+    }
+    @media screen and (max-width: 320px) {
+        section#new-hero, section#new-hero div.container-wrapper {
+            min-height: 200px;
+        }
+        section#new-hero div.left-module {
+            top: 20px;
+        }
+        section#new-hero div.left-module h3 {
+            font-size: 24px;
+            line-height: 24px;
+        }
+        section#new-hero span.service-tech {
+            width: 180px;
+        }
+        section#callout-hdr.mobile h3 {
+            font-size: 22px;
+            line-height: 24px;
+        }
+    }
+    @media screen and (min-width: 1065px) {
+        .mobile, section#sticky-footer,section#sticky-footer, section#sticky-footer-placeholder, div.new-splash div.mobile {
+            display: none !important;
+        }
+        .desktop {
+            display: block !important;
+        }
+    }
+</style>
+<script type="text/javascript">
+    var phoneNumber = '';
+    try {
+        function triggerEScheduleClicks() { try { adobe.target.trackEvent( { mbox: "ScheduleServiceModuleAppears" }); } catch(e) {} }
+
+        var pnccnt=0;
+        function tallyPhnNumClicks() { try { pnccnt+=1, adobe.target.trackEvent( { mbox:"PhoneNumberClick", params: { PhoneNumberClick: pnccnt } }); } catch(e) {} }
+
+        function triggerEScheduleClicks() { try { adobe.target.trackEvent( { mbox: "ScheduleServiceModuleAppears" }); } catch(e) {} }
+
+        function couponClicked(evt) { var tParent = $(document).find(evt.target).parent().parent(); var couponAmt = tParent.attr('data-amount'); try { adobe.target.trackEvent({ mbox: "couponOpened", params: { couponOpened: couponAmt } }) } catch(e) {} }
+
+        function removeListeners() {
+            try {
+                $(document).find(".btn-group-schedule-service-online").click(function(c) {});
+                var c=$(document).find(".btn-red");
+                $.each(c, function(c, n) {"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {});});
+                $(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service,.phone-formatted,.market-phones,.desktop-header-phone,.call-phone-number,#nav-phone-number,.local-page-phone,#mob-call-now,div.new-splash a.red.button.schedule-service,section#offers div.schedule-online a.red.button,section#offers div.new-coupon a.red.button.new-coupon,div.new-splash a.phone-number,section#sticky-footer a.phone-number").off('click',function(){});
+            } catch(e) {}
+        }
+        function attachListeners() {
+            try {
+                $(document).find(".btn-group-schedule-service-online,div.new-splash a.red.button.schedule-service,section#offers div.schedule-online a.red.button").click(function(c) { triggerEScheduleClicks(); });
+                var c=$(document).find(".btn-red");
+                $.each(c, function(c, n) { "eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) { triggerEScheduleClicks(); }); });
+
+                $(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service,.phone-formatted,.market-phones,.desktop-header-phone,.call-phone-number,#nav-phone-number,div.new-splash a.phone-number").click(function(c) {
+                    tallyPhnNumClicks();
+                });
+
+                $(document).find("section#sticky-footer").click(function(c) {
+                    tallyPhnNumClicks();
+                    window.setTimeout(function(){ window.location = "tel:"+phoneNumber; }, 500)
+                });
+
+                $(document).find("section#offers div.new-coupon a.red.button.new-coupon").click(function(c) {
+                    couponClicked(c);
+                });
+            } catch(e) {}
+        }
+
+        function loadScript(url, callback) {
+            var script = document.createElement("script")
+            script.type = "text/javascript";
+
+            if (script.readyState) { //IE
+                script.onreadystatechange = function () {
+                    if (script.readyState == "loaded" || script.readyState == "complete") {
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+            } else { //Others
+                script.onload = function () {
+                    callback();
+                };
+            }
+            script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    } catch(c) {}
+</script>
+<script type="text/javascript">
+(function() {
+	//'use strict';
+	var rrTest = {
+		connectionSpeed: '${profile.geolocation.connectionSpeed}',
+		cityStateVal:'',
+		cityVal:'',
+        stateVal:'',
+		locationNotFound:false,
+		debug: true,
+        numOfTries: 0,
+        maxTries: 50,
+		account : 'Roto-Rooter',
+		test : '360i_SEM AB_UX Redesign_ BAU_120618',
+		creative : "ExpB - BAU 1",
+        geoCodeApiKeyTSI: 'AIzaSyAe-dKtMDklQ1E8V5TYOs_bdgimuh5zEGQ',
+        geocodeUrlTSI: 'https://maps.googleapis.com/maps/api/geocode/json?',
+        latLng: {},
+        locality: '',
+        state: '',
+		abbrState: {"alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA","kansas":"KS","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI","minnesota":"MN","mississippi":"MS","missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK","oregon":"OR","pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY","district of columbia":"DC"},
+		us_state_name: {"AL":"Alabama","AK":"Alaska" ,"AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming","DC":"District of Columbia"},
+        mblNavPhnNum: ".market-phones a",
+		init: function() {
+            try {
+                rrTest.log(rrTest.test + " :: " + rrTest.creative);
+                rrTest.numOfTries = 0;
+                rrTest.elementLoaded(rrTest.mblNavPhnNum, function() {
+                    removeListeners();                    
+                    rrTest.getGeo();
+                    rrTest.chall();
+                    attachListeners();
+                });
+            } catch(e) { rrTest.log(e); }
+		},
+        getDOW: function() {
+            var d = new Date();
+            
+            switch (d.getDay()) {
+                case 0:
+                    return "SUNDAY";
+                case 1:
+                    return "MONDAY";
+                case 2:
+                    return "TUESDAY";
+                case 3:
+                    return "WEDNESDAY";
+                case 4:
+                    return "THURSDAY";
+                case 5:
+                    return "FRIDAY";
+                case 6:
+                    return "SATURDAY";
+            }
+        },
+        setHTMLContent : function () {
+            try {
+                rrTest.log(rrTest.cityVal);
+                
+                var city = (rrTest.cityVal !== "") ? rrTest.cityVal.substr(0,1).toUpperCase() + rrTest.cityVal.substr(1) : "";
+                
+                rrTest.log(city);
+                
+                var citystate = (city !== "" && rrTest.stateVal !== "") ? city+",&nbsp;"+rrTest.stateVal.toUpperCase() : "";
+                
+                rrTest.log(citystate);
+                
+                var dow = rrTest.getDOW();
+                
+                rrTest.phnNumber = $(document).find('.market-phones a.visible-xs:first-child').text();
+                phoneNumber = rrTest.phnNumber;
+                
+                rrTest.newSplash = '<div class="new-splash">\
+        <div class="mobile">\
+            <a href="/" class="logo"><img src="//www.rotorooter.com/images/logos/rr-logo-Default.svg" alt="Roto-Rooter Plumbing and Water Cleanup"></a>\
+            <a href="tel:'+rrTest.phnNumber+'" class="call phone-number">'+rrTest.phnNumber+'</a>\
+        </div>\
+        <div class="desktop">\
+            <div class="row">\
+                <a href="/" class="logo"><img src="//www.rotorooter.com/images/logos/rr-logo-Default.svg" alt="Roto-Rooter Plumbing and Water Cleanup"></a>\
+                <div class="city-phone-number">\
+                    <span class="city-state">'+city+'</span>\
+                    <a href="tel:'+rrTest.phnNumber+'" class="phone-number tk-sans">'+rrTest.phnNumber+'</a>\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+        <div class="mobile location-bar">\
+            <div class="coupon-bar"><a href="#" data-toggle="modal" data-target="#couponModal" data-amount="GET $40 OFF" data-service="Save $40 on Any Plumbing &amp; Drain Cleaning Service" data-gacategory="local-page" data-gaaction="click" data-galabel="GET $40 OFF"><em class="tk-material-icons red-circle"><svg xmlns="//www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"></path></svg></em>&nbsp;GET $40 OFF</a></div>\
+            <div class="location"><svg id="map-marker-fylp" class="" xmlns="//www.w3.org/2000/svg" width="29" height="27" viewBox="0 0 22 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#d52d37"></path> <path d="M0 0h24v24H0z" fill="none"></path></svg><span class="city-state">'+city+'</span></div>\
+        </div>';
+                
+                
+                rrTest.newHero = '<section id="new-hero">\
+        <div class="container-wrapper">\
+            <div class="left-module">\
+                <h4><a href="#" data-toggle="modal" data-target="#couponModal" data-amount="GET $40 OFF" data-service="Save $40 on Any Plumbing &amp; Drain Cleaning Service" data-gacategory="local-page" data-gaaction="click" data-galabel="GET $40 OFF"><em class="tk-material-icons red-circle"><svg xmlns="//www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"></path></svg></em>&nbsp;GET $40 OFF</a></h4>\
+                <h3 class="visible-xs">PLUMBING&nbsp;&amp;&nbsp;WATER<br>CLEANUP&nbsp;EXPERTS.<br>YEAH, WE DO BOTH.</h3>\
+                <h3 class="hidden-xs">PLUMBING&nbsp;&amp;&nbsp;WATER CLEANUP EXPERTS. YEAH, WE DO BOTH.</h3>\
+            </div>\
+            <span class="service-tech"><img src="//rotorooter.com/images/ux-redesign/hero-tech-bau.png" alt="Roto-Rooter\'s Service Tech"></span>\
+            <div class="mobile service-icons">\
+                <div class="icon-gold">\
+                    <img src="//rotorooter.com/images/ux-redesign/emergency-service-icon-mobile.png" alt="EMERGENCY SERVICE">\
+                    EMERGENCY<br>SERVICE\
+                </div>\
+                <div class="icon-gold">\
+                    <img src="//rotorooter.com/images/ux-redesign/plumbing-and-drain-icon-mobile.png" alt="PLUMBING AND DRAIN">\
+                    PLUMBING<br>&amp;&nbsp;DRAIN\
+                </div>\
+                <div class="icon-gold">\
+                    <img src="//rotorooter.com/images/ux-redesign/water-cleanup-icon-mobile.png" alt="WATER CLEANUP">\
+                    WATER<br>CLEANUP\
+                </div>\
+            </div>\
+            <div class="desktop service-icons">\
+                <h4>THE EXPERTS YOU\'VE TRUSTED FOR OVER 80 YEARS<span class="in-city">'+city+'</span></h4>\
+                <div class="gold-icons">\
+                    <img src="//rotorooter.com/images/ux-redesign/icon-1.png" alt="EMERGENCY SERVICE">\
+                    <img src="//rotorooter.com/images/ux-redesign/icon-2.png" alt="PLUMBING AND DRAIN">\
+                    <img src="//rotorooter.com/images/ux-redesign/icon-3.png" alt="WATER CLEANUP">\
+                    <img src="//rotorooter.com/images/ux-redesign/icon-4.png" alt="WATER HEATERS">\
+                </div>\
+            </div>\
+        </div>\
+    </section>';
+                
+                
+                rrTest.callOuts = '<section id="callout-hdr" class="mobile">\
+        <h3>THE EXPERTS YOU\'VE TRUSTED FOR OVER 80 YEARS<span class="in-city">'+city+'</span></h3>\
+        <div class="schedule-online">\
+            <a href="#" class="blue button tk-sans schedule-service" data-toggle="modal" data-target="#scheduleServiceModal" data-gacategory="eschedule-embedded-form" data-gaaction="click" data-galabel="eschedule-open-modal"><svg class="material-icons" xmlns="//www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path fill="#fff" d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"></path></svg>SCHEDULE SERVICE ONLINE</a>\
+        </div>\
+    </section>';
+                rrTest.secondCallout = '<section id="red-callout" class="desktop">\
+        <div class="container-wrapper">\
+            <div class="plumbers-standing-by">\
+                <span class="ftr">OPEN 24/7 CALL NOW</span>\
+                <span class="in-city">'+city+'</span>\
+            </div>\
+            <div class="hrs"></div>\
+            <div class="estimates">\
+                <span class="hdr">FREE ESTIMATES</span>\
+                <span class="phone-number"><a href="tel:'+rrTest.phnNumber+'">'+rrTest.phnNumber+'</a></span>\
+            </div>\
+            <div class="hrs"></div>\
+            <div class="schedule-online">\
+                <a href="#" class="red button tk-sans schedule-service" data-toggle="modal" data-target="#scheduleServiceModal" data-gacategory="eschedule-embedded-form" data-gaaction="click" data-galabel="eschedule-open-modal"><svg class="material-icons" xmlns="//www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path fill="#fff" d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"></path></svg>SCHEDULE SERVICE ONLINE</a>\
+            </div>\
+        </div>\
+    </section>';
+                
+                
+                rrTest.newCoupon = '<section id="coupon-offer">\
+        <div class="coupon-clip">\
+            <h3 class="desktop">GET $40 OFF</h3>\
+            <h3 class="mobile">GET $40 OFF</h3>\
+            <h4>SAVE $40 ON ANY PLUMBING OR DRAIN CLEANING SERVICE</h4>\
+            <a href="#" class="red button new-coupon" data-toggle="modal" data-target="#couponModal" data-amount="GET $40 OFF" data-service="Save $40 on Any Plumbing &amp; Drain Cleaning Service" data-gacategory="local-page" data-gaaction="click" data-galabel="GET $40 OFF">GET THIS COUPON</a>\
+        </div>\
+    </section>';
+                
+                
+                rrTest.newCopy = '<section id="new-copy">\
+        <div class="row copy-slider desktop">\
+            <div class="copy free-estimates">\
+                <h3>FREE ESTIMATES ON ANY JOB</h3>\
+                <p><strong>Our full-service plumbers provide free estimates on any job.</strong> We know how important your plumbing is to your home and your family, our plumbers<span class="in-city">'+city+'</span> are trained to the highest industry standards – which means they can tackle any problem with knowledge and skill. From the simplest plumbing task to the most complicated, our team can assist with maintenance and emergency plumbing<span class="in-city">'+city+'</span>.</p>\
+            </div>\
+            <div class="copy fix-it-right">\
+                <h3>Open 24 Hours, 7 Days a Week</h3>\
+                <p><strong>It doesn’t matter whether you’ve experienced a leaky toilet, a clogged kitchen sink, a flooded room, or a backed-up sewer line.</strong> Even if you don’t know what the plumbing emergency is, you need a 24-hour plumber who knows how to handle it all. We’ll arrive on site quickly to assess the situation and provide emergency plumbing repairs.</p>\
+            </div>\
+        </div>\
+        <div class="row copy-slider mobile">\
+            <div class="copy free-estimates">\
+                <h3>FREE ESTIMATES ON ANY JOB</h3>\
+                <p><strong>Our full-service plumbers provide free estimates on any job.</strong> We know how important your plumbing is to your home and your family, our plumbers<span class="in-city">'+city+'</span> are trained to the highest industry standards – which means they can tackle any problem with knowledge and skill. From the simplest plumbing task to the most complicated, our team can assist with maintenance and emergency plumbing<span class="in-city">'+city+'</span>.</p>\
+            </div>\
+            <div class="copy fix-it-right">\
+                <h3>Open 24 Hours, 7 Days a Week</h3>\
+                <p><strong>It doesn’t matter whether you’ve experienced a leaky toilet, a clogged kitchen sink, a flooded room, or a backed-up sewer line.</strong> Even if you don’t know what the plumbing emergency is, you need a 24-hour plumber who knows how to handle it all. We’ll arrive on site quickly to assess the situation and provide emergency plumbing repairs.</p>\
+            </div>\
+        </div>\
+        <div class="schedule-service desktop">\
+            <a href="#" class="red button tk-sans schedule-service" data-toggle="modal" data-target="#scheduleServiceModal" data-gacategory="eschedule-embedded-form" data-gaaction="click" data-galabel="eschedule-open-modal"><svg class="material-icons" xmlns="//www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path fill="#fff" d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"></path></svg>SCHEDULE SERVICE ONLINE</a>\
+        </div>\
+        <div class="schedule-online mobile">\
+            <a href="#" class="blue button tk-sans schedule-service" data-toggle="modal" data-target="#scheduleServiceModal" data-gacategory="eschedule-embedded-form" data-gaaction="click" data-galabel="eschedule-open-modal"><svg class="material-icons" xmlns="//www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path fill="#fff" d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"></path></svg>SCHEDULE SERVICE ONLINE</a>\
+        </div>\
+    </section>';
+                
+                
+                rrTest.newReviews = '<section id="customer-reviews">\
+        <div class="center-module">\
+            <h3>WHAT OUR CUSTOMERS SAY</h3>\
+            <div class="reviews-slider desktop">\
+                <div class="review-slide">\
+                    <p>They <strong>responded very fast. Same day service.</strong> Very reliable. Ken was quite informative. Leaking elbow under bathroom sink was fixed within a half hour. We will definitely use them in the future.</p>\
+                    <div class="reviewer-stars">\
+                        <strong>- Glenn F.</strong>\
+                        <span class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>\
+                    </div>\
+                </div>\
+                <div class="review-slide">\
+                    <p><strong>Really appreciated Roto Rooter\'s fast response</strong> to my recent emergency involving a sewer line backup and subsequent cleanup.</p>\
+                    <div class="reviewer-stars">\
+                        <strong>- Diane D.</strong>\
+                        <span class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>\
+                    </div>\
+                </div>\
+                <div class="review-slide">\
+                    <p>Thank you for <strong>coming to my house so quickly in an emergency situation.</strong> Ted kept us informed throughout and even gave us tips to help prevent future plumbing problems.</p>\
+                    <div class="reviewer-stars">\
+                        <strong>- Jennie T.</strong>\
+                        <span class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>\
+                    </div>\
+                </div>\
+            </div>\<div class="reviews-slider mobile">\
+                <div class="review-slide">\
+                    <p>They <strong>responded very fast. Same day service.</strong> Very reliable. Ken was quite informative. Leaking elbow under bathroom sink was fixed within a half hour. We will definitely use them in the future.</p>\
+                    <div class="reviewer-stars">\
+                        <strong>- Glenn F.</strong>\
+                        <span class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>\
+                    </div>\
+                </div>\
+                <div class="review-slide">\
+                    <p><strong>Really appreciated Roto Rooter\'s fast response</strong> to my recent emergency involving a sewer line backup and subsequent cleanup.</p>\
+                    <div class="reviewer-stars">\
+                        <strong>- Diane D.</strong>\
+                        <span class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>\
+                    </div>\
+                </div>\
+                <div class="review-slide">\
+                    <p>Thank you for <strong>coming to my house so quickly in an emergency situation.</strong> Ted kept us informed throughout and even gave us tips to help prevent future plumbing problems.</p>\
+                    <div class="reviewer-stars">\
+                        <strong>- Jennie T.</strong>\
+                        <span class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>\
+    </section>';
+                
+                rrTest.stickyPhoneFtr = '<section id="sticky-footer">\
+                                        <div class="content">\
+                                            <h4>PLUMBERS STANDING BY</h4>\
+                                            <a href="tel:'+rrTest.phnNumber+'" class="phone-number">'+rrTest.phnNumber+'</a>\
+                                            <div class="btm-info">\
+                                                <span class="right">FREE ESTIMATES</span>\
+                                            </div>\
+                                        </div>\
+                                    </section>\
+                                    <section id="sticky-footer-placeholder"></section>';
+                
+                
+            } catch(e) { rrTest.log(e); }
+        },
+        chall : function () {   
+            try {
+                rrTest.setHTMLContent(); 
+                
+                $('body#ppc-page header').remove();
+                
+                $(rrTest.newSplash).insertBefore('section#hero');
+                
+                $(rrTest.newHero).insertAfter('section#hero');
+                
+                $(rrTest.callOuts).insertAfter('section#new-hero');
+                
+                $(rrTest.secondCallout).insertAfter('section#callout-hdr');
+                
+                $(rrTest.newCoupon).insertAfter('section#red-callout');
+                
+                $(rrTest.newCopy).insertAfter('section#coupon-offer');
+                
+                $(rrTest.newReviews).insertAfter('section#new-copy');                
+                
+                $(rrTest.stickyPhoneFtr).insertAfter('footer');  
+                
+                loadScript("https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js", function () {
+                    //jQuery loaded
+                    rrTest.log('slick loaded');
+                    rrTest.initializeSliders();
+                });
+
+                $('body#ppc-page').attr('style','display: block!important;');
+                
+                
+            } catch(e) { rrTest.log(e); }
+        },
+        initializeSliders: function() {
+            jQuery('#new-copy div.row.copy-slider.mobile').slick({
+                arrow: true,
+                dots: true,
+                customPaging : function(slider, i) {
+                    return '<span>&nbsp;</span>';
+                },
+                infinite: true,
+                prevArrow: "<img src=\"//rotorooter.com/images/ux-redesign/left-arrow-red.png\" class=\"prev btn\">",
+                nextArrow: "<img src=\"//rotorooter.com/images/ux-redesign/right-arrow-red.png\" class=\"next btn\">",
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+            jQuery('#customer-reviews div.center-module .reviews-slider.mobile').slick({
+                arrow: true,
+                dots: true,
+                customPaging : function(slider, i) {
+                    return '<span>&nbsp;</span>';
+                },
+                infinite: true,
+                prevArrow: "<img src=\"//rotorooter.com/images/ux-redesign/left-arrow-red.png\" class=\"prev btn\">",
+                nextArrow: "<img src=\"//rotorooter.com/images/ux-redesign/right-arrow-red.png\" class=\"next btn\">",
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+        },
+        getGeo : function() {
+            try {
+                rrTest.getLocationTSI();
+            } catch(e) { rrTest.log(e); }
+        },
+        locationIdentified: function(b) {
+            try {
+                if(b) {
+                    adobe.target.trackEvent({mbox:"LocationIdentified", params: {LocationIdentified: 'YES'}});
+                } else {
+                    adobe.target.trackEvent({mbox:"LocationIdentified", params: {LocationIdentified: 'NO'}});
+                    //hiding location bar
+                    $('div.mobile.location-bar .location').attr('style','display: none!important;');
+                    $('section#red-callout.desktop div.plumbers-standing-by span.in-city').text('PLUMBERS STANDING BY');
+                }
+            } catch(e) { rrTest.log(e); }
+        },
+        getLocationTSI: function() {
+            try {
+                rrTest.log('getting location');
+                if ('geolocation' in navigator) {
+                    navigator.geolocation.getCurrentPosition(rrTest.geoSuccessTSI, rrTest.geoErrorTSI, {timeout: 10000});
+                } else {
+                    rrTest.log('Geolocation is not supported by this browser.');
+                    rrTest.locationIdentified(false);
+                }
+            } catch(e) { rrTest.log(e); }
+        },
+        geoSuccessTSI: function(position) {
+            try {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                rrTest.latLng = {
+                    lat: latitude,
+                    lng: longitude
+                };
+                rrTest.log(position);
+                //document.addEventListener("DOMContentLoaded", function(event) {
+                    //rrTest.log('geo content loaded '+event);
+                    rrTest.googleGeoCodeGetCityTSI();
+                //});
+            } catch(e) { rrTest.log(e); }
+        },
+        geoErrorTSI: function() {
+            try {
+                rrTest.log('Sorry, no position available.');
+                rrTest.locationIdentified(false);
+            } catch(e) { rrTest.log(e); }
+        },
+        googleGeoCodeGetCityTSI: function() {
+            try {
+                $.post(rrTest.geocodeUrlTSI + 'language=en' + '&latlng=' + rrTest.latLng.lat + "," + rrTest.latLng.lng + '&key=' + rrTest.geoCodeApiKeyTSI)
+                .done((data) => {
+                    const results = data.results[0];
+                    rrTest.log(results);
+                    var locality = results.address_components.filter(locality => locality.types.includes('locality'));
+                    var state = results.address_components.filter(state => state.types.includes('administrative_area_level_1'));
+                    
+                    if (!jQuery.isEmptyObject(locality[0])) {
+                        locality = locality[0].long_name;
+                    } else {
+                        locality = '';
+                    }
+                    if (!jQuery.isEmptyObject(state[0])) {
+                        state = state[0].short_name;
+                    } else {
+                        state = '';
+                    }
+                    
+                    rrTest.cityVal = locality;
+                    rrTest.stateVal = state;
+                    rrTest.cityStateVal = rrTest.cityVal+",&nbsp;"+rrTest.stateVal;
+                    rrTest.fullStateName = state;
+                    
+                    //Update spans for city and in-city
+                    if(locality !== undefined) {
+                        var firstpart = locality.substr(0,1);
+                        var city = firstpart.toUpperCase() + locality.substr(1);    
+                        rrTest.log(city);
+                        var inCity = ' in '+city;
+                        var cityState = city+",&nbsp;"+state.toUpperCase();
+                        $(document).find('.in-city').text(inCity);
+                        $(document).find('.city').text(city);
+                        $(document).find('.city-state').html(cityState);                    
+                    }
+                    rrTest.locationIdentified(true);
+                })
+                .fail((error) => {
+                    rrTest.log(JSON.stringify(error));
+                    rrTest.locationIdentified(false);
+                });
+            } catch(e) { rrTest.log(e); }
+        },
+		elementLoaded : function(ele, callback) {
+            try {
+                rrTest.log('elementLoaded::  ' + ele + " - Checking...");
+                window.clearTimeout(rrTest.eleTimer);
+                if (document.querySelectorAll(ele).length > 0 || rrTest.numOfTries >= rrTest.maxTries) {
+                    if (typeof callback === 'function') {
+                        if(rrTest.numOfTries >= rrTest.maxTries) {
+                           rrTest.log('elementNotLoaded::  ' + ele + " - Not Found!");
+                        } else {
+                           rrTest.log('elementLoaded::  ' + ele + " - Found!");
+                        }
+                        callback();
+                    }
+                } else {
+                    rrTest.eleTimer = window.setTimeout(function(){rrTest.elementLoaded(ele, callback);}, 100);
+                }
+            } catch(e) { rrTest.log(e); }
+		},
+        slickLoaded : function(callback) {
+            try {
+                rrTest.log(rrTest.test + " - " + rrTest.creative + " - slickLoaded - Start...");
+
+                window.clearTimeout(rrTest.timer);
+                if(rrTest.numOfTries < rrTest.maxTries) {
+                    if(typeof $.fn.Slick !== 'undefined') {
+                        rrTest.numOfTries = 0;
+                        if (typeof callback === "function") {
+                            rrTest.log(rrTest.test + " - " + rrTest.creative + " - slickLoaded - Ready!");
+                            callback();
+                        }
+                    } else {
+                        rrTest.numOfTries += 1;
+                        rrTest.timer = window.setTimeout(function() {
+                            rrTest.slickLoaded(callback);
+                        }, 100);
+                    }
+                } else {
+                    rrTest.numOfTries = 0;
+                }
+            } catch(e) { rrTest.log(e); }
+        },
+		dependsLoaded : function(callback) {
+            try {
+                rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Start...");
+
+                window.clearTimeout(rrTest.timer);
+                if(rrTest.numOfTries < rrTest.maxTries) {
+                    //Check for jQuery and _a object
+                    if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                        rrTest.numOfTries = 0;
+                        if (typeof callback === "function") {
+                            rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Ready!");
+                            callback();
+                        }
+                    } else {
+                        rrTest.numOfTries += 1;
+                        rrTest.timer = window.setTimeout(function() {
+                            rrTest.dependsLoaded(callback);
+                        }, 100);
+                    }
+                } else {
+                    rrTest.numOfTries = 0;
+                }
+            } catch(e) { rrTest.log(e); }
+		},
+		log : function(obj){ if(rrTest.debug === true){ console.log(obj); } }
+	}
+
+	var helpers = {
+		getQueryParam: function(variable) {
+	      var query = window.location.search.substring(1);
+	      var vars = query.split('&');
+	      for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	        	return decodeURIComponent(pair[1]);
+	        }
+	      }
+	    }
+	}
+
+	rrTest.dependsLoaded(function(){ rrTest.init(); });
+})();
+</script>

@@ -1,0 +1,68 @@
+<script>
+ (function() {
+     'use strict';
+     var tsiTest = {
+         debug : false,
+         account : 'Pulte',
+         portfolio : 'Pulte.com',
+         test : '360i AB Homepage CTA Test',
+         creative : 'Experience A',
+   heroBtn : '#home-carousel-cta',
+   init : function() {
+             tsiTest.log("Test Running...");
+             tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+             tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+ 
+             tsiTest.elementLoaded(tsiTest.heroBtn, function() {
+     tsiTest.trackHPCTAClick();
+             });
+   },
+         trackHPCTAClick: function(evt) {
+           $(tsiTest.heroBtn).on('click',function(){
+             tsiTest.log("Init:: HP CTA Click TryCatch")
+           try {
+             adobe.target.trackEvent({
+               mbox: "homepageCTAClicks"
+             })
+           } catch(e) {
+             tsiTest.log(e);
+           }
+         });
+         },
+         elementLoaded : function (ele, callback) {
+             tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+             window.clearTimeout(tsiTest.eleTimer);
+             if (document.querySelectorAll(ele).length > 0) {
+                 if (typeof callback === 'function') {
+                     tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                     callback();
+                 }
+             } else {
+                 tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+             }
+         },
+         dependsLoaded : function (callback) {
+             tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+ 
+             window.clearTimeout(tsiTest.timer);
+             //Check for jQuery and _a object
+             if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                 if (typeof callback === "function") {
+                     tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                     callback();
+                 }
+             } else {
+                 tsiTest.timer = window.setTimeout(function() { tsiTest.dependsLoaded(callback); }, 100);
+             }
+         },
+         log : function(obj){
+             if(tsiTest.debug === true){
+                 console.log(obj);
+             }
+         }
+     }
+     tsiTest.dependsLoaded(function(){
+         tsiTest.init();
+     });
+ })();
+ </script>

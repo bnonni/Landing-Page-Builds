@@ -1,0 +1,114 @@
+<style>
+    #reserve > div > div:nth-child(3) > div > div.cf > div > span > span:nth-child(1){
+    font-weight: 700;
+    color: #c3c3c3;
+    font-size: 15px;
+    display: inline-block;
+    font-style: normal;
+    border-bottom: 0;
+    margin: 12px 0 0 0;
+    text-transform: uppercase;
+  }
+  #viewModifyCancelBookingWidget{
+    text-decoration: none;
+  }
+  span.active{
+    color: #169a5a;
+  }
+  #reserve > div > div:nth-child(3) > div > div.cf > div{
+    margin-top: 0;  
+  }
+@media(max-width: 768px){
+  #reserve > div > div:nth-child(3) > div > div.cf > div{
+    margin-top: 0;  
+    margin-left: 3%;
+  }
+}
+</style>
+<script>
+    (function() {
+      'use strict';
+      var isoTest = {
+        debug : true,
+        account : 'Enterprise',
+        portfolio : 'Enterprise.com',
+        test : '360i_Widget Above the Fold_Vehicles Page Test_062018_Exp_B',
+        cookieName : 'enWidgetAboveFoldVehicles',
+        customMbox : 'enWidgetAboveFoldVehicles',
+        creative : "Add CTA button - START A RES",
+        reservationWidget: '#reservationWidget',
+        vehicleSection: 'section.band.vehicle-page-heading > div > div.left',
+        init : function() {
+  
+          isoTest.log("Test Running...");
+          isoTest.log(isoTest.account + " - " + isoTest.portfolio);
+          isoTest.log(isoTest.test + " - " + isoTest.creative);
+            
+          isoTest.elementLoaded(isoTest.reservationWidget, isoTest.vehicleSection, function() {	
+            isoTest.log("Test Ready! - Starting challenge.");
+            isoTest.challenge();
+          });
+        },
+        challenge : function (){
+          isoTest.log("Challenge entered. Adding id to reservation widget.");
+          $(document).find(isoTest.reservationWidget).attr('id', 'reserve');
+          isoTest.log("Class added. Appending START RES button.");
+          $(document).find(isoTest.vehicleSection).after('<div class="right"><a id="resButton" class="btn" href="#reserve">START A RESERVATION</a></div>')
+          isoTest.log("Challenge Complete.");
+        },
+        elementLoaded : function (ele1, ele2, callback) {
+          isoTest.log('elementLoaded::  ' + ele1 + " " + ele2 + ' - Checking...');
+          window.clearTimeout(isoTest.eleTimer);
+          if ((document.querySelectorAll(ele1).length > 0) && (document.querySelectorAll(ele2).length > 0)) {
+            if (typeof callback === 'function') {
+              isoTest.log('elementLoaded::  ' + ele1 + " " + ele2 + ' - Found!');
+              callback();
+            }
+              } else {
+                  isoTest.eleTimer = window.setTimeout(function(){isoTest.elementLoaded(ele1, ele2, callback);}, 100);
+              }
+        },
+        dependsLoaded : function (callback) { 
+            isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Start...");
+            
+            window.clearTimeout(isoTest.timer);
+            //Check for jQuery and _a object
+            if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+              if (typeof callback === "function") {
+                
+                isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Ready!");
+                
+                callback();
+              }
+            } else {
+              isoTest.timer = window.setTimeout(function() {
+                isoTest.dependsLoaded(callback);
+              }, 100);
+            }
+          },
+        log : function(obj){
+          if(isoTest.debug === true){
+            console.log(obj);
+          }
+        }
+        
+      }
+    
+      var helpers = {
+        getQueryParam: function(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+              var pair = vars[i].split('=');
+              if (decodeURIComponent(pair[0]) == variable) {
+                return decodeURIComponent(pair[1]);
+              }
+            }
+          }
+      }
+    
+      isoTest.dependsLoaded(function(){ 
+         isoTest.init();
+        });
+    })();
+  </script>

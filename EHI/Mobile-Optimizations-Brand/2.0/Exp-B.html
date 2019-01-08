@@ -1,0 +1,101 @@
+<style>
+ .lob-page-recirc-band.interrupter-tile .g.g-3up .col .content-container .cta-container a.btn-height-fix { height: auto; }
+ #mobile-nav, .nav-container, #utility-nav .career-section { display: none !important; }
+ @media (max-width: 800px) {   
+     .band.location-band.region-list .cf ul.cleaned-mobile-layout, .band.location-band.region-list .l-two-col ul.cleaned-mobile-layout, .band.location-band.region-list .vehicle-page-heading ul.cleaned-mobile-layout {
+         margin-bottom: 10px;
+     }    
+     .interrupter-band .img-container p.cleaned-mobile-layout, .interrupter-band .content-container p.cleaned-mobile-layout { font-size: 16px; }
+     div.linklistblock.section.cleaned-mobile-layout { margin-top: 30px; }
+     .lob-page-recirc-band.interrupter-tile .g.g-3up .col .content-container .content-bg-img.cleaned-mobile-layout {
+         float: left;
+         margin-bottom: 0;
+   padding-top: 56.25%;
+         position: relative;
+         width: 100%;
+     }
+     .lob-page-recirc-band.interrupter-tile .g.g-3up .col .content-container .content-container-content-wrap.cleaned-mobile-layout {
+         margin: 0;
+         padding: 2% 0;
+         width: 100%;
+     }
+     .lob-page-recirc-band.interrupter-tile .g.g-3up .col .content-container .cta-text.cleaned-mobile-layout { margin-top: 16px; }
+     .textband.section { display: none; }
+ }
+ @media (min-width:481px) and (max-width: 800px) {
+     .band.location-band.region-list .cf ul.cleaned-mobile-layout, .band.location-band.region-list .l-two-col ul.cleaned-mobile-layout, .band.location-band.region-list .vehicle-page-heading ul.cleaned-mobile-layout {
+         column-count: 2;
+     }
+     .location-band ul li.cleaned-mobile-layout {
+         width: 80%;
+     }
+ }
+ </style>
+ <script>
+ (function() {
+     'use strict';
+     var tsiTest = {
+         debug : false,
+         account : 'Enterprise',
+         portfolio : 'Enterprise.com',
+   test : 'AB 360i US EHI Mobile Optimizations SEM - Brand',
+         creative : 'Page Mobile Optimization Light',
+         cta_btns: '.lob-page-recirc-band.interrupter-tile .cta-container a',
+         textband_section: '.textband.section',
+         init : function() {
+             tsiTest.log("Test Running...");
+             tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+             tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+ 
+             tsiTest.elementLoaded(tsiTest.cta_btns, function() {
+                 tsiTest.log("CTA Buttons Ready!");
+                 tsiTest.updateBtnHeight();
+             });
+             tsiTest.elementLoaded(tsiTest.textband_section, function() {
+                 tsiTest.log("Textbands Ready!");
+                 tsiTest.tightenZones();
+             });
+         },   
+         updateBtnHeight: function() {
+             $(tsiTest.cta_btns).addClass('btn-height-fix');
+         },
+         tightenZones: function() {
+             $('.content-container .content-bg-img,.content-container .content-container-content-wrap,.content-container .cta-text,.interrupter-band p,.linklistblock.section:eq(0),.location-band ul,.location-band ul li,.textband.section').addClass('cleaned-mobile-layout');
+         },
+         elementLoaded : function (ele, callback) {
+             tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+             window.clearTimeout(tsiTest.eleTimer);
+             if (document.querySelectorAll(ele).length > 0) {
+                 if (typeof callback === 'function') {
+                     tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                     callback();
+                 }
+             } else {
+                 tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+             }
+         },
+         dependsLoaded : function (callback) {
+             tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+ 
+             window.clearTimeout(tsiTest.timer);
+             //Check for jQuery and _a object
+             if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                 if (typeof callback === "function") {
+                     tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                     callback();
+                 }
+             } else {
+                 tsiTest.timer = window.setTimeout(function() {tsiTest.dependsLoaded(callback); }, 100);
+             }
+         },
+         log : function(obj){
+             if(tsiTest.debug === true){
+                 console.log(obj);
+             }
+         }
+     }
+     tsiTest.dependsLoaded(function(){
+         tsiTest.init();
+     });
+ })();
+ </script>

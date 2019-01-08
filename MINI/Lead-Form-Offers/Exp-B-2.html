@@ -1,0 +1,224 @@
+<script>
+ (function () {
+     'use strict';
+     //Configurator Code to capture last config data
+     //Attach button listeners to update cookies on last chosen config item
+     var m_configurator = {
+         attachListeners : function () {
+             $(document).find('.PartItem--wrapper').on('click', m_configurator.getMParams);
+             $(document).find('.Btn').on('click', m_configurator.getMParams);
+             //tsiTest.log('button listeners attached');
+         },
+         removeListeners : function () {
+             $(document).find('.PartItem--wrapper').off('click', m_configurator.getMParams);
+             $(document).find('.Btn').off('click', m_configurator.getMParams);
+         },
+         getMParams : function (evt) {
+             tsiTest.log('getting mini params');
+             /*eslint-disable no-alert */
+             setTimeout(() => { if (Mini) { if (Mini.Configurator) { if (Mini.Configurator.launchParams) { m_configurator.updateCookies(Mini.Configurator.launchParams); }}}}, 1500);
+             /*eslint-enable no-alert */
+             
+             //tsiTest.log(Mini);
+         },
+         updateCookies : function (params) {
+             var mvcolor, configPartIDs, mvehicle, mproduct;
+             //tsiTest.log('creating or updating cookies');
+ 
+             //Set BodyColor, Roof and Mirror Colors
+             mvcolor = {
+                 "bodyColor" : params.bodyColor,
+                 "bodyColorId" : params.bodyColorId,
+                 "roofMirrorsColor" : params.roofMirrorsColor
+             };
+             //tsiTest.log(mvcolor);
+            m_cookie_management.eraseCookie('m_colors');
+             m_cookie_management.createCookie('m_colors', m_b64.b64EncodeUnicode(JSON.stringify(mvcolor)), 30);
+ 
+             //Set PartIDs
+             /*jshint latedef: true */
+             configPartIDs = Mini.Configurator.launchParams.configuredPartIDs.toString();
+             //tsiTest.log(configPartIDs);
+            m_cookie_management.eraseCookie('m_parts');
+             m_cookie_management.createCookie('m_parts', m_b64.b64EncodeUnicode(JSON.stringify(configPartIDs)), 30);
+ 
+             //Set MiniVehicle
+             mvehicle = {
+                 "orderID" : params.orderID,
+                 "trim" : params.trim,
+                 "trimId" : params.trimId,
+                 "wheels" : params.wheels
+             };
+             //tsiTest.log(mvehicle);
+            m_cookie_management.eraseCookie('m_vehicle');
+             m_cookie_management.createCookie('m_vehicle', m_b64.b64EncodeUnicode(JSON.stringify(mvehicle)), 30);
+ 
+             //Set MiniProduct
+             mproduct = m_b64.b64EncodeUnicode(Mini.Configurator.launchParams.productPurchasedID);
+             //tsiTest.log(mproduct);
+            m_cookie_management.eraseCookie('m_product');
+             m_cookie_management.createCookie('m_product', mproduct, 30);
+         },
+         init : function () {
+             m_configurator.removeListeners();          
+             /*eslint-disable no-alert */
+             setTimeout(() => { m_configurator.attachListeners(); }, 500);
+             /*eslint-enable no-alert */   
+         }
+     };   
+     //HashChange Listener
+     var hashchange = {
+         startHashChangeEventListener : function () {
+             if (!"onhashchange" in window) {
+                 tsiTest.log('Your browser does not support hash change event!');
+                 return;
+             }
+             window.onhashchange = function() {
+                 tsiTest.log('window hash change');
+                 //Update cookies
+                 m_configurator.getMParams();
+                 //Re-init m_configurator
+                 m_configurator.init();
+             };
+         }
+     }
+     var tsiTest = {
+         debug : false,
+         account : 'MINIUSA',
+         portfolio : 'miniusa.com',
+         test : 'AB Lead Form Personalization (Offers Page)',
+         creative : 'leadformConfiguratorCookies',
+         part_scroller: '#partScroller',
+         configuratorContainer: '#Configurator',
+         attempts: 0,
+         timer: null,
+         init : function() {
+             tsiTest.log("Test Running...");
+             tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+             tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+ 
+             tsiTest.elementLoaded(tsiTest.part_scroller, function() {
+                 tsiTest.log("Configurator Ready!");
+                 if (window.location.href.indexOf('build.html') > -1) {
+                     tsiTest.checkIsPageLoaded(function(){});
+                 }
+             });
+         },
+         checkIsPageLoaded : function (callback) {
+             window.clearTimeout(tsiTest.timer);
+             if($(tsiTest.configuratorContainer).children().length > 0) {
+                 hashchange.startHashChangeEventListener();
+                 //Update cookies //Stopped here setting the cookies
+                 m_configurator.getMParams();
+                 //Re-init m_configurator
+                 m_configurator.init();
+                 if (typeof callback === 'function') {
+                     tsiTest.log('configurator loaded');
+                     callback();
+                 }
+             } else {
+                 if(tsiTest.attempts < 50) {
+                     tsiTest.log('attempt to check configurator #',tsiTest.attempts+1);
+                     tsiTest.timer = window.setTimeout(function() {
+                         tsiTest.checkIsPageLoaded(callback);
+                     }, 100);
+                     tsiTest.attempts++;
+                 }
+             }
+         },
+         elementLoaded : function (ele, callback) {
+             tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+             window.clearTimeout(tsiTest.eleTimer);
+             if (document.querySelectorAll(ele).length > 0) {
+                 if (typeof callback === 'function') {
+                     tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                     callback();
+                 }
+             } else {
+                 tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+             }
+         },
+         dependsLoaded : function (callback) {
+             tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+ 
+             window.clearTimeout(tsiTest.timer);
+             //Check for jQuery and _a object
+             if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                 if (typeof callback === "function") {
+                     tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                     callback();
+                 }
+             } else {
+                 tsiTest.timer = window.setTimeout(function() {tsiTest.dependsLoaded(callback); }, 100);
+             }
+         },
+         log : function(obj){
+             if(tsiTest.debug === true){
+                 console.log(obj);
+             }
+         }
+     }
+     var helpers = {
+         getQueryParam: function(variable) {
+             var query = window.location.search.substring(1);
+             var vars = query.split('&');
+             for (var i = 0; i < vars.length; i++) {
+                 var pair = vars[i].split('=');
+                 if (decodeURIComponent(pair[0]) == variable) {
+                     return decodeURIComponent(pair[1]);
+                 }
+             }
+         },
+     }    
+ 
+     //Functions used by both pages to access / update / create cookies
+     var m_cookie_management = {
+         createCookie : function (name, value, days) {
+             var date, expires;
+             if (days) {
+                 date = new Date();
+                 date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                 expires = "; expires=" + date.toGMTString();
+                 document.cookie = name + "=" + value + expires + "; path=/; domain=.miniusa.com";
+             } else {;
+                 expires = "";
+                 document.cookie = name + "=" + value + expires + "; path=/; domain=.miniusa.com";
+             }
+         },
+         readCookie : function (name) {
+             var nameEQ = name + "=";
+             var ca = document.cookie.split(';');
+             for (var i=0; i < ca.length; i++) {
+                 var c = ca[i];
+                 while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                 if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+             }
+             return null;
+         },
+         eraseCookie : function (name) {
+             m_cookie_management.createCookie(name,"",-1);
+         }
+     };
+ 
+     //Function to encode and decode
+     //base64 Encode & Decode
+     //MDN Solution
+     var m_b64 = {
+         b64EncodeUnicode : function (str) {
+             return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+                 function toSolidBytes(match, p1) {
+                     return String.fromCharCode('0x' + p1);
+             }));
+         },
+         b64DecodeUnicode : function (str) {
+             return decodeURIComponent(atob(str).split('').map(function (c) {
+                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+             }).join(''));
+         }
+     };
+     
+     tsiTest.dependsLoaded(function(){
+         tsiTest.init();
+     });
+ })();
+ </script>

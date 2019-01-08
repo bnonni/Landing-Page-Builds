@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CustomerIntelResponse>
+  <RequestorID>BEAM</RequestorID>
+  <DocumentID>Production Sample</DocumentID>
+  <RequestDateTime>2018-08-06 12:00:00</RequestDateTime>
+  <ProfileID Desc="59569350">
+    <ProfileData>
+      <GroupID>13875553</GroupID>
+      <HouseholdID />
+      <NamePrefix>Ms</NamePrefix>
+      <FirstName>MELINDA</FirstName>
+      <MiddleName />
+      <LastName>FORLENZA</LastName>
+      <NameSuffix />
+      <AddressLine1>96 LAKEWOOD AVE</AddressLine1>
+      <AddressLine2 />
+      <City>HO HO KUS</City>
+      <StateCode>NJ</StateCode>
+      <Zip5>07423</Zip5>
+      <Zip4>1508</Zip4>
+      <EmailAddress />
+      <AMPhoneNumber>2014473468</AMPhoneNumber>
+      <PMPhoneNumber>2147402432</PMPhoneNumber>
+      <CellPhoneNumber>2016698502</CellPhoneNumber>
+      <Brands>
+        <Brand Desc="MINI">
+          <TotalCurrentVehicles>1</TotalCurrentVehicles>
+          <TotalFormerVehicles>0</TotalFormerVehicles>
+          <TotalLeads />
+          <TotalHandraisers />
+        </Brand>
+      </Brands>
+    </ProfileData>
+    <OwnershipHistory>
+      <HouseHoldID Desc="">
+        <ProfileID Desc="59569350">
+          <Vehicles>
+            <Vehicle>
+              <HouseholdInd />
+              <CurrentInd>Y</CurrentInd>
+              <AquisitionDate>2011-03-25 16:33:47</AquisitionDate>
+              <DispositionDate />
+              <RetailDate>2011-03-25 16:33:47</RetailDate>
+              <PurchaseType>NEW</PurchaseType>
+              <Brand>MINI</Brand>
+              <Model>Cooper S Convertible</Model>
+              <ModelYear>2011</ModelYear>
+              <BuyBackFlag>N</BuyBackFlag>
+              <EuropeanDeliveryFlag>N</EuropeanDeliveryFlag>
+              <PerformanceCenterDeliveryFlag>N</PerformanceCenterDeliveryFlag>
+              <VehicleNum>WMWZP3C51BTX83453</VehicleNum>
+              <SerialNumber>TX83453</SerialNumber>
+              <Mileage>41272</Mileage>
+              <MileageDate>2018-07-16 00:00:00</MileageDate>
+              <DealerData>
+                <DealerID>46580</DealerID>
+                <DealerLocation>01</DealerLocation>
+                <DBAName>MINI of Ramsey</DBAName>
+              </DealerData>
+            </Vehicle>
+          </Vehicles>
+        </ProfileID>
+      </HouseHoldID>
+    </OwnershipHistory>
+    <ProfileAppend>
+      <MosaicHH>A01</MosaicHH>
+      <MosaicHHShortDesc>American Royalty</MosaicHHShortDesc>
+      <ChildAge0to18>Confirmed presence of children</ChildAge0to18>
+      <ChildAge03to03>Inferred No children Present</ChildAge03to03>
+      <ChildAge04to06>Inferred No children Present</ChildAge04to06>
+      <ChildAge07to09>Unknown</ChildAge07to09>
+      <ChildAge10to12>Unknown</ChildAge10to12>
+      <ChildAge13to15>Inferred Presence of children</ChildAge13to15>
+      <ChildAge16to18>Confirmed presence of children</ChildAge16to18>
+      <Brands>
+        <Brand Desc="MINI">
+          <LikelyInMarket>N</LikelyInMarket>
+          <Month1Percentile>40</Month1Percentile>
+          <Month2Percentile />
+          <Month3Percentile />
+          <Month4Percentile />
+          <Month5Percentile />
+          <Month6Percentile />
+          <LoyaltyIndicator />
+        </Brand>
+      </Brands>
+      <LifestyleInterests>
+        <Interest>Cooking</Interest>
+        <Interest>Gardening</Interest>
+        <Interest>Gourmet Cooking</Interest>
+        <Interest>Hi-Tech Owner</Interest>
+        <Interest>Home Decorating Furnishing</Interest>
+        <Interest>Purchase Via Online</Interest>
+        <Interest>Reading</Interest>
+      </LifestyleInterests>
+    </ProfileAppend>
+  </ProfileID>
+</CustomerIntelResponse>

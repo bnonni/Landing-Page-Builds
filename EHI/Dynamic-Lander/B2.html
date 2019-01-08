@@ -1,0 +1,448 @@
+<script>
+ var currenturl,vehiclesurl='https://www.enterprise.com/en/car-rental/vehicles/us.html',lpurl='https://www.enterprise.com/en/car-rental/campaigns/rent-a-car.html',locq;
+ locq = window.location.search;
+ currenturl = window.location.href;
+ checkurl = vehiclesurl + locq;
+ if(currenturl === checkurl) {
+  window.location = lpurl+locq;
+  exit();
+ }
+ </script>
+ <style>
+ /*Start Headline Styles  */
+ h2.reservation-toggle-header{
+     display: none;
+ }
+ h2.reservation-toggle-header.headliner {
+     display: block;
+     clear: left;
+     font-size: 37px;
+     margin-bottom:0;
+     padding-bottom:0;
+ }
+ h3.reservation-toggle-header.subheadliner {
+     display: block;
+     clear: left;
+     font-size: 18px;
+     font-family: "DINRegular",Arial,Helvetica,sans-serif;
+     margin-top:-10px;
+     padding-top:0;
+ }
+ h3.reservation-toggle-header, h4.reservation-toggle-header {
+     display: block;
+     clear: left;
+     font-size: 24px;
+     padding-top: 18px;
+ }
+ #reservationWidget div.options.vmclinks { padding-top: 18px; }
+ @media (max-width: 48em) {
+     h3.reservation-toggle-header.subheadliner { margin-top: -2px; }
+     #reservationWidget div.options.vmclinks { padding-top: 0; }
+ }
+ /*End Headline Styles*/
+ #coupon {
+  width: 75%;
+ }
+ #reservationWidget {
+  max-width: 1200px;
+  margin: 0 auto;
+ }
+ #reservationWidget > div:first-of-type {
+  float: left;
+     width: 55%;
+ }
+ .reserve-widget-band {
+  background: #fff;
+ }
+ .reservationWidget {
+  background: #f3f3f3;
+ }
+ #reservationWidget .inner-container > div{
+  padding: 0 3em;
+ }
+ #reservationWidget .inner-container, .booking-widget, #reservationWidget .date-time-form, .booking-widget .age-input, .booking-widget .age-input #age, .coupon-field-wrapper, .booking-submit{
+  width: 100%;
+ }
+ #reservationWidget .booking-widget label.date-label, #reservationWidget .booking-widget label.time-label, .booking-widget .date-time-selector .date-label {
+  width: 50%;
+ }
+ .booking-widget .date-time-selector .label-container{
+  width: 43%;
+ }
+ .booking-widget div.arrow {
+  width: 3%;
+     background-size: auto 100%;
+ }
+ .dropoff .label-container {
+  float: right;
+ }
+ div.inner-container.collapsed {
+     overflow: unset;
+ }
+ .iso-bookHere {    
+     float: right;
+     width: 43%;
+     margin-right: 2%;
+     margin-top: 4em;
+ }
+ .iso-bookHere a {
+  color: #169a5a;
+  display: inline-block;
+  padding: 4px 0;
+ }
+ .iso-blocks {
+  background: #f3f3f3;
+  margin: 10px;
+  padding: 0.25em;
+ }
+ .iso-block {    
+  margin: 6px;
+  text-align: center;
+  background: #fff;
+  border: 2px solid #d1d1d1;
+  padding: 15px;
+ }
+ .iso-block .tiny-grey-caps {
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  color: #d3d3d3;
+  padding-bottom: 5px;
+  display: block;
+ }
+ .iso-block div.green-check-marks {
+  margin: 0 auto;
+  text-align: center;
+ }
+ .iso-block h2 {
+  font-size: 28px;
+  margin-bottom: 13px;
+ }
+ .iso-block p {
+  font-size: 15px;
+ }
+ .iso-block strong {
+  display:block;
+  line-height: 1em;
+  font-size: 20px;
+  padding-bottom: 18px;
+  font-family: "DINHeavy",Arial Black,Arial,Helvetica,sans-serif;
+ }
+ .iso-block ul.check-marks {
+  font-size: 0.9em;
+  width: 44%;
+     display: inline-block;
+     text-align: left;
+     margin-left: 5%;
+  vertical-align: top;
+ }
+ .iso-block ul.check-marks li:before {
+  content: ' ';
+     border: 2px solid green;
+     border-left: none;
+     border-top: none;
+     width: 3px;
+     height: 8px;
+     display: inline-block;
+     transform: rotate(45deg);
+     margin-left: 0;
+     position: absolute;
+     left: -6px;
+     top: 3px;
+ }
+ .iso-block ul.check-marks li {
+     padding-left: 5px;
+     position: relative;
+     margin-bottom: 15px;
+ }
+ .iso-disclosure p{
+  font-size: 12px;
+ }
+ .iso-quote {
+  text-align: center;
+  padding: 5px 0 20px 0;
+ }
+ @media(min-width: 121em){
+     .iso-bookHere {
+         max-width: 550px;
+         float: right;
+         width: 43%;
+         margin-right: 16%;
+         margin-top: 4em;
+  }
+ }
+ @media (max-width: 80em) {
+  #coupon {
+   width: 83%;
+  }
+  #reservationWidget > div:first-of-type {
+   width: 60%;
+  }
+    .iso-bookHere {
+       float: right;
+       width: 39%;
+       margin-right: 0;
+       margin-top: 4em;
+  }
+  .iso-bookHere.category .iso-blocks {
+   min-height: 0;
+   padding: 0.5em;
+   margin: 0;
+   border-left: 0;
+  }
+  .booking-widget .date-time-selector .arrow{
+   width: 4%;
+  }
+  .booking-widget .date-time-selector .label-container{
+   width: 43%;
+  }
+ }
+ @media (max-width: 60em) {
+  #coupon {
+   width: 100%;
+  }
+  #reservationWidget > div:first-of-type, .iso-bookHere {
+   width: 100%;
+   clear: both;
+   float: none;
+   margin: 0;
+  }
+  .iso-blocks {
+   float: none;
+   clear: both;
+   width: auto;
+  }
+  .iso-block {
+   margin-top: 10px;
+      float: none;
+      width: auto;
+  }
+  .iso-block h2, .iso-block strong {
+   margin: 0 0 12px;
+  }
+  .iso-block ul.check-marks {
+   width:25%;
+  }
+ }
+ @media(max-width: 48em){	
+  #coupon {
+   width: 94%;
+  }
+  #reservationWidget .date-time-form {
+   width: 94%;
+  }
+  .booking-widget .date-time-selector {
+   margin: 0 3% 0 0;
+  }
+  .booking-widget .date-time-selector .label-container {
+   width: 100%;
+  }
+  .booking-widget div.arrow {
+   display: none;
+  }
+  .custom-select.age-input {
+   width: 94%;
+  }
+  #reservationWidget .inner-container > div{
+   padding: 0;
+  }
+  .iso-block {
+   margin-top: 0;
+  }
+  .iso-block h2, .iso-block strong {
+   margin: 0;
+   font-size: 18px;
+  }
+  .iso-block ul.check-marks {
+   width:auto;
+  }
+ }
+ @media(max-width: 46em){
+   .iso-blocks {
+    width: 100%;
+     background: #f3f3f3;
+     margin: 0;
+  float: none;
+  clear: both;
+   }
+ }
+ @media (max-width: 34em){
+  .iso-block {
+      margin-top: 0;
+      width: auto;
+  }
+ }
+ </style>
+ <script>
+ (function() {
+  'use strict';
+  var isoTest = {
+   debug : true,
+   account : 'Enterprise',
+   portfolio : 'Enterprise.com',
+   test : '360i_Category Dynamic Lander_051518 EXP B',
+   cookieName : 'enCategoryDynamicLander_ExpB',
+   customMbox : 'enCategoryDynamicLander_ExpB',
+   creative : "Challenger 1",
+   resWidget: '.reservationWidget',
+   pageType: 'category',
+   template: '<section class="iso-bookHere {pageType}">\
+        <div class="iso-blocks cf">\
+          <div class="iso-block">\
+            <div class="iso-quote">\
+        <span class="tiny-grey-caps">ENTERPRISE DEALS</span>\
+              <strong><span class="green">SAVE</span> with Cheap Car Rental Rates&nbsp;&amp;&nbsp;Promotions</strong>\
+              <p>Always save by booking directly with Enterprise. Our rental deals and getaways offers are based on location plus earn points towards free rentals with Enterprise Plus Program</p>\
+              <div class="green-check-marks">\
+         <ul class="check-marks">\
+          <li>Best Prices Booking Direct</li>\
+          <li>Enterprise Plus&reg; Program</li>\
+         </ul>\
+         <ul class="check-marks">\
+          <li>Special Weekend Rates</li>\
+          <li>US &amp; International Deals</li>\
+         </ul>\
+        </div>\
+            </div>\
+          </div>\
+        </div>\
+      </section>',
+   content: {},
+   init : function() {
+ 
+    isoTest.debug = Boolean(helpers.getQueryParam('debug'));
+ 
+    if (_satellite && _satellite.setVar && typeof _satellite.setVar === 'function') {
+     _satellite.setVar('TargetCampaign', isoTest.test);
+     _satellite.setVar('TargetCreative', isoTest.creative);
+     if (typeof window.isoSetTargetVars === 'function') {
+      window.isoSetTargetVars();
+     }
+    }
+    adobe.target.getOffer({
+     "mbox": isoTest.customMbox,
+     "success": function(offers) {
+      adobe.target.applyOffer( { "offer": offers } );
+     },
+     "error": function(status, error) {
+ 
+     }
+    });
+ 
+    isoTest.log("Test Running...");
+    isoTest.log(isoTest.account + " - " + isoTest.portfolio);
+    isoTest.log(isoTest.test + " - " + isoTest.creative);
+     
+    isoTest.elementLoaded(isoTest.resWidget, function() {	
+     isoTest.log("Test Ready!");	
+     isoTest.chall();				
+    });
+   },
+   chall : function() {
+    isoTest.adjustClasses();
+    isoTest.insertWhyBook();
+            isoTest.addHeadline();
+   },
+   insertWhyBook : function(){
+    var $whyBook = helpers.supplant(isoTest.template,{
+     'pageType': isoTest.pageType,
+    });
+ 
+    $(isoTest.resWidget).find('#reservationWidget').append($whyBook);
+   },
+   adjustClasses : function(){
+    $(isoTest.resWidget).find('#reservationWidget').addClass('cf');
+    $(isoTest.resWidget).find('.reserve-widget-band').removeClass('cf');
+   },
+         addHeadline : function(){
+           $(isoTest.resWidget).find('#reservationWidget h2').replaceWith('<div id="action_insert_1508359870708967"><h2 class="left alpha reservation-toggle-header headliner">You’re going places. We can help.</h2> <h3 class="left alpha reservation-toggle-header subheadliner">Always Nearby. Always Standing by.</h3> <h4 class="left alpha reservation-toggle-header">START A RESERVATION</h4></div>');
+         },
+   setTargetCookie : function (test, creative) {
+    if (test && creative) {
+     _satellite.setCookie('tt_info', test + '|' + creative);
+    }
+   },
+   setTrackingCookie : function(page) {
+    _satellite.setCookies('tt_review', page);
+   },
+   trackClicks : function(element, url) {
+    var url = url || null;
+         adobe.target.trackEvent({
+             "mbox": isoTest.customMbox,
+             "params": {
+                 "click": element
+             },
+      "success" : function() {
+       if (url !== null) {
+        window.location.href=url;
+       }
+      }
+         });
+   },
+   elementLoaded : function (ele, callback) {
+    isoTest.log('elementLoaded::  ' + ele + " - Checking...");
+    window.clearTimeout(isoTest.eleTimer);
+    if (document.querySelectorAll(ele).length > 0) {
+     if (typeof callback === 'function') {
+      isoTest.log('elementLoaded::  ' + ele + " - Found!");
+      callback();
+     }
+          } else {
+              isoTest.eleTimer = window.setTimeout(function(){isoTest.elementLoaded(ele, callback);}, 100);
+          }
+   },
+   dependsLoaded : function (callback) { 
+     isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Start...");
+     
+     window.clearTimeout(isoTest.timer);
+     //Check for jQuery and _a object
+     if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+      if (typeof callback === "function") {
+       
+       isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Ready!");
+       
+       callback();
+      }
+     } else {
+      isoTest.timer = window.setTimeout(function() {
+       isoTest.dependsLoaded(callback);
+      }, 100);
+     }
+    },
+   log : function(obj){
+    if(isoTest.debug === true){
+     console.log(obj);
+    }
+   }
+   
+  }
+ 
+  var helpers = {
+   getQueryParam: function(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+           return decodeURIComponent(pair[1]);
+          }
+        }
+      },
+      supplant : function(str, o) {
+    return str.replace(/{([^{}]*)}/g, function(a, b) {
+           var p = b.split(/\./),
+               c = o;
+           for (var i = 0; i < p.length; i++) {
+             if (c[p[i]] == null)
+               return a;
+             c = c[p[i]];
+           }
+     return typeof c === 'string' || typeof c === 'number' ? c : a;
+    });
+   }
+  }
+ 
+  isoTest.dependsLoaded(function(){ 
+    isoTest.init();
+  });
+ })();
+ </script>

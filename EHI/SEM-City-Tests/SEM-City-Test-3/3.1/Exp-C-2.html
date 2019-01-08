@@ -1,0 +1,143 @@
+<script>
+    (function (){
+    'use strict';
+    console.log('Entered redirect');
+    var query, url, brandURL, cityRE, obj, city, underScore, state, cityURL;
+    query = window.location.search;
+    url = window.location.href;
+    brandURL = 'https://www.enterprise.com/en/car-rental/campaigns/enterprise-cars.html' + query;
+    cityRE = /((mobile)|(phoenix)|(tucson)|(san_diego)|(los_angeles)|(san_francisco)|(fresno)|(sacramento)|(denver)|(miami)|(orlando)|(tampa)|(jacksonville)|(fort_myers)|(atlanta)|(savannah)|(honolulu)|(maui)|(chicago)|(louisville)|(new_orleans)|(boston)|(st_louis)|(jackson)|(charlotte)|(wilmington)|(raleigh)|(omaha)|(albuquerque)|(las_vegas)|(reno)|(albany)|(brooklyn)|(columbus)|(tulsa)|(oklahoma_city)|(portland)|(columbia)|(charleston)|(greenville)|(nashville)|(memphis)|(knoxville)|(houston)|(san_antonio)|(austin)|(dallas)|(el_paso)|(richmond)|(seattle))a?/i;
+    obj = {'mobile' :	'al', 'phoenix' :	'az', 'tucson' :	'az', 'san-diego' :	'ca', 'los-angeles' :	'ca', 'san-francisco' :	'ca', 'fresno' :	'ca', 'sacramento' :	'ca', 'denver' :	'co','miami' :	'fl', 'orlando' :	'fl', 'tampa' :	'fl', 'jacksonville' :	'fl', 'fort-myers' :	'fl', 'atlanta' :	'ga', 'savannah' :	'ga', 'honolulu' :	'hi', 'maui' :	'hi', 'chicago' :	'il', 'louisville' :	'ky', 'new-orleans' :	'la', 'boston' :	'ma', 'st-louis' :	'mo', 'jackson' :	'ms', 'charlotte' :	'nc', 'wilmington' :	'nc', 'raleigh' :	'nc','omaha' :	'ne', 'albuquerque' :	'nm', 'las-vegas' :	'nv', 'reno' :	'nv', 'albany' :	'ny', 'brooklyn' :	'ny', 'columbus' :	'oh', 'tulsa' :	'ok', 'oklahoma-city' :	'ok', 'portland' :	'or', 'columbia' :	'sc', 'charleston' :	'sc', 'greenville' :	'sc', 'nashville' :	'tn', 'memphis' :	'tn', 'knoxville' :	'tn', 'houston' :	'tx', 'san-antonio' :	'tx', 'austin' :	'tx', 'dallas' :	'tx', 'el-paso' :	'tx', 'richmond' :	'va','seattle' :	'wa'};
+  try{
+    //Check to see if the URL is the brand lander
+    if(window.location.href === brandURL){
+      console.log('Searching query: ' + query);
+      //Check to see if one of our cities is in the query
+      if(cityRE.test(query)){
+        //Define the city as the RegEx match;
+        //[0] -> using this because .match() returns an array, so this allows us to take the first item in the array which is always the city name
+        //Cast the match as a String()
+        city = String(query.match(cityRE)[0]);
+        underScore = '_';
+        //If the city has an _ in it, replace that with a -
+        if(city.indexOf(underScore) > -1){
+          city = city.replace(underScore, '-');
+        }
+        console.log('Found city: ' + city);
+        //Search the JSON for the value attached to the key city and store it
+        state = obj[city];
+        console.log('You\'re in: ' + state);
+        //Create the redirect URL by placing the city var and state var into the base structure + the query
+        cityURL = 'https://www.enterprise.com/en/car-rental/locations/us/'+state+'/'+city+'.html' + query;
+        console.log('URL built' + cityURL);
+        console.log('Redirecting');
+        //Redirect to the City Page
+        window.location.replace(cityURL);
+      }
+    }
+  }catch(e){
+    console.log(e);
+    }
+  })();
+  </script>
+
+
+
+
+<style>
+  
+ h2.reservation-toggle-header.headliner {
+   clear: left;
+   display: block;
+   font-size: 40px;
+   margin-bottom:0;
+   padding-bottom:0;
+ }
+ h3.reservation-toggle-header.subheadliner {
+   clear: left;
+   display: block;
+   font-size: 18px;
+   font-family: "DINRegular",Arial,Helvetica,sans-serif;
+   margin-top:-10px;
+   padding-top:0;
+ }
+ h3.reservation-toggle-header, h4.reservation-toggle-header {
+   clear: left;
+   display: block;
+   font-size: 24px;
+   padding-top: 18px;
+ }
+ #reservationWidget div.options { padding-top: 18px; }
+ @media (max-width: 48em) {
+   h3.reservation-toggle-header, h4.reservation-toggle-header { padding-top: 0; }
+   h3.reservation-toggle-header.subheadliner { margin-top: -2px; }
+   #reservationWidget div.options { padding-top: 0; }
+ }
+</style>
+<script>
+(function() {
+ 'use strict';
+ var tsiTest = {
+   debug : true,
+   account : 'Enterprise',
+   portfolio : 'Enterprise.com',
+   test : 'Enterprise: (360i) City Landing (3.0) (Brand)',
+   creative : "Experience C - Redirect to City Page; Remove chicklet",
+   chicklet: 'div.locationChicklet-active',
+   init : function() {
+     tsiTest.log("Test Running...");
+     tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+     tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+     tsiTest.log("Test Ready! Entering Redirect.");
+       tsiTest.elementLoaded(tsiTest.chicklet, function() {
+               tsiTest.chall();
+             });	
+           },    
+   chall : function() {
+     tsiTest.log("Chall:: Started! Removing chicklet")
+     $(tsiTest.chicklet).removeClass();
+     tsiTest.log("Chall:: Complete!")
+   },
+   elementLoaded : function (ele, callback) {
+     tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+     window.clearTimeout(tsiTest.eleTimer);
+     if (document.querySelectorAll(ele).length > 0) {
+       if (typeof callback === 'function') {
+         tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+         callback();
+       }
+         } else {
+             tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+         }
+   },
+   dependsLoaded : function (callback) { 
+       tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+       
+       window.clearTimeout(tsiTest.timer);
+       //Check for jQuery and _a object
+       if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+         if (typeof callback === "function") {
+           
+           tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+           
+           callback();
+         }
+       } else {
+         tsiTest.timer = window.setTimeout(function() {
+           tsiTest.dependsLoaded(callback);
+         }, 100);
+       }
+     },
+   log : function(obj){
+     if(tsiTest.debug === true){
+       console.log(obj);
+     }
+   }
+   
+ }
+
+ tsiTest.dependsLoaded(function(){ 
+     tsiTest.init();
+   });
+})();
+</script>

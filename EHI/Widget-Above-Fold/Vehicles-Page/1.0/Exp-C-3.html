@@ -1,0 +1,408 @@
+<style>
+    #book.show div.booking-widget.cf{
+    margin-top: -7%;
+    }
+    #reservationWidget div.options .text, #reservationFlow div.options .text{
+      margin: 0;
+    }
+    section.band.vehicle-page-heading{
+      overflow: hidden;
+    }
+    .vehicle-page-heading .left {
+        width: 100%;
+    }
+    .vehicle-page-heading .right {
+        margin-top: -42px;
+    }
+    section.band.vehicle-page-heading > div.cf > div{
+      margin-left: 1.4%;
+    }
+    #reservationWidget h2{
+      text-transform: none;
+      font-weight: 800;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 24px;
+      width: 100%;
+      margin-top: 10%;
+    }
+    /*Vehicle Styles*/
+    section.band.vehicle-page-heading > div.vehicle-detail-band-wrapper{
+      overflow: hidden;
+    }
+    div.vehicle-detail-band-wrapper {
+      margin: 0;
+      overflow-x: hidden;
+      width: 44%;
+    }
+    .band.full-bleed.vehicle-detail-band {
+      border: none;
+    }
+    .band.vehicle-detail-band img {
+      display: block;
+      margin: 40px auto 0 auto;
+      max-width: none;
+      width: 100%;
+    } 
+    .vehicle-detail-band__car {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50px;
+      margin: auto;
+    }
+    /*End Vehicle Styles*/
+    /*New Styles After Base Page Update*/
+    .booking-widget .date-time-selector .time-label, .booking-widget .date-time-selector .date-label {
+      float: left;
+      width: 50%;
+      height: 64px;
+      border: 2px solid #c3c3c3;
+      font-weight: 600;
+      font-style: normal;
+      margin-top: .2em;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+  
+    #book > div > div.booking-submit{
+      margin: -71px 0 0 0;
+    }
+    label.custom-label{
+      width: 72%;
+    }
+    /*End New Styles*
+    /*Start RHR Styles*/
+    #coupon {
+      width: 85%;
+    }
+    #reservationWidget {
+      margin: 0 auto;
+    }
+    #reservationWidget > div:first-of-type {
+      float: left;
+      width: 55%;
+    }
+    .reserve-widget-band {
+      background: #fff;
+    }
+    .reservationWidget {
+      background: #f3f3f3;
+    }
+    #reservationWidget .inner-container > div{
+      padding: 0 1em;
+      width: 100%;
+      margin-top: 7%;
+    }
+    #reservationWidget .inner-container, .booking-widget, #reservationWidget .date-time-form, .booking-widget .age-input, .booking-widget .age-input #age, .coupon-field-wrapper, .booking-submit{
+      width: 100%;
+    }
+    #reservationWidget .booking-widget label.date-label, #reservationWidget .booking-widget label.time-label {
+      width: 50%;
+    }
+    .booking-widget .date-time-selector .label-container{
+      width: 43%;
+    }
+    .booking-widget div.arrow {
+      width: 3%;
+      background-size: auto 100%;
+    }
+    .dropoff .label-container {
+      float: right;
+    }
+    div.inner-container.collapsed {
+      overflow: unset;
+    }
+    body > div:nth-child(2) > section.band.vehicle-page-heading{
+      margin-left: 9%;
+    }
+    .inner-container, .featuredcitypage section.featured-location-heading {
+      margin: 1em auto .125em auto;
+      padding-bottom: 2.5rem;
+  }
+    @media (max-width: 80em) {
+      #book .date-time-selector{
+        width: 108%;
+      }
+      #coupon {
+        width: 83%;
+      }
+      #reservationWidget > div:first-of-type {
+        width: 60%;
+      }
+      .booking-widget .date-time-selector .arrow{
+        width: 4%;
+      }
+      .booking-widget .date-time-selector .label-container{
+        width: 43%;
+      }
+      /*Vehicle Styles Start*/
+      div.vehicle-detail-band-wrapper {
+        height: 22em;
+        margin: 0;
+        overflow-x: hidden;
+        width: 39%;
+      }
+      .band.vehicle-detail-band img {
+        display: block;
+        margin: 0;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        position: relative;
+        top: 13%;
+      }
+      .vehicle-detail-band__background {
+        overflow: hidden;
+        height: auto;
+        position: relative;
+        margin-bottom: 0;
+      }
+      /*Vehicle Styles End*/
+      .inner-container, .featuredcitypage section.featured-location-heading{
+        transition: all 1s ease-in-out;
+        width: 54em;
+        margin: -1em auto .125em 0px;
+        padding-bottom: 2.5rem;
+      }
+    }
+    @media(max-width: 66em){
+      .vehicle-page-heading .right {
+        margin-top: -15px;
+      }
+      #book.show div.booking-widget.cf{
+        margin-top: 3%;
+        }
+    }
+    @media (max-width: 60em) {
+      .booking-widget .booking-submit {
+        float: right;
+        width: 25%;
+      }
+      #coupon {
+        width: 100%;
+      }
+      #reservationWidget > div:first-of-type, .iso-bookHere {
+        width: 100%;
+        clear: both;
+        float: none;
+        margin: 0;
+      }
+      div.vehicle-detail-band-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        margin: 0; 
+        height: 46em;
+      }
+      .inner-container, .featuredcitypage section.featured-location-heading{
+        transition: all 1s ease-in-out;
+        width: 54em;
+        margin: -1em auto .125em 0px;
+        padding-bottom: 2.5rem;
+      }
+      #reservationWidget .inner-container > div {
+        padding: 0 1em;
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+    @media (max-width: 50em){
+      #reservationWidget div.options .text, #reservationFlow div.options .text {
+        margin: 5px 0 5px 0;
+      }
+    }
+    @media(max-width: 48em){
+      #reservationWidget div.options, #reservationFlow div.options {
+        margin: -5% 3% 0 3%;
+    }
+      div.vehicle-detail-band-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0; 
+        height: 33em;
+      }
+      #coupon {
+        width: 107%;
+      }
+      #reservationWidget .date-time-form {
+        width: 87%;
+      }
+      .booking-widget .date-time-selector {
+        margin: 0 3% 0 0;
+      }
+      .booking-widget .date-time-selector .label-container {
+        width: 100%;
+      }
+      .booking-widget div.arrow {
+        display: none;
+      }
+      .custom-select.age-input {
+        width: 94%;
+      }
+      #reservationWidget .inner-container > div{
+        padding: 0;
+      }
+      .reservation-toggle-header {
+        display: block;
+        float: none;
+        margin: 0 3%;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+      label.custom-label {
+        width: 88%;
+      }
+      .booking-widget .booking-submit {
+        float: right;
+        width: 94%;
+      }
+      .booking-widget .custom-label {
+        margin-top: 0;
+      }
+      #book > div > div.booking-submit {
+        margin: 0 14px 0 0;
+      }
+      .inner-container.expanded .booking-submit, .featuredcitypage section.expanded.featured-location-heading .booking-submit {
+        margin: 0;
+      }
+    }
+
+    @media (min-width: 46.8em) and (width: 768px){
+      .show .booking-widget .coupon-field-wrapper {
+        margin-left: inherit;
+        width: inherit;
+      }
+    }
+    
+    @media(max-width: 30em){
+      #coupon {
+        width: 94%;
+      }
+      label.custom-label {
+        width: 100%;
+      }
+      div.vehicle-detail-band-wrapper {
+        width: 100%;
+        height: 21em;
+        margin: 0; 
+        overflow-x: hidden;
+      }
+      .band.vehicle-detail-band img{
+        width: 100%;
+        height: auto;
+      }
+      #book > div > div.booking-submit {
+        margin: 0 8px 0 0;
+      }
+      .booking-widget .booking-submit {
+        width: 93%;
+        margin: 0 23px 0 0;
+        float: right;
+      }
+      #book > div > div.coupon-field-wrapper > label > span {
+        font-weight: 600;
+        font-style: normal;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+    }
+      /*End RHR Styles*/
+  </style>
+  <script>
+  (function() {
+    'use strict';
+    var isoTest = {
+      debug : true,
+      account : 'Enterprise',
+      portfolio : 'Enterprise.com',
+      test : '360i_Widget Above the Fold_Vehicles Page Test_062018_Exp_C',
+      cookieName : 'enWidgetAboveFoldVehicles',
+      customMbox : 'enWidgetAboveFoldVehicles',
+      creative : "Reservation Widget Above Fold - Next To Vehicle",
+      reservationWidget: '#reservationWidget',
+      vehicleSection: '.vehicle-detail-band-wrapper',
+      init : function() {
+        isoTest.log("Test Running...");
+        isoTest.log(isoTest.account + " - " + isoTest.portfolio);
+        isoTest.log(isoTest.test + " - " + isoTest.creative);
+  
+        isoTest.elementLoaded(isoTest.reservationWidget, isoTest.vehicleSection, function() {	
+          isoTest.log("Test Ready! - Starting challenge.");
+          isoTest.challenge();
+        });
+      },
+      challenge : function (){
+        $(isoTest.reservationWidget).insertAfter('section.band.vehicle-page-heading > div.cf');
+        $(isoTest.vehicleSection).insertAfter('#reservationWidget');
+        var van = 'a Van', suv= 'an SUV', vehicle = 'a Car';
+        var urlHref = window.location.href;
+        var vanRE = /vans/gi;
+        var suvRE = /suvs/gi;
+        var vehicle = vanRE.test(urlHref) ? 'a Van' : suvRE.test(urlHref) ? 'an SUV' : ' a Car';
+        if(vanRE.test(urlHref)) {
+          vehicle = van;
+          $(document).find('#reservationWidget h2').html('Start ' + vehicle + ' Reservation');
+        } else if(suvRE.test(urlHref)) {
+          vehicle = suv;
+          $(document).find('#reservationWidget h2').html('Start ' + vehicle + ' Reservation');
+        }else{
+          $(document).find('#reservationWidget h2').html('Start ' + vehicle + ' Reservation');
+        }
+      },
+      elementLoaded : function (ele1, ele2, callback) {
+        isoTest.log('elementLoaded::  ' + ele1 + ' ' + ele2 + ' - Checking...');
+        window.clearTimeout(isoTest.eleTimer);
+        if ((document.querySelectorAll(ele1).length > 0) && (document.querySelectorAll(ele2).length > 0)) {
+          if (typeof callback === 'function') {
+            isoTest.log('elementLoaded::  ' + ele1 + '' + ele2 + ' - Found!');
+            callback();
+          }
+        } else {
+          isoTest.eleTimer = window.setTimeout(function(){isoTest.elementLoaded(ele1, ele2, callback);}, 100);
+        }
+      },
+      dependsLoaded : function (callback) { 
+        isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Start...");
+  
+        window.clearTimeout(isoTest.timer);
+        //Check for jQuery and _a object
+        if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+          if (typeof callback === "function") {
+            isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Ready!");
+  
+            callback();
+          }
+        } else {
+          isoTest.timer = window.setTimeout(function() {
+            isoTest.dependsLoaded(callback);
+          }, 100);
+        }
+      },
+      log : function(obj){
+        if(isoTest.debug === true){
+          console.log(obj);
+        }
+      }
+    }
+  
+    var helpers = {
+      getQueryParam: function(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+          }
+        }
+      }
+    }
+  
+    isoTest.dependsLoaded(function(){ 
+      isoTest.init();
+    });
+  })();
+  </script>

@@ -1,0 +1,68 @@
+<script>
+  (function() {
+  'use strict';
+  var nintendoTest = {
+    debug : true,
+    account : 'Nintendo',
+    portfolio : 'Nintendo.com',
+    test : 'Nintendo Demo',
+    creative : "Experience A",
+    heroId: '#hero-slideshow',
+    heroEl: '<div id="hero-slideshow" class="hero-slideshow is-visible __web-inspector-hide-shortcut__" style="background-image: url(/switch/assets/images/switch/home/hero/bg-mob.jpg)"><div id="next-slideshow-image" class="">      <div id="next-slideshow-image-scale" style="background-image: url(/switch/assets/images/switch/home/hero/4-mob.jpg)"></div></div></div>',
+
+    init : function() {
+      nintendoTest.log("Test Running...");
+      nintendoTest.log(nintendoTest.account + " - " + nintendoTest.portfolio);
+      nintendoTest.log(nintendoTest.test + " - " + nintendoTest.creative);
+      nintendoTest.log("Test Ready! Entering Redirect.");
+        nintendoTest.elementLoaded(nintendoTest.chicklet, function() {
+                nintendoTest.chall();
+              });
+            },
+    chall : function() {
+      $(nintendoTest.heroId).remove();
+      $(nintendoTest.heroEl).before(nintendo.heroId);
+    },
+    elementLoaded : function (ele, callback) {
+      nintendoTest.log('elementLoaded::  ' + ele + " - Checking...");
+      window.clearTimeout(nintendoTest.eleTimer);
+      if (document.querySelectorAll(ele).length > 0) {
+        if (typeof callback === 'function') {
+          nintendoTest.log('elementLoaded::  ' + ele + " - Found!");
+          callback();
+        }
+          } else {
+              nintendoTest.eleTimer = window.setTimeout(function(){nintendoTest.elementLoaded(ele, callback);}, 100);
+          }
+    },
+    dependsLoaded : function (callback) { 
+        nintendoTest.log(nintendoTest.test + " - " + nintendoTest.creative + " - dependsLoaded - Start...");
+        
+        window.clearTimeout(nintendoTest.timer);
+        //Check for jQuery and _a object
+        if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+          if (typeof callback === "function") {
+            
+            nintendoTest.log(nintendoTest.test + " - " + nintendoTest.creative + " - dependsLoaded - Ready!");
+            
+            callback();
+          }
+        } else {
+          nintendoTest.timer = window.setTimeout(function() {
+            nintendoTest.dependsLoaded(callback);
+          }, 100);
+        }
+      },
+    log : function(obj){
+      if(nintendoTest.debug === true){
+        console.log(obj);
+      }
+    }
+    
+  }
+ 
+  nintendoTest.dependsLoaded(function(){ 
+      nintendoTest.init();
+    });
+ })();
+ </script>

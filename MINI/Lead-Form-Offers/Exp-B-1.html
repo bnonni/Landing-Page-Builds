@@ -1,0 +1,1176 @@
+<style>
+ .mini-vehicle {    
+     filter: unset;
+     float: right;
+     max-width:200px;   
+     opacity: 0; 
+     transition: opacity 1s ease-in-out;
+ }
+ .mini-vehicle.preload {
+     filter: blur(2px) grayscale(100%);
+     opacity: 0.05;
+ }
+ .mini-vehicle.show {     
+     filter: unset;
+     opacity: 1;   
+ }
+ @media only screen and (max-width: 810px) {
+     .mini-vehicle {
+         display: block;
+         float: none;
+         margin: 5px auto;
+     }
+ }
+</style>
+<script>
+(function () {
+ //'use strict';
+ //Offers Page Code
+ var m_v = [
+     {
+         "id":1000270,
+         "name":"Hardtop 2 Door Cooper",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1000756],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1000756,"bodyColor":1000809,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001127],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000434],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001120,"bodyColor":1000002,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000434,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001128,"bodyColor":1001146,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000271,
+         "name":"Hardtop 2 Door Cooper S",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001120,1001127],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001120,"bodyColor":1000002,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128,1000784,1000920],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000764,1000434],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001131,"bodyColor":1000010,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128,1000784,1000920],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000764,1000434,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001139,"bodyColor":1001146,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000285,
+         "name":"Hardtop 2 Door John Cooper Works",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001132,1001136],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000438],
+                 "default": { "wheels":1001132,"bodyColor":1000003,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001132,1001136,1000981],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000764,1000968],
+                 "roofandmirrors": [1000559,1000438,1000015,1000016],
+                 "default": { "wheels":1001132,"bodyColor":1001010,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001132,1001136,1000981],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000764,1000968,1000942],
+                 "roofandmirrors": [1000559,1000438,1000015,1000016],
+                 "default": { "wheels":1000981,"bodyColor":1000968,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000272,
+         "name":"Hardtop 4 Door Cooper",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1000756],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1000756,"bodyColor":1000003,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001127],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000434],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001120,"bodyColor":1000940,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000434,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001128,"bodyColor":1001147,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000273,
+         "name":"Hardtop 4 Door Cooper S",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001120,1001127],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001120,"bodyColor":1000001,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000764,1000434],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001131,"bodyColor":1000940,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128,1000784,1000920],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001147,1000764,1000434,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001139,"bodyColor":1001147,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000279,
+         "name":"Clubman Cooper",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001120],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000017],
+                 "default": { "wheels":1001120,"bodyColor":1000001,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001017,1001016],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1001045,1001009],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001017,"bodyColor":1000010,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001017,1001016,1001015,1001014,1001064],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1001045,1001009,1000942],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001064,"bodyColor":1001009,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000280,
+         "name":"Clubman Cooper ALL4",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001120],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000017],
+                 "default": { "wheels":1001120,"bodyColor":1000001,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001017,1001016],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1001045,1001009],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001017,"bodyColor":1000010,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001017,1001016,1001015,1001014,1001064],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1001045,1001009,1000942],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001064,"bodyColor":1001009,"roofandmirrors":1000016 }
+             }
+         ]
+     },	
+     {
+         "id":1000281,
+         "name":"Clubman Cooper S",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001017,1001016],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000017],
+                 "default": { "wheels":1001017,"bodyColor":1000002,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001017,1001016],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1000434,1000764,1001010,1000010,1001045,1001009],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001016,"bodyColor":1000764,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001017,1001016,1001015,1001014,1001064],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1000434,1000764,1001010,1000010,1001045,1001009,1000942],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001064,"bodyColor":1001010,"roofandmirrors":1000016 }
+             }
+         ]
+     },	
+     {
+         "id":1000282,
+         "name":"Clubman Cooper S ALL4",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001017,1001016],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000017],
+                 "default": { "wheels":1001017,"bodyColor":1000002,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001017,1001016],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1000434,1000764,1001010,1000010,1001045,1001009],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001016,"bodyColor":1000764,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001017,1001016,1001015,1001014,1001064],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1000434,1000764,1001010,1000010,1001045,1001009,1000942],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017],
+                 "default": { "wheels":1001064,"bodyColor":1001010,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000287,
+         "name":"Clubman John Cooper Works",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001067],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000017,1000438],
+                 "default": { "wheels":1001067,"bodyColor":1000003,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001067],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1000434,1000764,1001010,1000010,1001045],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017,1000438],
+                 "default": { "wheels":1001067,"bodyColor":1001010,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001067,1001087],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1000434,1000764,1001010,1000010,1001045,1000942],
+                 "roofandmirrors": [1000559,1000016,1000015,1000017,1000438],
+                 "default": { "wheels":1001087,"bodyColor":1000968,"roofandmirrors":1000438 }
+             }
+         ]
+     },
+     {
+         "id":1000274,
+         "name":"Countryman Cooper",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001076],
+                 "bodyColor": [1000809,1000001,1000480,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001076,"bodyColor":1000480,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1000434,1001079],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001075,"bodyColor":1000480,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001075,1001093,1001084,1001085,1001086],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1000434,1001079,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001086,"bodyColor":1000942,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000275,
+         "name":"Countryman Cooper ALL4",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001076],
+                 "bodyColor": [1000809,1000001,1000480,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001076,"bodyColor":1000001,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000434,1001079],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001075,"bodyColor":1000480,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001075,1001093,1001084,1001085,1001086],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000434,1001079,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001086,"bodyColor":1000942,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000276,
+         "name":"Countryman Cooper S",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001075,"bodyColor":1000001,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000764,1000434,1001079],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001075,"bodyColor":1000764,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001075,1001093,1001084,1001085,1001086],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000764,1000434,1001079,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001086,"bodyColor":1001080,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000277,
+         "name":"Countryman Cooper S ALL4",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001075,"bodyColor":1000480,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000764,1000434,1001079],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001075,"bodyColor":1000764,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001075,1001093,1001084,1001085,1001086],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000764,1000434,1001079,100942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001086,"bodyColor":1001080,"roofandmirrors":1000016 }
+             }
+         ]
+     },	
+     {
+         "id":1000278,
+         "name":"Countryman Cooper S E ALL4",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001075,"bodyColor":1000809,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1001010,1001080,1000764,1000434],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001075,"bodyColor":1000001,"roofandmirrors":1000016 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001075,1001093,1001084],
+                 "bodyColor": [1000809,1000001,1000480,1001010,1001080,1000764,1000434,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016],
+                 "default": { "wheels":1001075,"bodyColor":1001010,"roofandmirrors":1000016 }
+             }
+         ]
+     },
+     {
+         "id":1000286,
+         "name":"Countryman John Cooper Works",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001094],
+                 "bodyColor": [1000809,1000001,1000480,1000003],
+                 "roofandmirrors": [1000559,1000438],
+                 "default": { "wheels":1001094,"bodyColor":1000003,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001094],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000764,1000968],
+                 "roofandmirrors": [1000559,1000015,1000016,1000438],
+                 "default": { "wheels":1001094,"bodyColor":1001010,"roofandmirrors":1000438 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001094,1001087],
+                 "bodyColor": [1000809,1000001,1000480,1000003,1001010,1001080,1000764,1000968,1000942],
+                 "roofandmirrors": [1000559,1000015,1000016,1000438],
+                 "default": { "wheels":1001087,"bodyColor":1000968,"roofandmirrors":1000438 }
+             }
+         ]
+     },
+     {
+         "id":1000283,
+         "name":"Convertible Cooper",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1000756],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1000756,"bodyColor":1000002,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001127],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001039,1000434],
+                 "roofandmirrors": [1000559,1000582,,1000640],
+                 "default": { "wheels":1001120,"bodyColor":1001039,"roofandmirrors":1000582 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001039,1000434,1000942],
+                 "roofandmirrors": [1000559,1000582,1000640],
+                 "default": { "wheels":1001128,"bodyColor":1000711,"roofandmirrors":1000582 }
+             }
+         ]
+     },
+     {
+         "id":1000284,
+         "name":"Convertible Cooper S",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001120,10011278],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559],
+                 "default": { "wheels":1001120,"bodyColor":1000001,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128,1000784,1000920],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001039,1000764,1000434],
+                 "roofandmirrors": [1000559,1000582,1000640],
+                 "default": { "wheels":1001120,"bodyColor":1001010,"roofandmirrors":1000582 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001120,1001127,1001139,1001138,1001137,1001131,1001129,1001128,1000784,1000920],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001039,1000764,1000434,1000942],
+                 "roofandmirrors": [1000559,1000582,1000640],
+                 "default": { "wheels":1001139,"bodyColor":1000711,"roofandmirrors":1000582 }
+             }
+         ]
+     },
+     {
+         "id":1000288,
+         "name":"Convertible John Cooper Works",
+         "trim": [
+             {
+                 "id": 1001154,
+                 "name":"Classic Trim",
+                 "short_name":"ZGO",
+                 "wheels": [1001132,1001136],
+                 "bodyColor": [1000809,1000001,1000002,1000003],
+                 "roofandmirrors": [1000559,1000583],
+                 "default": { "wheels":1001132,"bodyColor":1000003,"roofandmirrors":1000559 }
+             },			
+             {
+                 "id": 1001156,
+                 "name":"Signature Trim",
+                 "short_name":"ZSG",
+                 "wheels": [1001132,1001136,1000981],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001039,1000764,1000968],
+                 "roofandmirrors": [1000559,1000582,1000640,1000583],
+                 "default": { "wheels":1001132,"bodyColor":1001010,"roofandmirrors":1000582 }
+             },			
+             {
+                 "id": 1001155,
+                 "name":"Iconic Trim",
+                 "short_name":"ZHI",
+                 "wheels": [1001132,1001136,1000981],
+                 "bodyColor": [1000809,1000001,1000002,1000003,1001010,1000010,1000711,1000940,1001146,1001039,1000764,1000968,1000942],
+                 "roofandmirrors": [1000559,1000582,1000640,1000583],
+                 "default": { "wheels":1000981,"bodyColor":1000968,"roofandmirrors":1000582 }
+             }
+         ]
+     }
+ ];
+ var m_bodycolors = [{"name":"Midnight Black","id":1000001},{"name":"Pepper White","id":1000002},{"name":"Chili Red","id":1000003},{"name":"Light White","id":1000480},{"name":"White Silver","id":1000010},{"name":"British Racing Green II","id":1000434},{"name":"Starlight Blue","id":1000711},{"name":"Thunder Grey","id":1000764},{"name":"Moonwalk Grey","id":1000809},{"name":"Pure Burgandy","id":1001009},{"name":"Electric Blue","id":1000940},{"name":"Lapisluxury Blue","id":1000942},{"name":"JCW Rebel Green","id":1000968},{"name":"Melting Silver","id":1001010},{"name":"Caribbean Aqua","id":1001039},{"name":"Chestnut","id":1001079},{"name":"Island Blue","id":1001080},{"name":"Solaris Orange","id":1001146},{"name":"Emerald Grey","id":1001147}];
+ var m_wheels = [{"name":"15\" Heli Spoke Silver","id":1000756},{"name":"16\" Loop Spoke Silver","id":1001120},{"name":"16\" Silver Loop Spoke","id":1000757},{"name":"16\" Victory Spoke Black","id":1001127},{"name":"17\" Cosmos Spoke Black","id":1001129},{"name":"17\" Cosmos Spoke Silver","id":1001128},{"name":"17\" Imprint Spoke","id":1001076},{"name":"17\" JCW Track Spoke Black","id":1001136},{"name":"17\" JCW Track Spoke Silver","id":1001132},{"name":"17\" Net Spoke Black","id":1001016},{"name":"17\" Propeller Spoke Two-Tone","id":1001138},{"name":"17\" Propeller Spoke 2-Tone","id":1001138},{"name":"17\" Rail Spoke Two-Tone","id":1001139},{"name":"17\" Rail Spoke 2-Tone","id":1001139},{"name":"17\" Roulette Spoke Two-Tone","id":1001137},{"name":"17\" Roulette Spoke 2-Tone","id":1001137},{"name":"17\" Tentacle Spoke Silver","id":1001131},{"name":"17\" Vent Spoke Silver","id":1001017},{"name":"18\" Cone Spoke Silver","id":1000784},{"name":"18\" JCW Cup Spoke Two-Tone","id":1000981},{"name":"18\" JCW Grip Spoke","id":1001019},{"name":"18\" JCW Grip Spoke Black","id":1001067},{"name":"18\" JCW Thrill Spoke Black","id":1001094},{"name":"18\" MINI Yours Masterpiece","id":1001064},{"name":"18\" MINI Yours Vanity Spoke","id":1000920},{"name":"18\" Pair Spoke","id":1001075},{"name":"18\" Pin Spoke Black","id":1001084},{"name":"18\" Pin Spoke Silver","id":1001093},{"name":"18\" Star Spoke Black","id":1001014},{"name":"18\" Star Spoke Silver","id":1001015},{"name":"19\" Edged Spoke","id":1001085},{"name":"19\" JCW Course Spoke","id":1001087},{"name":"19\" MINI Yours Masterpiece","id":1001086}];
+ var m_roofandmirrors = [{"name":"Body Color Mirror Caps","id":1000559},{"name":"White Roof/Mirrors","id":1000015},{"name":"White Mirror Caps","id":1000640},{"name":"Black Roof/Mirrors","id":1000016},{"name":"Black Mirror Caps","id":1000582},{"name":"Silver Roof/Mirrors","id":1000017},{"name":"Chili Red Roof/Mirrors","id":1000438},{"name":"Chili Red Mirror Caps","id":1000583}];
+ //Get cookie config items if they exist
+ var m_offers = {
+     allow_custom_build: false,
+     c_colors : '',
+     c_parts : '',
+     c_products : '',
+     c_vehicle : '',
+     config_wheels : '',
+     config_bodycolor : '',
+     config_roofmirrors : '',
+     config_model : '',
+     config_model_id : '',
+     selected_model : '',
+     selected_model_id : '',
+     selModelJson : '',
+     selModelTrimJson : '',
+     trim: '',
+     wheels : '',
+     bodycolor : '',
+     roofmirrors : '',
+     custom_wheels : false,
+     custom_bodycolor : false,
+     custom_roofmirrors : false,
+     addl_comments : '',
+     orig_comments_val: '',
+     addListeners : function () {
+         $(document).find('.Btn--primary').on('click', m_offers.getSelectedVehicle);
+         $(document).find('.Modal .Btn[data-modal-close]').on('click', m_offers.lightboxClosed);
+         $(document).find('#OffersLead').on('click', m_offers.lightboxClosed);
+     },
+     removeListeners : function () {
+         $(document).find('.Btn--primary').off('click', m_offers.getSelectedVehicle);
+         $(document).find('.Modal .Btn[data-modal-close]').off('click', m_offers.lightboxClosed);
+         $(document).find('#OffersLead').off('click', m_offers.lightboxClosed);
+     },
+     getCookies : function () {
+         var cColors, cParts, cVeh, cProd, jColors, jParts, jVeh, jProd;
+         cColors = m_cookie_management.readCookie('m_colors');
+         cParts = m_cookie_management.readCookie('m_parts');
+         cVeh = m_cookie_management.readCookie('m_vehicle');
+         cProd = m_cookie_management.readCookie('m_product');
+         
+         jColors = (cColors !== null && cColors !== undefined) ? m_b64.b64DecodeUnicode(cColors) : null;
+         jParts = (cParts !== null && cParts !== undefined) ? m_b64.b64DecodeUnicode(cParts) : null;            
+         jVeh = (cVeh !== null && cVeh !== undefined) ? m_b64.b64DecodeUnicode(cVeh) : null;
+         jProd = (cProd !== null && cProd !== undefined) ? m_b64.b64DecodeUnicode(cProd) : null;      
+         
+         m_offers.c_colors = (jColors !== null && jColors !== undefined) ? JSON.parse(jColors) : null;
+         m_offers.c_parts = (jParts !== null && jParts !== undefined) ? jParts : null;            
+         m_offers.c_vehicle = (jVeh !== null && jVeh !== undefined) ? JSON.parse(jVeh) : null;
+         m_offers.c_products = (jProd !== null && jProd !== undefined) ? jProd : null;
+
+         if(m_offers.c_colors !== null && m_offers.c_colors !== undefined && m_offers.c_vehicle !== null && m_offers.c_vehicle !== undefined) {
+             m_offers.allow_custom_build = true;
+             
+             m_offers.trim = m_offers.getTrim(m_offers.c_vehicle.trim);
+             
+             m_offers.config_wheels = $.grep(m_wheels, function (n, i) {// eslint-disable-line no-unused-vars                    
+                 var nm = (n.name.indexOf('| ') > -1) ? n.name.substring(n.name.indexOf('| ')+2) : n.name;
+                 tsiTest.log(nm);
+                 var w = (m_offers.c_vehicle.wheels.indexOf('| ') > -1) ? m_offers.c_vehicle.wheels.substring(m_offers.c_vehicle.wheels.indexOf('| ')+2,m_offers.c_vehicle.wheels.indexOf('Wheels')-1) : m_offers.c_vehicle.wheels.substring(0,m_offers.c_vehicle.wheels.indexOf('Wheels')-1);
+                 tsiTest.log(w);
+                 return nm === w;
+             })[0];
+             
+             m_offers.config_bodycolor = $.grep(m_bodycolors, function (n, i) {
+                 var nm = (n.name.indexOf(' -') > -1) ? n.name.substring(0, n.name.indexOf(' -')) : n.name;
+                 var cBC = (m_offers.c_colors.bodyColor.indexOf(' -') > -1) ? m_offers.c_colors.bodyColor.substring(0, m_offers.c_colors.bodyColor.indexOf(' -')) : ((m_offers.c_colors.bodyColor.indexOf('Body Color') > -1) ? m_offers.c_colors.bodyColor.substring(0, m_offers.c_colors.bodyColor.indexOf('Body Color')-1) : m_offers.c_colors.bodyColor);
+                 return nm === cBC;
+             })[0];
+             
+             m_offers.config_roofmirrors = $.grep(m_roofandmirrors, function (n, i) {// eslint-disable-line no-unused-vars
+                 var nm = (n.name.indexOf(' -') > -1) ? n.name.substring(0, n.name.indexOf(' -')) : n.name;
+                 var cRM = (m_offers.c_colors.roofMirrorsColor.indexOf(' -') > -1) ? m_offers.c_colors.roofMirrorsColor.substring(0, m_offers.c_colors.roofMirrorsColor.indexOf(' -')) : m_offers.c_colors.roofMirrorsColor;
+                 return nm === cRM;
+             })[0];
+             
+             m_offers.preloadConfigImgs();
+             
+         } else {
+             m_offers.trim = 1001154;
+         }
+     },
+     preloadConfigImgs : function() {
+         var imgUrl = 'https://www.miniusa.com/api/cfg/media/composite.action?useCode=lines&state=1&imageType=front&width=200&modelId=', wheels="", bodycolor="", mirrors="", models = [1000270,1000271,1000285,1000272,1000273,1000279,1000280,1000281,1000282,1000287,1000274,1000275,1000276,1000277,1000278,1000286,1000283,1000284,1000288];
+         if(m_offers.config_wheels !== undefined) {
+             wheels = "&partsIds="+m_offers.config_wheels.id;
+         }
+         if(m_offers.config_bodycolor !== undefined) {
+             bodycolor = "&partsIds="+m_offers.config_bodycolor.id;
+         }
+         if(m_offers.config_roofmirrors !== undefined) {
+             mirrors = "&partsIds="+m_offers.config_roofmirrors.id;
+         }
+         var imgs = new Array();
+         for(var i = 0; i < models.length; i++) {
+             var u = imgUrl + models[i];
+             if(wheels != "") {
+                 u += wheels;
+             }
+             if(mirrors != "") {
+                 u += mirrors;
+             }
+             if(bodycolor != "") {
+                 u += bodycolor;
+             }
+             imgs[i] = new Image();
+             imgs[i].src = u;
+         }
+     },
+     getTrim : function(trim) {
+         return (trim.toLowerCase() === 'zhi') ? 1001155 : ((trim.toLowerCase() === 'zsg') ? 1001156 : 1001154);
+     },
+     checkWheels : function (callback) {
+         m_offers.custom_wheels = false;
+        tsiTest.log(m_offers.config_wheels);
+         if(m_offers.allow_custom_build && m_offers.config_wheels !== undefined) {
+             var wheels = m_offers.config_wheels;
+             if (wheels !== null && wheels !== undefined) {
+                 var trimFilterWheels = m_offers.selModelTrimJson.wheels.filter(function (elem) {
+                     return elem === wheels.id;
+                 })[0];
+
+                 if(trimFilterWheels !== null && trimFilterWheels !== undefined) {
+                     m_offers.custom_wheels = true;
+                     m_offers.wheels = trimFilterWheels;
+                 } else {
+                     m_offers.wheels = m_offers.selModelTrimJson.default.wheels;
+                 }
+             } else {
+                 m_offers.wheels = m_offers.selModelTrimJson.default.wheels;
+             }
+         } else {
+             m_offers.wheels = m_offers.selModelTrimJson.default.wheels;
+         }
+         if (typeof callback === "function") {
+             callback();
+         }
+     },
+     checkBodyColor : function (callback) {
+         m_offers.custom_bodycolor = false;
+         if(m_offers.allow_custom_build && m_offers.config_bodycolor !== undefined) {
+             var bodycolor = m_offers.config_bodycolor;
+             if (bodycolor !== null && bodycolor !== undefined) {
+                 var trimFilterBodyColor = m_offers.selModelTrimJson.bodyColor.filter(function (elem) {
+                     return elem === bodycolor.id;
+                 })[0];                    
+                 if(trimFilterBodyColor !== null && trimFilterBodyColor !== undefined) {
+                     m_offers.custom_bodycolor = true;
+                     m_offers.bodycolor = trimFilterBodyColor;
+                 } else {
+                     m_offers.bodycolor = m_offers.selModelTrimJson.default.bodyColor;
+                 }
+             } else {
+                 m_offers.bodycolor = m_offers.selModelTrimJson.default.bodyColor;
+             }
+         } else {
+             m_offers.bodycolor = m_offers.selModelTrimJson.default.bodyColor;
+         }
+         if (typeof callback === "function") {
+             callback();
+         }
+     },
+     checkMirrorAndRoof : function (callback) {
+         m_offers.custom_roofmirrors = false;
+         if (m_offers.allow_custom_build && m_offers.config_roofmirrors !== undefined) {
+             var roofandmirrors = m_offers.config_roofmirrors;
+             if (roofandmirrors !== null && roofandmirrors !== undefined) {
+                 var trimFilterRoofAndMirrors = m_offers.selModelTrimJson.roofandmirrors.filter(function (elem) {
+                     return elem === roofandmirrors.id;
+                 })[0];
+
+                 if(trimFilterRoofAndMirrors !== null && trimFilterRoofAndMirrors !== undefined) {
+                     m_offers.custom_roofmirrors = true;
+                     m_offers.roofmirrors = trimFilterRoofAndMirrors;
+                 } else {
+                     m_offers.roofmirrors = m_offers.selModelTrimJson.default.roofandmirrors;
+                 }
+             } else {
+                 m_offers.roofmirrors = m_offers.selModelTrimJson.default.roofandmirrors;
+             }
+         } else {
+             m_offers.roofmirrors = m_offers.selModelTrimJson.default.roofandmirrors;
+         }
+         if (typeof callback === "function") {
+             callback();
+         }
+     },
+     addVehicleToLeadForm : function () {
+         //Add the vehicle to the Leadform
+         $(document).find('#OffersLead .innerParsys .l-row .l-col h3').parent().prepend('<img class="mini-vehicle" alt="" />');
+     },
+     updateVehicleImgInLeadForm : function (callback) {
+         tsiTest.log('loading img');
+         //Image URL (modelId is the car; last partIds is the color of the car
+         var imgUrl = 'https://www.miniusa.com/api/cfg/media/composite.action?useCode=lines&state=1&imageType=front&width=200&modelId=' + m_offers.selected_model_id;
+         if(m_offers.wheels) {
+             imgUrl += "&partIds=" + m_offers.wheels;
+         }
+         if(m_offers.roofmirrors) {
+             imgUrl += "&partIds=" + m_offers.roofmirrors;
+         }
+         if(m_offers.bodycolor) {
+             imgUrl += "&partIds=" + m_offers.bodycolor;
+         }
+         
+         tsiTest.log('img url:'+imgUrl);
+         
+         $('img.mini-vehicle').attr('src', imgUrl).attr('alt', m_offers.selected_model).addClass('preload');          
+         $('img.mini-vehicle').on('load',function(){
+             tsiTest.log('img loaded');
+             $(this).removeClass('preload').addClass('show');
+         });
+         if (typeof callback === "function") {
+             callback();
+         }
+     },
+     lightboxClosed : function (evt) {
+         var container = $('.Modal-content');
+         var btn = $('.Modal .Btn[data-modal-close]');
+         if((!container.is(evt.target) && container.has(evt.target).length === 0) || btn.is(evt.currentTarget)) {
+             $('img.mini-vehicle').removeClass('show');
+         }
+     },
+     getSelectedVehicle : function (evt) {
+         $('#OffersLead').hide().delay(800).show();
+         var selModel, str;
+         selModel = $(evt.currentTarget).parent().prev().find('.modeltype-subcontainer').text();
+         if (selModel !== null && selModel !== undefined && selModel !== '') {
+             selModel = selModel.trim();
+             tsiTest.log(selModel);
+         } else {
+             //we must be in mobile layout
+             selModel = $(evt.currentTarget).parent().prev().find('div span').text();
+             selModel = (selModel !== null && selModel !== undefined && selModel !== '') ? selModel.trim() : selModel;
+             tsiTest.log(selModel);
+         }
+         str = selModel.replace(/[\W\r\n\x0B\x0C\u0085\u2028\u2029]+/g, " ");
+         var hasCPO = str.match(/cpo/gi);
+         if(hasCPO == null && str !== null && str !== undefined && str !== '') {
+             m_offers.selected_model = str;
+             m_offers.selected_model_id = m_offers.getModelID(str);
+
+             //Get Selected Vehicle's JSON
+             m_offers.selModelJson = $.grep(m_v, function (n, i) {// eslint-disable-line no-unused-vars
+                 return n.id === m_offers.selected_model_id;
+             })[0];
+
+             m_offers.selModelTrimJson = $.grep(m_offers.selModelJson.trim, function (n, i) {// eslint-disable-line no-unused-vars
+                 return (n.id === m_offers.trim);
+             })[0];            
+
+             //Check to see if wheels are compatible
+             m_offers.checkWheels(function () {            
+                 //Check to see if color is compatible
+                 m_offers.checkBodyColor(function () {                    
+                     //Check to see if roof and mirrors are compatible
+                     m_offers.checkMirrorAndRoof(function () {
+                         //Update Vehicle image in lead form
+                         m_offers.updateVehicleImgInLeadForm(function () {
+                             //Update hidden field comments in leadform
+                             m_offers.getOriginalCommentsInForm();
+                             var comments = "";
+                             if(m_offers.custom_bodycolor) {
+                                 comments += (m_offers.config_bodycolor !== null && m_offers.config_bodycolor !== '' && m_offers.config_bodycolor !== undefined) ? "| Body Color: " + m_offers.config_bodycolor.name + " " : "";
+                             }
+                             if(m_offers.custom_roofmirrors) {
+                                 comments += (m_offers.config_roofmirrors !== null && m_offers.config_roofmirrors !== '' && m_offers.config_roofmirrors !== undefined) ? "| Roof And Mirrors: " + m_offers.config_roofmirrors.name + " " : "";
+                             }
+                             if(m_offers.custom_wheels) {
+                                 comments += (m_offers.config_wheels !== null && m_offers.config_wheels !== '' && m_offers.config_wheels !== undefined) ? "| Wheels: " + m_offers.config_wheels.name + " " : "";
+                             }
+                             if (comments !== "" || comments !== undefined || comments !== null) {
+                                 m_offers.addl_comments = comments;
+                             } else {
+                                 m_offers.addl_comments = "";
+                             }
+                             m_offers.updateCommentsField();
+                         });
+                     });
+                 });
+         });
+         }
+     },
+     getModelID : function (model) {
+         switch (model) {
+         case "Hardtop 2 Door Cooper Cooper S":
+         case "Hardtop 2 Door Cooper":
+             return 1000270;
+         case "Hardtop 2 Door Cooper S":
+             return 1000271;
+         case "Hardtop 2 Door John Cooper Works":
+             return 1000285;
+         case "Hardtop 4 Door Cooper Cooper S":
+         case "Hardtop 4 Door Cooper":
+             return 1000272;
+         case "Hardtop 4 Door Cooper S":
+             return 1000273;
+         case "Countryman Cooper Cooper ALL4 Cooper S Cooper S ALL4":
+         case "Countryman Cooper":
+             return 1000274;
+         case "Countryman Cooper ALL4":
+             return 1000275;
+         case "Countryman Cooper S":
+             return 1000276;
+         case "Countryman Cooper S ALL4":
+             return 1000277;
+         case "Countryman Cooper S E ALL4":
+             return 1000278;
+         case "Countryman John Cooper Works":
+             return 1000286;
+         case "Clubman Cooper Cooper ALL4 Cooper S Cooper S ALL4":
+         case "Clubman Cooper":
+             return 1000279;
+         case "Clubman Cooper ALL4":
+             return 1000280;
+         case "Clubman Cooper S":
+             return 1000281;
+         case "Clubman Cooper S ALL4":
+             return 1000282;
+         case "Clubman John Cooper Works":
+             return 1000287;
+         case "Convertible Cooper Cooper S":
+         case "Convertible Cooper":
+             return 1000283;
+         case "Convertible Cooper S":
+             return 1000284;
+         case "Convertible John Cooper Works":
+             return 1000288;
+         }
+     },
+     getOriginalCommentsInForm : function() {
+         m_offers.orig_comments_val = $(document).find('#OffersLead input[name="comments"]').val();
+     },
+     updateCommentsField : function () {
+         var comments_val = (m_offers.addl_comments !== null) ? m_offers.orig_comments_val + "\n" + m_offers.addl_comments : m_offers.orig_comments_val;
+         $(document).find('#OffersLead input[name="comments"]').val(comments_val);
+     },
+     preloadDefaultImgs : function () {
+         var imgUrl = 'https://www.miniusa.com/api/cfg/media/composite.action?useCode=lines&state=1&imageType=front&width=200&modelId=';
+         var mImgs = ["1000270&partsIds=1000756&partsIds=1000559&partsIds=1000809","1000270&partsIds=1001120&partsIds=1000016&partsIds=1000002","1000270&partsIds=1001128&partsIds=1000016&partsIds=1001146","1000271&partsIds=1001120&partsIds=1000559&partsIds=1000002","1000271&partsIds=1001131&partsIds=1000016&partsIds=1000010","1000271&partsIds=1001139&partsIds=1000016&partsIds=1001146","1000285&partsIds=1001132&partsIds=1000559&partsIds=1000003","1000285&partsIds=1001132&partsIds=1000016&partsIds=1001010","1000285&partsIds=1000981&partsIds=1000016&partsIds=1000968","1000272&partsIds=1000756&partsIds=1000559&partsIds=1000003","1000272&partsIds=1001120&partsIds=1000016&partsIds=1000940","1000272&partsIds=1001128&partsIds=1000016&partsIds=1001147","1000273&partsIds=1001120&partsIds=1000559&partsIds=1000001","1000273&partsIds=1001131&partsIds=1000016&partsIds=1000940","1000273&partsIds=1001139&partsIds=1000016&partsIds=1001147","1000279&partsIds=1001120&partsIds=1000559&partsIds=1000001","1000279&partsIds=1001017&partsIds=1000016&partsIds=1000010","1000279&partsIds=1001064&partsIds=1000016&partsIds=1001009","1000280&partsIds=1001120&partsIds=1000559&partsIds=1000001","1000280&partsIds=1001017&partsIds=1000016&partsIds=1000010","1000280&partsIds=1001064&partsIds=1000016&partsIds=1001009","1000281&partsIds=1001017&partsIds=1000559&partsIds=1000002","1000281&partsIds=1001016&partsIds=1000016&partsIds=1000764","1000281&partsIds=1001064&partsIds=1000016&partsIds=1001010","1000282&partsIds=1001017&partsIds=1000559&partsIds=1000002","1000282&partsIds=1001016&partsIds=1000016&partsIds=1000764","1000282&partsIds=1001064&partsIds=1000016&partsIds=1001010","1000287&partsIds=1001017&partsIds=1000559&partsIds=1000002","1000287&partsIds=1001016&partsIds=1000016&partsIds=1000764","1000287&partsIds=1001087&partsIds=1000483&partsIds=1000968","1000274&partsIds=1001076&partsIds=1000559&partsIds=1000001","1000274&partsIds=1001075&partsIds=1000016&partsIds=1000480","1000274&partsIds=1001086&partsIds=1000016&partsIds=1000942","1000275&partsIds=1001076&partsIds=1000559&partsIds=1000001","1000275&partsIds=1001075&partsIds=1000016&partsIds=1000480","1000275&partsIds=1001086&partsIds=1000016&partsIds=1000942","1000276&partsIds=1001075&partsIds=1000559&partsIds=1000001","1000276&partsIds=1001075&partsIds=1000016&partsIds=1000764","1000276&partsIds=1001086&partsIds=1000016&partsIds=1001080","1000277&partsIds=1001075&partsIds=1000559&partsIds=1000480","1000277&partsIds=1001075&partsIds=1000016&partsIds=1000764","1000277&partsIds=1001086&partsIds=1000016&partsIds=1001080","1000278&partsIds=1001075&partsIds=1000559&partsIds=1000809","1000278&partsIds=1001075&partsIds=1000016&partsIds=1000001","1000278&partsIds=1001075&partsIds=1000016&partsIds=1001010","1000286&partsIds=1001094&partsIds=1000559&partsIds=1000003","1000286&partsIds=1001094&partsIds=1000438&partsIds=1001010","1000286&partsIds=1001087&partsIds=1000438&partsIds=1000968","1000283&partsIds=1000756&partsIds=1000559&partsIds=1000002","1000283&partsIds=1001120&partsIds=1000582&partsIds=1001039","1000283&partsIds=1001128&partsIds=1000582&partsIds=1000711","1000284&partsIds=1001120&partsIds=1000559&partsIds=1000001","1000284&partsIds=1001120&partsIds=1000582&partsIds=1001010","1000284&partsIds=1001139&partsIds=1000582&partsIds=1000711","1000288&partsIds=1001132&partsIds=1000559&partsIds=1000003","1000288&partsIds=1001132&partsIds=1000582&partsIds=1001010","1000288&partsIds=1000981&partsIds=1000582&partsIds=1000968"];
+         var images = new Array();
+         for (i = 0; i < mImgs.length; i++) {
+             images[i] = new Image();
+             images[i].src = imgUrl + mImgs[i];
+         }
+     },
+     reinit: function () {
+         m_offers.removeListeners();          
+         /*eslint-disable no-alert */
+         setTimeout(() => { 
+             m_offers.addListeners(); 
+         }, 500);
+     },
+     init : function () {
+         m_offers.preloadDefaultImgs();
+         m_offers.removeListeners();          
+         /*eslint-disable no-alert */
+         setTimeout(() => { 
+             m_offers.getCookies();
+             m_offers.addVehicleToLeadForm();  
+             m_offers.addListeners(); 
+         }, 500);
+         /*eslint-enable no-alert */            
+     }
+ };       
+ //HashChange Listener
+ var hashchange = {
+     startHashChangeEventListener : function () {
+         if (!"onhashchange" in window) {
+             tsiTest.log('Your browser does not support hash change event!');
+             return;
+         }
+         window.onhashchange = function() {
+             tsiTest.log('window hash change');
+             //Re-init m_offers
+             m_offers.reinit();
+         };
+     }
+ }
+ var tsiTest = {
+     debug : true,
+     account : 'MINIUSA',
+     portfolio : 'miniusa.com',
+     test : 'AB Lead Form Personalization (Offers Page)',
+     creative : 'leadformConfiguratorCookies',
+     leadform_offerBtns: '#OffersLead,.Btn--primary',
+     offersLoading: '.loading',
+     attempts: 0,
+     timer: null,
+     init : function() {
+         tsiTest.log("Test Running...");
+         tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+         tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+
+         tsiTest.elementLoaded(tsiTest.leadform_offerBtns, function() {
+             tsiTest.log("LeadForm and Offer Buttons Ready!");
+             if (window.location.href.indexOf('offers.html') > -1) {
+                 tsiTest.checkIsPageLoaded();
+             }
+         });
+     },
+     checkIsPageLoaded : function () {
+         window.clearTimeout(tsiTest.timer);
+         if($(tsiTest.offersLoading).hasClass('ng-hide')) {                
+             hashchange.startHashChangeEventListener();
+             m_offers.init();
+             if (typeof callback === 'function') {
+                 tsiTest.log('offers page loaded');
+             }
+         } else {
+             if(tsiTest.attempts < 50) {
+                 tsiTest.log('attempt #'+(tsiTest.attempts+1)+' to check page');
+                 tsiTest.timer = window.setTimeout(function() {
+                     tsiTest.checkIsPageLoaded();
+                 }, 100);
+                 tsiTest.attempts++;
+             }
+         }
+     },
+     elementLoaded : function (ele, callback) {
+         tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+         window.clearTimeout(tsiTest.eleTimer);
+         if (document.querySelectorAll(ele).length > 0) {
+             if (typeof callback === 'function') {
+                 tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                 callback();
+             }
+         } else {
+             tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+         }
+     },
+     dependsLoaded : function (callback) {
+         tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+
+         window.clearTimeout(tsiTest.timer);
+         //Check for jQuery and _a object
+         if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+             if (typeof callback === "function") {
+                 tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                 callback();
+             }
+         } else {
+             tsiTest.timer = window.setTimeout(function() {tsiTest.dependsLoaded(callback); }, 100);
+         }
+     },
+     log : function(obj){
+         if(tsiTest.debug === true){
+             console.log(obj);
+         }
+     }
+ }
+ var helpers = {
+     getQueryParam: function(variable) {
+         var query = window.location.search.substring(1);
+         var vars = query.split('&');
+         for (var i = 0; i < vars.length; i++) {
+             var pair = vars[i].split('=');
+             if (decodeURIComponent(pair[0]) == variable) {
+                 return decodeURIComponent(pair[1]);
+             }
+         }
+     },
+ }    
+
+ //Functions used by both pages to access / update / create cookies
+ var m_cookie_management = {
+     createCookie : function (name, value, days) {
+         var date, expires;
+         if (days) {
+             date = new Date();
+             date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+             expires = "; expires=" + date.toGMTString();
+             document.cookie = name + "=" + value + expires + "; path=/; domain=.miniusa.com";
+         } else {;
+             expires = "";
+             document.cookie = name + "=" + value + expires + "; path=/; domain=.miniusa.com";
+         }
+     },
+     readCookie : function (name) {
+         var nameEQ = name + "=";
+         var ca = document.cookie.split(';');
+         for (var i=0; i < ca.length; i++) {
+             var c = ca[i];
+             while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+             if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+         }
+         return null;
+     },
+     eraseCookie : function (name) {
+         m_cookie_management.createCookie(name,"",-1);
+     }
+ };
+
+ //Function to encode and decode
+ //base64 Encode & Decode
+ //MDN Solution
+ var m_b64 = {
+     b64EncodeUnicode : function (str) {
+         return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+             function toSolidBytes(match, p1) {
+                 return String.fromCharCode('0x' + p1);
+         }));
+     },
+     b64DecodeUnicode : function (str) {
+         return decodeURIComponent(atob(str).split('').map(function (c) {
+             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+         }).join(''));
+     }
+ };
+ 
+ tsiTest.dependsLoaded(function(){
+     tsiTest.init();
+ });
+})();
+</script>

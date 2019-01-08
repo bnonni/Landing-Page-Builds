@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CustomerIntelRequest>
+  <RequestorID>BEAM</RequestorID>
+  <RequestDateTime>2018-08-06 12:00:00</RequestDateTime>
+  <RequestType>Group ID</RequestType>
+  <ProfileID></ProfileID>
+  <GroupID>13875553</GroupID>
+  <SerialNumber></SerialNumber>
+  <CustomerContact>
+    <FirstName></FirstName>
+    <MiddleName></MiddleName>
+    <LastName></LastName>
+    <AddressLine1></AddressLine1>
+    <AddressLine2 />
+    <City></City>
+    <StateCD></StateCD>
+    <Zip5></Zip5>
+    <Zip4 />
+    <EmailAddress></EmailAddress>
+    <AMPhoneNumber />
+    <PMPhoneNumber></PMPhoneNumber>
+    <CellPhoneNumber />
+  </CustomerContact>
+  <DocumentID>Production Sample</DocumentID>
+  <DealerID></DealerID>
+  <DealerLocation></DealerLocation>
+  <Brand>
+    <BMW></BMW>
+    <MINI>y</MINI>
+    <Motorrad></Motorrad>
+  </Brand>
+  <RequestedDataCategories>
+    <CustomerMood></CustomerMood>
+    <ProfileInformation>y</ProfileInformation>
+    <OwnershipHistory>y</OwnershipHistory>
+    <PromotionHistory></PromotionHistory>
+    <EventAttendanceHistory></EventAttendanceHistory>
+    <SurveyHistory></SurveyHistory>
+    <ProfileAppendData>y</ProfileAppendData>
+    <CallCenterData></CallCenterData>
+    <ServiceHistoryCustomerPaid></ServiceHistoryCustomerPaid>
+    <ServiceHistoryBMWPaid></ServiceHistoryBMWPaid>
+    <Teleservice></Teleservice>
+    <Telematics></Telematics>
+  </RequestedDataCategories>
+</CustomerIntelRequest>

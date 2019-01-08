@@ -1,0 +1,28 @@
+<style>
+	#mobile-nav, .nav-container, #utility-nav .career-section { display: none !important; }
+</style>
+<script>
+(function() {
+    'use strict';
+    var tsiTest = {
+        debug : false,
+        account : 'Enterprise',
+        portfolio : 'Enterprise.com',
+        test : 'AB 360i US EHI Mobile Optimizations SEM - Brand',
+        creative : 'Page Mobile Optimization',
+        init : function() {
+            tsiTest.log("Test Running...");
+            tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+            tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+        },
+        log : function(obj){
+            if(tsiTest.debug === true){
+                console.log(obj);
+            }
+        }
+    }
+    tsiTest.dependsLoaded(function(){
+        tsiTest.init();
+    });
+})();
+</script>

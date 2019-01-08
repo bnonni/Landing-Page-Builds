@@ -1,0 +1,83 @@
+<style>
+	h1.reservation-toggle-header { display: none; }
+	h1.reservation-toggle-header.alt-static-hdr { display: block; }
+</style>
+<script>
+(function() {
+    'use strict';
+    var tsiTest = {
+        debug : true,
+        account : 'Enterprise',
+        portfolio : 'Enterprise.com',
+        test : '360i City Headline Near Me P2',
+        creative : 'Experience C',
+        reservation_modify_cancel_link: '#viewModifyCancelBookingWidget',
+		reservation_h1: 'h1.reservation-toggle-header',
+		target: '.pick-up-location .location-btn span:nth-child(1)',
+		us_states: {"arizona":"AZ","alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA","kansas":"KS","kentucky":"KY","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI","minnesota":"MN","mississippi":"MS","missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK","oregon":"OR","pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY"},
+		init : function() {
+            tsiTest.log("Test Running...");
+            tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+            tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+
+            tsiTest.elementLoaded(tsiTest.reservation_h1, function() {
+                tsiTest.log("Reservation Header Ready!");
+                tsiTest.addLocalHeadline();
+            
+				tsiTest.elementLoaded(tsiTest.target, function() {
+					tsiTest.log("Use current location link found");
+					tsiTest.useCurrentLocation();
+				});
+            });
+        },   
+        addLocalHeadline : function(){
+            /* Add Local Static Headline to Reservation Widget */
+			var us_city = '${profile.geolocation.city}';
+			var us_state = tsiTest.us_states['${profile.geolocation.state}'];
+			$(tsiTest.reservation_h1).after('<h1 class="left alpha reservation-toggle-header alt-static-hdr">CAR RENTALS IN '+us_city.toUpperCase()+', '+us_state+'</h1>');
+			tsiTest.elementLoaded(tsiTest.reservation_modify_cancel_link, function() {
+				$(tsiTest.reservation_modify_cancel_link).on('click',function(evt){ 
+					$('h1.reservation-toggle-header').toggle();
+				});			
+            });
+        },
+        useCurrentLocation: function(){
+            $(tsiTest.target).click();
+        },
+        elementLoaded : function (ele, callback) {
+            tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+            window.clearTimeout(tsiTest.eleTimer);
+            if (document.querySelectorAll(ele).length > 0) {
+                if (typeof callback === 'function') {
+                    tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                    callback();
+                }
+            } else {
+                tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+            }
+        },
+        dependsLoaded : function (callback) {
+            tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+
+            window.clearTimeout(tsiTest.timer);
+            //Check for jQuery and _a object
+            if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                if (typeof callback === "function") {
+                    tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                    callback();
+                }
+            } else {
+                tsiTest.timer = window.setTimeout(function() { tsiTest.dependsLoaded(callback); }, 100);
+            }
+        },
+        log : function(obj){
+            if(tsiTest.debug === true){
+                console.log(obj);
+            }
+        }
+    }
+    tsiTest.dependsLoaded(function(){
+        tsiTest.init();
+    });
+})();
+</script>

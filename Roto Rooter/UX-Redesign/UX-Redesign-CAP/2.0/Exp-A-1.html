@@ -1,0 +1,229 @@
+<style></style>
+<script>
+var rrCity,rrState,mobileCarrier="${profile.geolocation.mobileCarrier}";
+var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
+try {
+    function triggerEScheduleClicks() {
+		try {
+			adobe.target.trackEvent( {
+				mbox: "ScheduleServiceModuleAppears"
+			});
+		} catch(e) {}
+    }
+    var pnccnt=0;
+    function tallyPhnNumClicks() {
+		try {
+			pnccnt+=1,
+			adobe.target.trackEvent( {
+				mbox:"PhoneNumberClick", params: {
+					PhoneNumberClick: pnccnt
+				}
+			});
+		} catch(e) {}
+    }
+	function removeListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {});
+			$(document).find("button.schedule-service").click(function(c) {});
+			$(document).find(".phone-formatted").click(function(c) {});
+			$(document).find(".market-phones").click(function(c) {});
+			$(document).find(".desktop-header-phone").click(function(c) {});
+			$(document).find(".call-phone-number").click(function(c) {});
+			$(document).find("#nav-phone-number").click(function(c) {});
+			$(document).find(".local-page-phone").click(function(c) {});
+			$(document).find("#mob-call-now").click(function(c) {});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {});
+		} catch(e) {}
+	}
+    function attachListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {
+				triggerEScheduleClicks()
+			});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {
+					triggerEScheduleClicks()
+				});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find("button.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find(".phone-formatted").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".market-phones").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".desktop-header-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".call-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#nav-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".local-page-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#mob-call-now").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {
+				tallyPhnNumClicks();
+			});
+		} catch(e) {}
+    }
+} catch(c) {}
+
+(function() {
+	'use strict';
+	var rrTest = {
+		connectionSpeed: '${profile.geolocation.connectionSpeed}',
+		locationNotFound:false,
+		DOW: '',
+		debug:true,
+		account : 'Roto-Rooter',
+		portfolio : 'rotorooter.com',
+		test : '360i_SEM AB UX Redesign_CAP_120618',
+		cookieName : 'RotoRooter',
+		creative : "Experience A - 1",
+		widget: "",
+		init: function() {
+			rrTest.debug = Boolean(helpers.getQueryParam('debug'));
+
+			rrTest.log("Test Running...");
+			rrTest.log(rrTest.account + " - " + rrTest.portfolio);
+			rrTest.log(rrTest.test + " - " + rrTest.creative);
+
+			rrTest.getDOW();
+
+			//Check to see if the element that we're modifying for the test is present on the page
+			rrTest.elementLoaded(rrTest.widget, function() {
+				rrTest.log("Test 1 Ready!");
+				rrTest.chall();
+			});
+		},
+		chall : function() {
+			
+			//force coupon
+			rrTest.forceCoupon();
+
+			attachListeners();
+		},
+		forceCoupon: function() {
+			var couponContainer = $(document).find('#PPCcoupons');
+			$(couponContainer).find('a.coupon').attr('data-amount','$60 OFF').attr('data-service','Save $60 on Any Plumbing & Drain Cleaning Service').attr('data-galabel','Save $60 on Any Plumbing & Drain Cleaning Service');
+			$(couponContainer).find('a.coupon').find('h3').text("$60 OFF");
+			//Get Span
+			var span = '<span class="btn view-details">'+$(couponContainer).find('a.coupon').find('p span').html()+'</span>';
+			//Update Paragraph and span
+			$(couponContainer).find('a.coupon').find('p').html("Save $60 on Any Plumbing & Drain Cleaning Service" +span);
+		},
+		getDOW: function() {
+		    var d = new Date();
+			switch(d.getDay()) {
+				case 0:
+					rrTest.DOW = 'SUNDAY';
+					break;
+				case 1:
+					rrTest.DOW = 'MONDAY';
+					break;
+				case 2:
+					rrTest.DOW = 'TUESDAY';
+					break;
+				case 3:
+					rrTest.DOW = 'WEDNESDAY';
+					break;
+				case 4:
+					rrTest.DOW = 'THURSDAY';
+					break;
+				case 5:
+					rrTest.DOW = 'FRIDAY';
+					break;
+				case 6:
+					rrTest.DOW = 'SATURDAY';
+					break;
+			};
+		},
+		getGeo: function() {
+			var connectionSpeed = '${profile.geolocation.connectionSpeed}';
+
+			//If on broadband (ie WiFi) then populate the city and state
+			if(connectionSpeed === 'broadband') {
+				adobe.target.trackEvent( {
+					mbox:"LocationIdentified", params: {
+						LocationIdentified: 'YES'
+					}
+				});
+			} else {
+				//If on mobile (ie 4G etc) then use RotoRooter's Session values; If not available then do not populate city/state
+				adobe.target.trackEvent( {
+					mbox:"LocationIdentified", params: {
+						LocationIdentified: 'NO'
+					}
+				});
+			}
+		},
+		elementLoaded : function (ele, callback) {
+			rrTest.log('elementLoaded::  ' + ele + " - Checking...");
+			window.clearTimeout(rrTest.eleTimer);
+			if (document.querySelectorAll(ele).length > 0) {
+				if (typeof callback === 'function') {
+					rrTest.log('elementLoaded::  ' + ele + " - Found!");
+					callback();
+				}
+			} else {
+				rrTest.eleTimer = window.setTimeout(function(){rrTest.elementLoaded(ele, callback);}, 100);
+			}
+		},
+		dependsLoaded : function (callback) {
+			rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Start...");
+
+			window.clearTimeout(rrTest.timer);
+			//Check for jQuery and _a object
+			if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+				if (typeof callback === "function") {
+					rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Ready!");
+					callback();
+				}
+			} else {
+				rrTest.timer = window.setTimeout(function() {
+					rrTest.dependsLoaded(callback);
+				}, 100);
+			}
+		},
+		log : function(obj){
+			if(rrTest.debug === true){
+				console.log(obj);
+			}
+		}
+	}
+
+	var helpers = {
+		getQueryParam: function(variable) {
+	      var query = window.location.search.substring(1);
+	      var vars = query.split('&');
+	      for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	        	return decodeURIComponent(pair[1]);
+	        }
+	      }
+	    }
+	}
+
+	rrTest.dependsLoaded(function(){
+		rrTest.init();
+	});
+})();
+</script>

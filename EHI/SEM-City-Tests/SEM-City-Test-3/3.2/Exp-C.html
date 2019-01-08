@@ -1,0 +1,63 @@
+<style>
+  .hideFlicker{
+    display: none !important;
+  }
+</style>
+<script>
+(function() {
+  'use strict';
+  var tsiTest = {
+    debug : true,
+    account : 'Enterprise',
+    portfolio : 'Enterprise.com',
+    test : 'Enterprise: (360i) City Landing (3.0) (Brand)',
+    creative : 'Experience C',
+    brandURL : 'https://www.enterprise.com/en/car-rental/campaigns/enterprise-cars.html',
+    cityRE :  /((mobile)|(phoenix)|(tucson)|(san_diego)|(los_angeles)|(san_francisco)|(fresno)|(sacramento)|(denver)|(miami)|(orlando)|(tampa)|(jacksonville)|(fort_myers)|(atlanta)|(savannah)|(honolulu)|(maui)|(chicago)|(louisville)|(new_orleans)|(boston)|(st_louis)|(jackson)|(charlotte)|(wilmington)|(raleigh)|(omaha)|(albuquerque)|(las_vegas)|(reno)|(albany)|(brooklyn)|(columbus)|(tulsa)|(oklahoma_city)|(portland)|(columbia)|(charleston)|(greenville)|(nashville)|(memphis)|(knoxville)|(houston)|(san_antonio)|(austin)|(dallas)|(el_paso)|(richmond)|(seattle))a?/i, 
+    cityStates : {'mobile' :	'al', 'phoenix' :	'az', 'tucson' :	'az', 'san-diego' :	'ca', 'los-angeles' :	'ca', 'san-francisco' :	'ca', 'fresno' :	'ca', 'sacramento' :	'ca', 'denver' :	'co','miami' :	'fl', 'orlando' :	'fl', 'tampa' :	'fl', 'jacksonville' :	'fl', 'fort-myers' :	'fl', 'atlanta' :	'ga', 'savannah' :	'ga', 'honolulu' :	'hi', 'maui' :	'hi', 'chicago' :	'il', 'louisville' :	'ky', 'new-orleans' :	'la', 'boston' :	'ma', 'st-louis' :	'mo', 'jackson' :	'ms', 'charlotte' :	'nc', 'wilmington' :	'nc', 'raleigh' :	'nc','omaha' :	'ne', 'albuquerque' :	'nm', 'las-vegas' :	'nv', 'reno' :	'nv', 'albany' :	'ny', 'brooklyn' :	'ny', 'columbus' :	'oh', 'tulsa' :	'ok', 'oklahoma-city' :	'ok', 'portland' :	'or', 'columbia' :	'sc', 'charleston' :	'sc', 'greenville' :	'sc', 'nashville' :	'tn', 'memphis' :	'tn', 'knoxville' :	'tn', 'houston' :	'tx', 'san-antonio' :	'tx', 'austin' :	'tx', 'dallas' :	'tx', 'el-paso' :	'tx', 'richmond' :	'va','seattle' :	'wa'},
+    cityURL : 'https://www.enterprise.com/en/car-rental/locations/us/',
+    city : "", 
+    state : "", 
+    query : window.location.search,
+    variable : "cm_mmc",
+    params : "",
+    init : function() {
+     tsiTest.log("init:: Starting Challenge.")
+     try{
+      if(window.location.href === tsiTest.brandURL + tsiTest.query){
+        $(document).find('body').addClass('hideFlicker');
+        tsiTest.params = helpers.getQueryParam(tsiTest.variable);
+        tsiTest.city = String(tsiTest.params.match(tsiTest.cityRE)[0]);
+        tsiTest.city = tsiTest.city.replace('_', '-');
+        tsiTest.state = tsiTest.cityStates[tsiTest.city];
+        window.location.replace(tsiTest.cityURL + tsiTest.state+'/'+tsiTest.city+'.html' + tsiTest.query);
+      }
+     }catch(e){
+      tsiTest.log(e);
+     }
+    },
+    log : function(obj){
+      if(tsiTest.debug === true){
+        console.log(obj);
+      }
+    }
+  }
+  var helpers = {
+    getQueryParam: function(variable) {
+        var query = window.location.search.substring(1);
+        tsiTest.log('getQueryParam: Searching query: ' + query);
+        var vars = query.split('&');
+        tsiTest.log('getQueryParam: Splitting query: ' + vars);
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          tsiTest.log('forLoop: Splitting ' + pair);
+          if (decodeURIComponent(pair[0]) == variable) {
+           tsiTest.log('if: Found ' + variable);
+           return decodeURIComponent(pair[1]);
+          }
+        }
+      }
+  }
+  tsiTest.init();
+})();
+</script>

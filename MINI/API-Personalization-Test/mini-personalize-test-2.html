@@ -1,0 +1,8 @@
+<script>
+$(function(){
+var dataProvideScript = '<script>var simpleDataProvider = {name: "something",version: "1.0.0",provider: function(callback) {callback(null, {t1: 1});}};window.targetGlobalSettings = {dataProviders: [simpleDataProvider]};<\/script>'
+
+$(document).find('head').before(dataProvideScript);
+
+})();
+</script>

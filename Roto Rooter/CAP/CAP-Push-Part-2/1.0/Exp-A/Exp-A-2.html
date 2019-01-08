@@ -1,0 +1,271 @@
+<style>
+	/* Fix Magnification issue with widget and headers */
+	@media (max-width: 1279px) and (min-width: 1023px) {
+		.hidden-md {
+			display:none !important;
+		}
+	}
+	@media (min-width: 1279px) {
+		.hidden-lg {
+	    display: none!important;
+		}
+	}
+
+	/* Location Pin Class in SubNav */
+	header #blue-bar p {
+		padding-left: 0;
+	}
+	header #blue-bar p svg {
+		width: 32px;
+	}
+	header #blue-bar p span#qualified-city:before {
+		content: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2022%2024%22%3E%3Cpath%20d%3D%22M12%202C8.13%202%205%205.13%205%209c0%205.25%207%2013%207%2013s7-7.75%207-13c0-3.87-3.13-7-7-7zm0%209.5c-1.38%200-2.5-1.12-2.5-2.5s1.12-2.5%202.5-2.5%202.5%201.12%202.5%202.5-1.12%202.5-2.5%202.5z%22%20fill%3D%22%23d52d37%22%3E%3C/path%3E%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E);
+		width: 26px;
+		height: 26px;
+		margin:0;
+		margin-top: -4px;
+		display: inline-block;
+		float: left;
+	}
+	body#ppc-page section#hero #hero-info ul li {
+		font-weight: normal !important;
+	}
+
+	@media (max-width: 767px) {
+		header #blue-bar p svg {
+			width: 14px;
+			height: auto;
+			left: 0;
+			top: 0;
+		}
+		header #blue-bar p span#qualified-city:before {
+			content: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2022%2024%22%3E%3Cpath%20d%3D%22M12%202C8.13%202%205%205.13%205%209c0%205.25%207%2013%207%2013s7-7.75%207-13c0-3.87-3.13-7-7-7zm0%209.5c-1.38%200-2.5-1.12-2.5-2.5s1.12-2.5%202.5-2.5%202.5%201.12%202.5%202.5-1.12%202.5-2.5%202.5z%22%20fill%3D%22%23d52d37%22%3E%3C/path%3E%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E);
+			width: 14px;
+			height: 14px;
+			margin:0;
+			margin-top: 0;
+			display: inline-block;
+			float: left;
+		}
+	}
+</style>
+<script>
+var rrCity,rrState,mobileCarrier="${profile.geolocation.mobileCarrier}";
+var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
+try {
+    function triggerEScheduleClicks() {
+		try {
+			adobe.target.trackEvent( {
+				mbox: "ScheduleServiceModuleAppears"
+			});
+		} catch(e) {}
+    }
+    var pnccnt=0;
+    function tallyPhnNumClicks() {
+		try {
+			pnccnt+=1,
+			adobe.target.trackEvent( {
+				mbox:"PhoneNumberClick", params: {
+					PhoneNumberClick: pnccnt
+				}
+			});
+		} catch(e) {}
+    }
+	function removeListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {});
+			$(document).find("button.schedule-service").click(function(c) {});
+			$(document).find(".phone-formatted").click(function(c) {});
+			$(document).find(".market-phones").click(function(c) {});
+			$(document).find(".desktop-header-phone").click(function(c) {});
+			$(document).find(".call-phone-number").click(function(c) {});
+			$(document).find("#nav-phone-number").click(function(c) {});
+			$(document).find(".local-page-phone").click(function(c) {});
+			$(document).find("#mob-call-now").click(function(c) {});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {});
+		} catch(e) {}
+	}
+    function attachListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {
+				triggerEScheduleClicks()
+			});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {
+					triggerEScheduleClicks()
+				});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find("button.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find(".phone-formatted").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".market-phones").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".desktop-header-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".call-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#nav-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".local-page-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#mob-call-now").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {
+				tallyPhnNumClicks();
+			});
+		} catch(e) {}
+    }
+} catch(c) {}
+
+(function() {
+	'use strict';
+	var rrTest = {
+		connectionSpeed: '${profile.geolocation.connectionSpeed}',
+		locationNotFound:false,
+		DOW: '',
+		debug:true,
+		account : 'Roto-Rooter',
+		portfolio : 'rotorooter.com',
+		test : 'SEM MVT Urgency Price Test 06132018',
+		cookieName : 'RotoRooter',
+		creative : "Experience A",
+		widget: "div.ppc-content h2",
+		widgetHeader: "div.plumbing-80-years",
+		init: function() {
+			rrTest.debug = Boolean(helpers.getQueryParam('debug'));
+
+			rrTest.log("Test Running...");
+			rrTest.log(rrTest.account + " - " + rrTest.portfolio);
+			rrTest.log(rrTest.test + " - " + rrTest.creative);
+
+			//Check to see if the element that we're modifying for the test is present on the page
+			rrTest.elementLoaded(rrTest.widget, function() {
+				rrTest.log("Test 1 Ready!");
+				rrTest.chall();
+			});
+		},
+		chall : function() {
+			removeListeners();
+          	rrTest.getGeo();
+
+			var cityState = rotoRooterApp.session.marketCity + ",&nbsp;" + rotoRooterApp.session.marketState;
+			var city = rotoRooterApp.session.marketCity;
+
+			//Widget Include City
+			/* Update Header Text to include City */
+			/*if(city !== '') {
+				var txt = $(document).find('div.plumbing-80-years span').eq(0).text();
+				txt = txt + " IN "+city.toUpperCase();
+				$(document).find('div.plumbing-80-years span').text(txt);
+			}*/
+
+			//Exp A - Update Subnav to location pin
+			//var svgLocationIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#d52d37"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>';
+			//var locPin = '<p> <span id="qualified-city">'+svgLocationIcon+cityState+'</span> </p>'
+			var locPin = '<p> <span id="qualified-city">'+cityState+'</span> </p>'
+			$(document).find('#blue-bar').html(locPin);
+
+			//force coupon
+			rrTest.forceCoupon();
+
+			attachListeners();
+		},
+		forceCoupon: function() {
+			var couponContainer = $(document).find('#PPCcoupons');
+			$(couponContainer).find('a.coupon').attr('data-amount','$60 OFF').attr('data-service','Save $60 on Any Plumbing & Drain Cleaning Service').attr('data-galabel','Save $60 on Any Plumbing & Drain Cleaning Service');
+			$(couponContainer).find('a.coupon').find('h3').text("$60 OFF");
+			//Get Span
+			var span = '<span class="btn view-details">'+$(couponContainer).find('a.coupon').find('p span').html()+'</span>';
+			//Update Paragraph and span
+			$(couponContainer).find('a.coupon').find('p').html("Save $60 on Any Plumbing & Drain Cleaning Service" +span);
+		},
+		getGeo: function() {
+			var connectionSpeed = '${profile.geolocation.connectionSpeed}';
+
+			//If on broadband (ie WiFi) then populate the city and state
+			if(connectionSpeed === 'broadband') {
+				adobe.target.trackEvent( {
+					mbox:"LocationIdentified", params: {
+						LocationIdentified: 'YES'
+					}
+				});
+			} else {
+				//If on mobile (ie 4G etc) then use RotoRooter's Session values; If not available then do not populate city/state
+				adobe.target.trackEvent( {
+					mbox:"LocationIdentified", params: {
+						LocationIdentified: 'NO'
+					}
+				});
+			}
+		},
+		elementLoaded : function (ele, callback) {
+			rrTest.log('elementLoaded::  ' + ele + " - Checking...");
+			window.clearTimeout(rrTest.eleTimer);
+			if (document.querySelectorAll(ele).length > 0) {
+				if (typeof callback === 'function') {
+					rrTest.log('elementLoaded::  ' + ele + " - Found!");
+					callback();
+				}
+			} else {
+				rrTest.eleTimer = window.setTimeout(function(){rrTest.elementLoaded(ele, callback);}, 100);
+			}
+		},
+		dependsLoaded : function (callback) {
+			rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Start...");
+
+			window.clearTimeout(rrTest.timer);
+			//Check for jQuery and _a object
+			if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+				if (typeof callback === "function") {
+					rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Ready!");
+					callback();
+				}
+			} else {
+				rrTest.timer = window.setTimeout(function() {
+					rrTest.dependsLoaded(callback);
+				}, 100);
+			}
+		},
+		log : function(obj){
+			if(rrTest.debug === true){
+				console.log(obj);
+			}
+		}
+	}
+
+	var helpers = {
+		getQueryParam: function(variable) {
+	      var query = window.location.search.substring(1);
+	      var vars = query.split('&');
+	      for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	        	return decodeURIComponent(pair[1]);
+	        }
+	      }
+	    }
+	}
+
+	rrTest.dependsLoaded(function(){
+		rrTest.init();
+	});
+})();
+</script>

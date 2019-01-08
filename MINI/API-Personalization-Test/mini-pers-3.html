@@ -1,0 +1,17 @@
+<script>
+(function(){
+console.log("init");  
+var dataScript = '<script>var simpleDataProvider = {name: "something",version: "1.0.0",provider: function(callback) {callback(null, {t1: 1});}};window.targetGlobalSettings = {dataProviders: [simpleDataProvider]};<\/script>'
+function jRead(){
+if((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)){
+  console.log("jQuery ready");
+  $(document).find('html').append(dataScript);
+  console.log("Script appended");
+}else{
+  window.setTimeout(function() {
+    jRead();
+      }, 1000)}
+    }
+    jRead();
+  })();
+</script>

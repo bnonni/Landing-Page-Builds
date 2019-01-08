@@ -1,0 +1,115 @@
+<script>
+  (function () {
+      'use strict';
+      var mcusaTest = {
+          debug : true,
+          account : 'MINIUSA',
+          portfolio : 'miniusa.com',
+          test : 'AA Don\'t Fence Me In Button Tracking',
+          active_sliderImageSource: 'li.Slider-slide.is-visible.is-active picture source',
+          activeSlide_buttonFirstChild: 'a.Btn.Btn--black:first-child',
+          attempts: 0,
+          timer: null,
+          init : function() {
+              mcusaTest.log("Test Running...");
+              mcusaTest.log(mcusaTest.account + " - " + mcusaTest.portfolio);
+              mcusaTest.log(mcusaTest.test + " - " + mcusaTest.creative);
+  
+              mcusaTest.elementLoaded(mcusaTest.active_sliderImageSource, function() {
+                  mcusaTest.checkSliderSource(mcusaTest.active_sliderImageSource, function(){
+                      mcusaTest.addDFMIButtonListener();
+                  })
+              });
+          },
+          checkSliderSource : function(ele, callback){
+              window.clearTimeout(mcusaTest.eleTimer);
+              if($(ele).attr('data-srcset').match(/DFMI/i)){
+                  if (typeof callback === "function"){
+                      mcusaTest.log('checkSliderSource::  ' + ele + " - Found!");
+                      callback();
+                  }
+              }else{
+               if(mcusaTest.attempts <= 20){
+                mcusaTest.attempts++;
+                mcusaTest.eleTimer = window.setTimeout(function() {mcusaTest.checkSliderSource(ele, callback); }, 100);
+              }
+             }
+            },
+          addDFMIButtonListener : function(){
+              if($(mcusaTest.activeSlide_buttonFirstChild).attr('data-modal-target').match(/#DFMI_LeadModal/gi)){
+               $(mcusaTest.activeSlide_buttonFirstChild).attr('id', 'modalClickDFMI');
+               $('#modalClickDFMI').on('click', () => {
+                
+               })
+              }
+          },
+          trackDFMIModalClicks : function(){
+           try{
+               //console.log("trackPhnNumClick:: Init tryCatch");
+               adobe.target.trackEvent({
+                   mbox: "HPmodalDFMI-clicked"
+               });
+           }catch(e){mcuseTest.log(e);}
+          },
+          trackDFMIModalFormSubmits : function(){
+           try{
+               adobe.target.trackEvent({
+                   mbox: "HPmodalDFMI-clicked"
+               });
+               //console.log("PhoneNumberClick:: Mbox fired");
+           }catch(e){mcuseTest.log(e);}
+          },
+           elementLoaded : function (ele, callback) {
+              mcusaTest.log('elementLoaded::  ' + ele + " - Checking...");
+              window.clearTimeout(mcusaTest.eleTimer);
+              if (document.querySelectorAll(ele).length > 0) {
+                  if (typeof callback === 'function') {
+                      mcusaTest.log('elementLoaded::  ' + ele + " - Found!");
+                      callback();
+                  }
+              } else {
+               if(mcusaTest.attempts <= 10){
+                mcusaTest.attempts++;
+                mcusaTest.timer = window.setTimeout(function() {mcusaTest.elementLoaded(ele, callback); }, 100);
+              }
+             }
+          },
+          dependsLoaded : function (callback) {
+              mcusaTest.log(mcusaTest.test + " - " + mcusaTest.creative + " - dependsLoaded - Start...");
+              window.clearTimeout(mcusaTest.timer);
+              //Check for jQuery and _a object
+              if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                  if (typeof callback === "function") {
+                      mcusaTest.log(mcusaTest.test + " - " + mcusaTest.creative + " - dependsLoaded - Ready!");
+                      callback();
+                  }
+              } else {
+               if(mcusaTest.attempts <= 5){
+                mcusaTest.attempts++;
+                mcusaTest.timer = window.setTimeout(function() {mcusaTest.dependsLoaded(callback); }, 100);
+               }
+              }
+             },
+             log : function(obj){
+              if(mcusaTest.debug === true){
+               console.log(obj);
+              }
+             }
+            }
+            var helpers = {
+             getQueryParam: function(variable) {
+              var query = window.location.search.substring(1);
+              var vars = query.split('&');
+              for (var i = 0; i < vars.length; i++) {
+               var pair = vars[i].split('=');
+               if (decodeURIComponent(pair[0]) == variable) {
+                return decodeURIComponent(pair[1]);
+               }
+              }
+             },
+            }    
+            mcusaTest.dependsLoaded(function(){
+             mcusaTest.init();
+            });
+           })();
+  </script>

@@ -1,0 +1,47 @@
+<script>
+    function getData(){
+      if((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)){
+             var miniDataProvider = {
+               name: "mini-api",
+               version: "1.0.0",
+               timeout: 2000,
+               provider: function() {
+                 var url = "https://www.miniusa.com/api/reg/track/visitorProfile.action";
+                 var data;
+                 var err;
+                   $.ajax({
+                       type: "GET",
+                       url: url,
+                       dataType: "json",
+                       data: MiniData,
+                       success: function(data) {
+                           console.log("Mini data", MiniData);
+                           miniDataProvider.challenge(MiniData);
+                       },
+                       error: function(err) {
+                           console.log("Error", err);
+                       }
+                   });
+               },
+               challenge : function(MiniData){
+                 console.log("Challenge:: Started.")
+                 console.log(MiniData.user.visitorId);
+                 var spanText = "<span>Hi, " + MiniData.user.visitorId + " Welcome back!</span>";
+                 $(document).find('body > section:nth-child(10) > div:nth-child(1) > div > div > h2 > span:nth-child(2)').replaceWith(spanText);
+                 console.log("Challenge:: ended.")
+               }
+              };
+           window.targetGlobalSettings = {
+               dataProviders: [
+                 miniDataProvider
+               ]
+           }
+        }else{
+          window.setTimeout(function() {
+          getData();
+        
+        }, 1000)}
+      miniDataProvider.provider();
+      }
+      getData();
+     </script>

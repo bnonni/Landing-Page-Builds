@@ -1,0 +1,396 @@
+<style type="text/css">
+    #local-services.exp-c, #local-services.exp-c.mobile { background-color: rgb(226, 230, 242); }
+    #local-services.exp-c #local-services-location, #local-services.exp-c.mobile #local-services-location,
+	#local-services.exp-c .local-services_service_type, #local-services.exp-c.mobile .local-services_service_type { color: #2e3b7b; }
+    #local-services.exp-c .local-services_service_cta { color: #d3303c; }
+    #local-services.exp-c .local-services_service_cta>svg { fill: #d3303c; }
+    #local-services.exp-c .local-services_service_copy { color: #555555; }
+    #local-services-list { justify-content: space-evenly; flex-wrap: wrap; }
+    #local-services { padding: 0; width: 100%; }
+    #local-services-row { font-family: din-condensed-web, 'DIN Condensed Web', din-condensed, Gnuolane, Impact, sans-serif; margin: 0 auto; }
+    #local-services-location { font-size: 28px; line-height: normal; padding: 10px 0 15px 0; text-align: center; }
+    #local-services-list { display: flex; }
+    .local-services_service { padding-bottom: 20px; text-align: center; }
+    .local-services_service_type { font-size: 24px; padding: 12px 0 0 0; text-transform: uppercase; }
+    .local-services_service_cta { font-size: 16px; font-family: acumin-pro, 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 24px; margin-left: 22px; padding-top: 5px; text-transform: uppercase; vertical-align: middle; }
+    .local-services_service_cta:hover { cursor: pointer; }
+    .local-services_service_cta>svg { left: 4px; position: relative; top: -2px; left: -2px; vertical-align: middle; }
+    .local-services-icon { width: 70px; }
+    .local-services_service_copy { font-family: acumin-pro, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; display: none; padding: 20px 5px; }
+    @media (min-width: 1024px) {
+        #local-services-row { width: 64.5rem; }
+        #local-services-list { flex-direction: row; margin: 0 auto; width: 64.5rem; }
+        .local-services_service { flex: 0 1 24%; }
+    }
+    @media (max-width: 1023px) {
+        #local-services-row { padding: 0 24px 0 24px; }
+    }
+    @media (max-width: 756px) {
+		body#ppc-page .content>aside { padding-bottom: 0; }
+		#local-services.exp-c { display: none; }
+		#local-services.exp-c.mobile { display: block; margin: -1px -5% 0 -5%; padding: 0 0 8% 0; width: 110%; }
+		#local-services.exp-c.mobile #local-services-location { font-size: 28px; }
+		#local-services.exp-c.mobile .local-services_service_type { font-size: 22px; }
+        .local-services_service { max-width:100%; flex: 0 1 49%; }
+        body#ppc-page .content>section#reviews h3 { line-height: 30px }
+    }
+</style>
+<style>
+    .hidden { display: none!important; }
+    body#ppc-page .wrapper { padding-top: 4.4rem; }
+    body#ppc-page header { height: 4.4rem; }
+    header #blue-bar div#header-coupon { display: none!important; }
+    body#ppc-page .content>aside, section#main-content, body#ppc-page section#hero, a#back-to-top { display: none!important; }
+    body#ppc-page .content { padding: 0; }
+    
+    body#ppc-page #ppc-phone-number .market-phones a:first-child:nth-last-child(2), body#ppc-page #ppc-phone-number .market-phones a:nth-child(2):last-child, body#ppc-page #ppc-phone-number .market-phones div { color: #2d397d !important; font-size: 1.8rem; text-decoration: none !important; text-decoration-color: rgba(0,0,0,0) !important; border: none !important; position: relative; top: 1px; }
+    body#ppc-page #ppc-phone-number svg:first-child { display: none; }
+    body#ppc-page #ppc-phone-number svg { left: 10px; position: relative; transform: rotate(40deg); top: 2px; width: 25px; }
+
+    section#learn-more-section { background: #ffffff; padding: 0; padding-bottom: 45px; position: relative; }
+    section#learn-more-section div.banner-msg { background: #e2e6f3; color: #2d397d; font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif; font-size: 28px; font-weight: 500; letter-spacing: -0.2px; line-height: 28px; padding: 1.5rem 0.5rem; position: relative; text-align: center; width: 100%; }
+    section#learn-more-section div.banner-msg:after { background: #e2e6f3; bottom: -7.5px;content: ' '; display: block; height: 15px; left: 36%; position: absolute; transform: rotate(45deg); width: 15px; }
+    section#learn-more-section div.list-cta { left: 36%; padding: 0 10px 0 0; position: relative; top: 25px; width: 64%; }
+    section#learn-more-section div.list-cta ol { counter-reset: li;	list-style: none; }
+    section#learn-more-section div.list-cta ol li { counter-increment: li; font-size: 16px; padding: 0; position: relative; margin: 0 0 10px 0; vertical-align: middle; }
+    section#learn-more-section div.list-cta ol li:before { background-color: #2d397d; border-radius: 100px; color: #ffffff; content: counter(li); display: inline-block; height: 20px; left: -25px; margin: -2px 5px 0 0; padding: 1px; position: absolute; text-align: center; top: 1px; vertical-align: middle; width: 20px; }
+    section#learn-more-section div.list-cta a.dark-blue-button { background-color: #2d397d; color: #ffffff; display: block; font-size: 16px; font-weight: 400; padding: 10px 15px; text-align: center; text-transform: uppercase; width: 100%; }
+    section#learn-more-section div.service-tech { bottom: 0; left: -10%; position: absolute; width: 45%; }
+    section#learn-more-section div.service-tech img { width: 100%; }
+
+    section#featured-video { margin-top: -5px; padding-left: 0; padding-right: 0; }
+
+    .youtube-video-wrapper { background: #000; position: relative; padding: 0; }
+    .youtube-video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .youtube-widget-container .overlay { background-color: #000; background-position: 50%; background-repeat: no-repeat; height: 0; padding-bottom: 56.25%; position: relative; }
+    .youtube-widget-container .overlay .play { background-image: url(/images/ICON-play-video.svg); height: 86px; margin-right: -43px; margin-top: -48px; position: absolute; right: 50%; top: 50%;  width: 86px; }
+    .youtube-widget-container #rrvideo { width: 100%; min-height: 350px; margin: 0; padding: 0; position: relative; text-align: center; }
+    .youtube-widget-container #rrvideo div { display: none; }
+    .youtube-widget-container #rrvideo div#main-featured-video { display: block; }
+    .youtube-widget-container #rrvideo div iframe { width: 100%; height: 100%; }
+
+    section#featured-video div.dark-blue.banner.service-number { background: #2d397d; color: #fff; cursor: pointer; display: block; font-size: 1.2rem; font-weight: bold; height: auto; letter-spacing: 0.9px; padding: 3% 0; text-align: center; width: 100%; }
+    section#featured-video div.dark-blue.banner.service-number:before { content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path fill="white" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>'); display: inline-block; height: auto; margin: 0; transform: rotate(40deg); vertical-align: middle; width: auto; }
+
+    section#trusted-banner { background: #e2e6f3; color: #2d397d; font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif; font-size: 2.15rem; font-weight: 500; letter-spacing: -0.2px; line-height: 2rem; padding: 0.75rem 1.5rem; text-align: center; }
+
+    section#recommended-videos { text-align: center; }
+    section#recommended-videos h3 { color: #2d397d; font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif; font-size: 28px; font-weight: 400; letter-spacing: -1.3px; line-height: 28px; margin: 0.5rem 0 1rem 0; text-align: center; }
+    section#recommended-videos ul { list-style: none; margin: 0; padding: 0; text-align: center; }
+    section#recommended-videos ul li { color: #2d397d; display: inline-block; font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif; font-size: 1.3rem; font-weight: 500; height: auto; letter-spacing: -0.7px; width: 32%; }
+    section#recommended-videos ul li a { color: #2d397d !important; }
+    section#recommended-videos ul li a div { background-size: cover; background-position: center; background-repeat: no-repeat; height: 90px; margin: 0 auto 10px auto; width: 90px; }
+
+    section#search-videos { background: #e2e6f3; padding: 0.7rem 1rem; }
+    section#search-videos form#search-videos-form {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    section#search-videos form#search-videos-form input#search-videos-term {
+        border: 0;
+        border-radius: 2px 0 0 2px;
+        display: inline-flex;
+        flex-grow: 2;
+        margin: 0;
+        padding: 4px 8px;
+    }
+    section#search-videos form#search-videos-form button#search-button {
+        background: #fff;
+        border: none;
+        display: inline-flex;
+        flex-grow: 1;
+        margin-left: -1px;
+        max-width: 35px;
+    }
+    body#ppc-page .content>section#reviews { background: #e2e6f3; margin-bottom: 0; margin-top: 2px; text-align: center; }
+    body#ppc-page .content>section#reviews h3 { text-align: center; color: #2d397d; font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif; letter-spacing: -0.2px; font-size: 28px; font-weight: 400; margin: 0; }
+    body#ppc-page .content>section#reviews div.review-slider ul.slick-dots { list-style: none; margin: 0; padding: 0; }
+    body#ppc-page .content>section#reviews div.review-slider ul.slick-dots li { display: inline-block; margin: 0 5px; }
+    body#ppc-page .content>section#reviews blockquote.review .rating { border-top: none; font-size: 1.5rem; }
+    body#ppc-page .content>section#reviews blockquote.review .review-comment, body#ppc-page .content>section#reviews blockquote.review .author-locale { font-size: .975rem; }
+
+    footer { background: #fff; height: 9rem; margin-top: -9rem; text-align: center; }
+    footer h3#social-footer-hdr { color: #2d397d; font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif; font-size: 28px; font-weight: 400; letter-spacing: -0.2px; line-height: 28px; margin: 8px 0 0 0; text-align: center; }
+    
+    @media screen and (min-width: 400px) {
+        section#learn-more-section div.service-tech { bottom: 0; left: -8%; width: 30%; }
+    }
+    @media screen and (min-width: 700px) {
+        section#learn-more-section div.service-tech { bottom: -20px; left: 0; width: 25%; }
+    }       
+    @media screen and (min-width: 756px) {
+        body#ppc-page #ppc-phone-number svg:first-child { display: none; }
+        body#ppc-page .wrapper { padding-top: 6.4rem; }
+        body#ppc-page .content>section { width: 100%; float: none; }
+        body#ppc-page #ppc-phone-number svg { left: 5px; top: 0; }
+        section#learn-more-section div.list-cta ol li:before { padding: 0 1px 5px 0; }
+        footer { height: 19rem; margin-top: -15rem; }
+    }
+    @media screen and (min-width: 1000px) {
+        section#learn-more-section div.service-tech { bottom: -50px; }
+    }
+</style>
+<script type="text/javascript" async>
+try {
+    function triggerEScheduleClicks() {
+        try {
+            adobe.target.trackEvent( {
+                mbox: "ScheduleServiceModuleAppears"
+            });
+        } catch(e) {}
+    }
+    var pnccnt=0;
+    function tallyPhnNumClicks() {
+        try {
+            pnccnt+=1,
+            adobe.target.trackEvent( {
+                mbox:"PhoneNumberClick", params: {
+                    PhoneNumberClick: pnccnt
+                }
+            });
+        } catch(e) {}
+    }
+    function featuredVideoClicks() {
+        try {
+            adobe.target.trackEvent( {
+                mbox: "FeaturedVideoClicked"
+            });
+        } catch(e) {}
+    }
+    function otherVideoClicks() {
+        try {
+            adobe.target.trackEvent( {
+                mbox: "OtherVideoClicked"
+            });
+        } catch(e) {}
+    }
+    function recommendedVideoThumbnailClicks() {
+        try {
+            adobe.target.trackEvent( {
+                mbox: "RecommendedVideoThumbnailClicked"
+            });
+        } catch(e) {}
+    }
+    function ctaButtonClicks() {
+        try {
+            adobe.target.trackEvent( {
+                mbox: "CtaButtonClicked"
+            });
+        } catch(e) {}
+    }
+    function triggerEScheduleClicks() {
+        try {
+            adobe.target.trackEvent( {
+                mbox: "ScheduleServiceModuleAppears"
+            });
+        } catch(e) {}
+    }
+    function searchVideoLibrary (e) {
+        e.preventDefault();
+        var term = $('#search-videos-term').val();
+        window.location.href = '//www.rotorooter.com/plumbing-videos/searchResults.html?q='+term;
+    }
+    function removeListeners() {
+        try {
+            $(document).find(".btn-group-schedule-service-online").click(function(c) {});
+            var c=$(document).find(".btn-red");
+            $.each(c, function(c, n) {
+                "eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {});
+            });
+            $(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service,.phone-formatted,.market-phones,.desktop-header-phone,.call-phone-number,#nav-phone-number,.local-page-phone,#mob-call-now,#local-page-contactus-sticky,#search-button,#rrvideo div,#recommended-videos a,a.dark-blue-button,.dark-blue.banner.service-number").off('click',function(){});
+            $(document).find('#search-videos-form').submit(function(e) {});
+        } catch(e) {}
+    }
+    function attachListeners() {
+        try {
+            $(document).find(".btn-group-schedule-service-online").click(function(c) {
+                triggerEScheduleClicks()
+            });
+            var c=$(document).find(".btn-red");
+            $.each(c, function(c, n) {
+                "eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {
+                    triggerEScheduleClicks()
+                });
+            });
+            $(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service,.phone-formatted,.market-phones,.desktop-header-phone,.call-phone-number,#nav-phone-number,.local-page-phone,#mob-call-now,#local-page-contactus-sticky").click(function(c) {
+                tallyPhnNumClicks();
+            });
+            $('#recommended-videos a').on('click',function() {recommendedVideoThumbnailClicks();});
+            $('a.dark-blue-button').on('click',function(e) { e.preventDefault(); ctaButtonClicks(); window.setTimeout(function(){window.location.href = e.currentTarget.href;},1000); });
+            $('.dark-blue.banner.service-number').on('click',function(e) { e.preventDefault(); tallyPhnNumClicks(); window.setTimeout(function(){ var phnNum = $('.dark-blue.banner.service-number .phone-number').text().trim(); window.location.href = "tel:"+phnNum; },200); });
+            $(document).find('#search-videos-form').submit(function(e) { e.preventDefault(); searchVideoLibrary(e); });
+            $(document).find('#search-button').on('click',function(e) { searchVideoLibrary(e); });
+            
+            window.addEventListener('blur',function(){		
+                if (document.activeElement instanceof HTMLIFrameElement) {
+                    //Click in Iframe.
+                    console.log(document.activeElement.id);
+                    if(document.activeElement.id === 'feature-video') {
+                        featuredVideoClicks();
+                    } else {
+                        otherVideoClicks();
+                    }
+                }
+            });
+        } catch(e) {}
+    }
+} catch(c) {}
+</script>
+<script type="text/javascript" async>
+(function() {
+	'use strict';
+	var rrTest = {
+		connectionSpeed: '${profile.geolocation.connectionSpeed}',
+		cityStateVal:'',
+		cityVal:'',
+        stateVal:'',
+		locationNotFound:false,
+		debug: true,
+        numOfTries: 0,
+        maxTries: 50,
+		account : 'Roto-Rooter',
+		test : '360i_SEM AB 2 Way_Paid Social Test_112618',
+		creative : "ExpA - Paid Social Creative 2",
+		abbrState: {"alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA","kansas":"KS","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI","minnesota":"MN","mississippi":"MS","missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK","oregon":"OR","pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY","district of columbia":"DC"},
+		us_state_name: {"AL":"Alabama","AK":"Alaska" ,"AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming","DC":"District of Columbia"},
+        mblNavPhnNum: ".market-phones a",
+        learnMoreSection:'',  featuredVideo:'', trustedBanner:'', recommendedVideos:'', searchVideos:'', localService:'', socialFtrHdr:'', phnNumber:'', servicesSection:'', servicesMobileSection:'',
+		init: function() {
+			rrTest.log(rrTest.test + " :: " + rrTest.creative);
+            rrTest.numOfTries = 0;
+			rrTest.elementLoaded(rrTest.mblNavPhnNum, function() {
+                removeListeners();
+                rrTest.getGeo();
+                rrTest.chall();
+                attachListeners();
+			});
+		},
+        setHTMLContent : function () {
+            rrTest.learnMoreSection = '<section id="learn-more-section"><div class="banner-msg">How To Get Rid of the<br>Stink in Your Sink</div><div class="list-cta"><ol><li>1 Cup Baking Soda</li><li>1 Cup Vinegar</li>\
+                    </ol><a href="https://www.rotorooter.com/plumbing-videos/kitchen-plumbing-tips/" class="dark-blue-button">Learn More &raquo;</a></div><div class="service-tech"><img src="https://www.rotorooter.com/contentAsset/image/e8c587f5-6cf0-4b37-a23b-02dfc8bf9d80/fileAsset/" alt="Service Tech"></div></section>';
+            rrTest.phnNumber = $(document).find('.market-phones a.visible-xs:first-child').text();
+            rrTest.featuredVideo = '<section id="featured-video"><div class="youtube-video-wrapper"><div id="youtube-widget" class="video-library"><div class="youtube-widget-container"><div id="rrvideo">\
+                                <div id="main-featured-video"><iframe id="feature-video" width="560" height="315" src="https://www.youtube.com/embed/RjOF4ehSIFU?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\
+                                <div id="video1"><iframe id="method-2" width="560" height="315" src="https://www.youtube.com/embed/jzdLnAFJ-8Y?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\
+                                <div id="video2"><iframe id="method-3" width="560" height="315" src="https://www.youtube.com/embed/2vA3DpxofO8?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\
+                                <div id="video3"><iframe id="method-4" width="560" height="315" src="https://www.youtube.com/embed/ivhIXZMdCAE?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>\
+                            </div></div></div><div class="dark-blue banner service-number">CALL TO SCHEDULE: <span class="phone-number">'+rrTest.phnNumber+'</span></div></section>';
+            rrTest.trustedBanner = '<section id="trusted-banner">ROTO-ROOTER, TRUSTED FOR OVER 80 YEARS, CHECK OUT MORE VIDEOS FROM YOUR LOCAL EXPERTS.</section>';
+            rrTest.recommendedVideos = '<section id="recommended-videos"><h3>RECOMMENDED VIDEOS</h3><ul>\
+                <li><a href="#" data-yt="video1"><div style="background-image: url(\'https://i.ytimg.com/vi_webp/jzdLnAFJ-8Y/maxresdefault.webp\');"></div>Method 2</a></li>\
+                <li><a href="#" data-yt="video2"><div style="background-image: url(\'https://i.ytimg.com/vi_webp/2vA3DpxofO8/maxresdefault.webp\');"></div>Method 3</a></li>\
+                <li><a href="#" data-yt="video3"><div style="background-image: url(\'https://i.ytimg.com/vi_webp/ivhIXZMdCAE/maxresdefault.webp\');"></div>Method 4</a></li>\
+                </ul></section>';
+            rrTest.searchVideos = '<section id="search-videos">\
+                <form id="search-videos-form">\
+                    <input id="search-videos-term" placeholder="Search Videos">\
+                    <button id="search-button">\
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg>\
+                    </button>\
+                </form>\
+            </section>';
+            var citystate = (rrTest.cityStateVal !== "" && rrTest.stateVal !== "") ? " "+rrTest.cityVal.toUpperCase()+",&nbsp;"+rrTest.stateVal.toUpperCase() : "";
+            rrTest.localService = '<section id="local-services" class="exp-c mobile"><div id="local-services-row"><div id="local-services-location">ROTO-ROOTER SERVICES IN'+citystate+'</div><div id="local-services-list"><div class="local-services_service"><div><img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/emergency-service-blue.png" /><div class="local-services_service_type">Emergency Service</div></div></div><div class="local-services_service"><div><img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/plumbing-and-drains-blue.png" /><div class="local-services_service_type">Plumbing &amp; Drains</div></div></div><div class="local-services_service"><div><img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/water-cleanup-blue.png" /><div class="local-services_service_type">Water Cleanup</div></div></div><div class="local-services_service"><div><img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/water-heaters-blue.png" /><div class="local-services_service_type">Water Heaters</div></div></div></div></div></section>';
+        },
+        getReviewHdr: function() {
+            var city = (rrTest.cityVal !== "") ? rrTest.cityVal.toUpperCase() + " " : " ";
+            var hdr = '<h3>WHAT '+city+'CUSTOMERS HAVE TO SAY:</h3>';
+            return hdr;
+        },
+        chall : function () {   
+            try {
+                rrTest.setHTMLContent(); 
+                var reviewsHdr = rrTest.getReviewHdr();
+                var socialFtrHdr = '<h3 id="social-footer-hdr">FOLLOW US ON SOCIAL</h3>';
+                $('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path fill="#d52d37" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>').insertAfter('#ppc-phone-number svg');
+                $(rrTest.learnMoreSection).insertAfter('#main-content');
+                $(rrTest.featuredVideo).insertAfter('#learn-more-section');
+                $(rrTest.trustedBanner).insertAfter('#featured-video');
+                $(rrTest.recommendedVideos).insertAfter('#trusted-banner');
+                $('#recommended-videos li a').on('click',function(e) { e.preventDefault(); rrTest.loadYTVideo(e); });
+                $(rrTest.searchVideos).insertAfter('#recommended-videos');
+                $('#reviews').prepend(reviewsHdr);
+                $('<div class="reviews-slider"></div>').insertAfter('#reviews h3');
+                $('#reviews blockquote.review').detach().appendTo('div.reviews-slider');
+                $(rrTest.localService).insertAfter('#reviews');
+                $('footer').prepend(socialFtrHdr);             
+            } catch(e) { rrTest.log(e); }
+        },
+        loadYTVideo: function(e) {
+            var v = $(e.currentTarget).attr('data-yt');
+            $('#rrvideo div').hide();
+            $('#'+v).show();
+        },
+        getGeo : function() {
+            var connectionSpeed = '${profile.geolocation.connectionSpeed}';
+            rrTest.stateVal = rrTest.abbrState['${profile.geolocation.state}'];
+            rrTest.fullStateName = '${profile.geolocation.state}';
+            rrTest.cityStateVal = '${profile.geolocation.city},&nbsp;'+rrTest.stateVal;
+            var cityStr = '${profile.geolocation.city}'
+            rrTest.cityVal = (cityStr !== '') ? cityStr.substring(0,1).toUpperCase() + cityStr.substring(1) : "";
+        },
+		elementLoaded : function(ele, callback) {
+			rrTest.log('elementLoaded::  ' + ele + " - Checking...");
+			window.clearTimeout(rrTest.eleTimer);
+			if (document.querySelectorAll(ele).length > 0 || rrTest.numOfTries >= rrTest.maxTries) {
+				if (typeof callback === 'function') {
+                    if(rrTest.numOfTries >= rrTest.maxTries) {
+					   rrTest.log('elementNotLoaded::  ' + ele + " - Not Found!");
+                    } else {
+					   rrTest.log('elementLoaded::  ' + ele + " - Found!");
+                    }
+					callback();
+				}
+			} else {
+				rrTest.eleTimer = window.setTimeout(function(){rrTest.elementLoaded(ele, callback);}, 100);
+			}
+		},
+		dependsLoaded : function(callback) {
+			rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Start...");
+
+			window.clearTimeout(rrTest.timer);
+			//Check for jQuery and _a object
+			if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+				if (typeof callback === "function") {
+					rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Ready!");
+					callback();
+				}
+			} else {
+				rrTest.timer = window.setTimeout(function() {
+					rrTest.dependsLoaded(callback);
+				}, 100);
+			}
+		},
+		log : function(obj){
+			if(rrTest.debug === true){
+				console.log(obj);
+			}
+		}
+	}
+
+	var helpers = {
+		getQueryParam: function(variable) {
+	      var query = window.location.search.substring(1);
+	      var vars = query.split('&');
+	      for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	        	return decodeURIComponent(pair[1]);
+	        }
+	      }
+	    }
+	}
+
+	rrTest.dependsLoaded(function(){
+		rrTest.init();
+	});
+})();
+</script>

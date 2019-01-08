@@ -1,0 +1,130 @@
+<script>
+    (function (){
+      'use strict';
+    var query, cityURL, brandURL, categoryURL;
+    query = window.location.search;
+    cityURL = "https://www.enterprise.com/en/car-rental/locations/us/ma/boston.html" + query;
+    brandURL = "https://www.enterprise.com/en/car-rental/campaigns/enterprise-cars.html" + query;
+    categoryURL = "https://www.enterprise.com/en/car-rental/campaigns/rent-a-car.html" + query;
+     if(window.location.href === brandURL || window.location.href === categoryURL){     
+        window.location.href = cityURL;
+        exit();
+       }
+    })();
+    </script>
+  <style>
+    h2.reservation-toggle-header.headliner {
+      clear: left;
+      display: block;
+      font-size: 40px;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    h3.reservation-toggle-header.subheadliner {
+      clear: left;
+      display: block;
+      font-size: 18px;
+      font-family: "DINRegular",Arial,Helvetica,sans-serif;
+      margin-top:-10px;
+      padding-top:0;
+    }
+    h3.reservation-toggle-header, h4.reservation-toggle-header {
+      clear: left;
+      display: block;
+      font-size: 24px;
+      padding-top: 18px;
+    }
+    #reservationWidget div.options { padding-top: 18px; }
+    @media (max-width: 48em) {
+      h3.reservation-toggle-header, h4.reservation-toggle-header { padding-top: 0; }
+      h3.reservation-toggle-header.subheadliner { margin-top: -2px; }
+      #reservationWidget div.options { padding-top: 0; }
+    }
+  </style>
+  <script>
+  (function() {
+    'use strict';
+    var isoTest = {
+      debug : false,
+      account : 'Enterprise',
+      portfolio : 'Enterprise.com',
+      test : 'A_B_US_SEM_City_Searchers_Landing_Page_Form_ExpC',
+      cookieName : 'enSEMTemplate',
+      customMbox : 'enSEMTemplate',
+      creative : "A_B_US_SEM_City_Searchers_Landing_Page_Form_Denver",
+      chicklet: 'div.locationChicklet-active',
+      location: 'div.cf.pick-up-location div',
+      init : function() {
+        isoTest.log("Test Running...");
+        isoTest.log(isoTest.account + " - " + isoTest.portfolio);
+        isoTest.log(isoTest.test + " - " + isoTest.creative);
+        isoTest.log("Test Ready! Entering Redirect.");
+          isoTest.elementLoaded(isoTest.chicklet, function() {
+            isoTest.log("Entering chall.")
+                  isoTest.chall();
+                });	
+              },    
+      chall : function() {
+        isoTest.log("Chall:: Started! Checking for jquery.")
+        $(isoTest.chicklet).removeClass();
+          isoTest.log("Chall:: ... addingClass");
+        $(isoTest.location).addClass('locationInput-active');
+          isoTest.log("Chall:: Complete!")
+      },
+      elementLoaded : function (ele, callback) {
+        isoTest.log('elementLoaded::  ' + ele + " - Checking...");
+        window.clearTimeout(isoTest.eleTimer);
+        if (document.querySelectorAll(ele).length > 0) {
+          if (typeof callback === 'function') {
+            isoTest.log('elementLoaded::  ' + ele + " - Found!");
+            callback();
+          }
+            } else {
+                isoTest.eleTimer = window.setTimeout(function(){isoTest.elementLoaded(ele, callback);}, 100);
+            }
+      },
+      dependsLoaded : function (callback) { 
+          isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Start...");
+          
+          window.clearTimeout(isoTest.timer);
+          //Check for jQuery and _a object
+          if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+            if (typeof callback === "function") {
+              
+              isoTest.log(isoTest.test + " - " + isoTest.creative + " - dependsLoaded - Ready!");
+              
+              callback();
+            }
+          } else {
+            isoTest.timer = window.setTimeout(function() {
+              isoTest.dependsLoaded(callback);
+            }, 100);
+          }
+        },
+      log : function(obj){
+        if(isoTest.debug === true){
+          console.log(obj);
+        }
+      }
+      
+    }
+  
+    var helpers = {
+      getQueryParam: function(variable) {
+          var query = window.location.search.substring(1);
+          var vars = query.split('&');
+          for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            if (decodeURIComponent(pair[0]) == variable) {
+              return decodeURIComponent(pair[1]);
+            }
+          }
+        }
+    }
+  
+    isoTest.dependsLoaded(function(){ 
+      isoTest.log("Entering init function.");
+        isoTest.init();
+      });
+  })();
+  </script>

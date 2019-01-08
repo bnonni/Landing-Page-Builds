@@ -1,0 +1,68 @@
+<style>
+  /*.expandWidget { display:inline !important; } open the widget upon landing*/
+  #_content_alamo_en_US_car_rental_home_jcr_content_reservationStart div.field.block.countryOfResidence.expandWidget.span.widgetShow{ display: none !important; }/*hide country of residence field*/
+  #_content_alamo_en_US_car_rental_home_jcr_content_reservationStart fieldset.whereSection{ margin: 0 !important; }/*reduce margin of where section*/
+  #_content_alamo_en_US_car_rental_home_jcr_content_reservationStart fieldset.whereSection legend{  display: none !important; margin: 0 !important; }/*reduce margin of legend an hide heading*/
+  #_content_alamo_en_US_car_rental_home_jcr_content_reservationStart fieldset.whenSection legend{ display: none !important; }/*hide when section heading*/
+  #_content_alamo_en_US_car_rental_home_jcr_content_reservationStart_alamoInsiders div.field.legend-section{ display: none !important; }/*hide Alamo Insiders heading*/
+  div.utilityRail section{ padding: 0 !important; }/*reduce padding of reservation widget*/
+  div.utilityRail dl#buttons, div.utilityRail #buttons { margin: 0 !important; }/*reduce margin on book now button*/
+  .reservationWidget .a-btn-group{ height: 45px !important; }/*reduce height of reservation widget*/
+ </style>
+ <script>
+ (function() {
+  "use strict";
+  var tsiTest = {
+    debug : true,
+    account : "Alamo",
+    portfolio : "Alamo.com",
+    test : "Alamo: (360i) Mobile Widget (2.0)",
+    creative : "Experience B",
+    reservationWidget: "#_content_alamo_en_US_car_rental_home_jcr_content_reservationStart",
+    counter : 0,
+    init : function() {
+      tsiTest.log("Test Running...");
+      tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+      tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+        
+      tsiTest.elementLoaded(tsiTest.reservationWidget, function() {	
+        tsiTest.log("Test Complete! Styles Added.");	
+      });
+    },
+    elementLoaded : function (ele, callback) {
+      tsiTest.log("elementLoaded::  " + ele + " - Checking...");
+      window.clearTimeout(tsiTest.eleTimer);
+      if (document.querySelectorAll(ele).length > 0) {
+        if (typeof callback === "function") {
+          tsiTest.log("elementLoaded::  " + ele + " - Found!");
+          callback();
+        }
+          } else {
+            if(tsiTest.counter <= 5){
+                tsiTest.counter++;
+                tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+            }
+        }
+    },
+    dependsLoaded : function (callback) { 
+        tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+        window.clearTimeout(tsiTest.timer);
+        //Check for jQuery and _a object
+        if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+          if (typeof callback === "function") {
+            tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+            callback();
+          }
+        } else {
+          tsiTest.timer = window.setTimeout(function() {tsiTest.dependsLoaded(callback);}, 100);
+        }
+      },
+    log : function(obj){
+      if(tsiTest.debug === true){
+        console.log(obj);
+      }
+    }
+  }
+  tsiTest.dependsLoaded(function(){ tsiTest.init();});
+ })();
+ </script>

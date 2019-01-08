@@ -1,0 +1,13 @@
+//cityStates = [{"city" : "mobile", "state" : "al"},{"city" : "austin","state" : "tx"}];
+
+ 
+
+
+
+ $.each(data.cityStates, function(index, element){
+
+
+https://www.enterprise.com/en/car-rental/campaigns/enterprise-cars.html?gclid=EAIaIQobChMIwOn2s4n63gIViP_jBx1kxAPtEAAYASAAEgIcy_D_BwE&cm_mmc=Google-_-Brand-_-E_G_US_SE_Geo_B_EXM_NTL_EN_US-_-enterprise_el_paso&targetid=kwd-28370841285&ef_id=EAIaIQobChMIwOn2s4n63gIViP_jBx1kxAPtEAAYASAAEgIcy_D_BwE:G:s&s_kwcid=AL!4824!3!207083683583!e!!g!!enterprise%20el%20paso&at_preview_token=czZoW4Z19SxV5cDvAA%2FJul6o5Hx13KDcEjZhJgmjPQg%3D&at_preview_index=1_3&at_preview_listed_activities_only=true
+
+  https://www.enterprise.com/en/car-rental/campaigns/enterprise-cars.html?gclid=EAIaIQobChMIp7zU0YL43gIVBa_ICh2u-wlVEAAYASAAEgJwkPD_BwE&cm_mmc=Google-_-Brand-_-E_G_US_SE_Geo_B_EXM_NTL_EN_US-_-enterprise_atlanta&targetid=kwd-3706989241&ef_id=EAIaIQobChMIp7zU0YL43gIVBa_ICh2u-wlVEAAYASAAEgJwkPD_BwE:G:s&s_kwcid=AL!4824!3!67537069693!e!!g!!enterprise%20atlanta
+

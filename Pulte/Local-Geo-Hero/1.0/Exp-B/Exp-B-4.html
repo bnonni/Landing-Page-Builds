@@ -1,0 +1,321 @@
+<style>
+	.HeroHomeFull #home-carousel-cta.blue-btn { background: #003048; transition: none; }
+	@media (max-width:767px) {
+		#home-carousel-cta, .HeroHomeFull #home-carousel-cta, .HeroHomeFull .carousel-inner #home-carousel-cta, .HeroHomeFull .carousel-inner .item #home-carousel-cta, .home-carousel #home-carousel-cta { display: block; transition: none; }
+        .HeroHomeFull #home-carousel-cta, .HeroHomeFull .carousel-inner #home-carousel-cta, .HeroHomeFull .carousel-inner .item #home-carousel-cta, .home-carousel #home-carousel-cta { bottom: 14% };
+	}
+</style>
+<style>
+#hero-container { background-color: #e9e9e9; display: flex; position: relative; overflow: hidden; }
+
+#carousel.expB { transition: width 1s; width: 70%; }
+
+#featured-homes { color: #003048; height: calc(100vh - 59px); padding: 10px; padding-top: 15px; transition: width 1s; width: 30%; }
+
+#featured-home h4 { color: #003048; font-size: 0.9em; margin: 0; padding: 0; }
+#featured-home h4.mobile { display: none; }
+#featured-home h4.desktop { display: block; }
+
+#featured-home h3 { color: #003048; font-size: 1.7em; font-weight: bold; margin: 0; padding: 0; text-transform: uppercase; }
+#featured-home h3.neighborhood { color: #003048; cursor: pointer; font-size: 1.7em; font-weight: normal; margin: 15px 0; padding: 0; }
+
+#featured-home a { color: #003048; display: inline-block; }
+
+#featured-home p.address { font-size: .9375em; }
+#featured-home p.address a { display: block; }
+#featured-home p.address a:nth-child(1) { color: #003048; display: inline-block; padding: 0 0 0 20px; position: relative; }
+#featured-home p.address a:nth-child(2) { padding: 5px 0 10px 15px; }
+#featured-home p.address a i.icon-pin-clear-filled { color: #003048; font-size: 20px; left: 0; padding-right: 5px; position: absolute; top: 2px; width: auto; }
+
+#featured-home #slideshow { clear: both; display: block; margin: 0 0 30px 0; padding: 0; position: relative; width: 100%; }
+#featured-home #slideshow:after { content: " "; clear: both; display: block; height: 0; margin: 0; padding: 0; position: relative; width: 100%; }
+
+#featured-home #slideshow div.CommunitySummary-image { margin: 0; padding: 0; }
+
+#featured-home .Carousel.owl-theme .owl-nav { top: calc(50% - 25px); }
+#featured-home #slideshow .Carousel { text-align: center; }
+#featured-home #slideshow .Carousel img { max-width: 100%; }
+
+#featured-home .owl-nav div.owl-prev { left: 0; }
+#featured-home .owl-nav div.owl-next { right: 0; }
+#featured-home .owl-nav div.owl-prev div.prev, #featured-home .owl-nav div.owl-next div.next { color: #ffffff; }
+
+#featured-home p { line-height: normal; font-size: 0.89em; margin: 5px 0; }
+
+#featured-home p.starting-at { padding: 0 0 0 0; }
+#featured-home p.starting-at span.starting-at { font-size: 1.7em; letter-spacing: 0; }
+
+#featured-home a.btn-primary { color: #ffffff; display: block; margin: 20px auto 0 auto; padding: 5px; width: 130px; }
+
+
+@media (min-width: 768px) {
+    #featured-homes { height: calc(100vh - 83px); }
+}
+
+/*1024x550 is tablet mode*/
+@media (max-width: 1024px) {
+    #hero-container { flex-direction: column; }
+    #carousel.expB, #featured-homes { width: 100%; }    
+    #featured-homes { height: auto; padding: 25px; padding-bottom: 45px; position: relative; }
+    #featured-home { width: 50%; }
+    #featured-home #slideshow { position: absolute; right: 20px; top: 30px; width: 45%; }
+    #featured-home p { font-size: 1em; }
+    #featured-home p.starting-at { padding: 0; }
+    #featured-home p.starting-at:after { background-color: #000000; content: " "; display: block; height: 1px; position:relative; width: 85px; }
+}
+
+/*1024x550 is tablet mode*/
+@media (max-width: 768px) {
+    #hero-container { flex-direction: column; }
+    #carousel.expB, #featured-homes { width: 100%; }    
+    #featured-homes { height: auto; padding: 25px; position: relative; }
+    #featured-home { width: 100%; }
+    #featured-home #slideshow { left: 0; margin: 0 auto 10px auto; position: relative; top: 0; width: 100%; }
+    #featured-home p { font-size: 1em; }
+    #featured-home p.starting-at { padding: 0; }
+    #featured-home p.starting-at:after { background-color: #000000; content: " "; display: block; height: 1px; position:relative; width: 85px; }
+    #featured-home a.btn-primary { width: auto; }
+    
+    #featured-home h4.mobile { display: block; }
+    #featured-home h4.desktop { display: none; }
+}
+
+@media (min-width:769px) {    
+    #featured-home a.btn-primary { width: 130px; }
+}
+
+/*1024 Tablet*/
+@media (min-width: 1025px) and (max-height: 800px) {
+    #featured-home #slideshow img.featured-home-carousel-item { max-height: calc(40vh - 128px); margin: 0 auto; width: auto; }
+}
+
+@media (min-width: 1025px) and (max-height: 630px) {
+    #featured-home p.starting-at { padding: 10px 0 0 0; }
+}
+
+@media (min-width: 1025px) and (max-height: 600px) {
+    #featured-home #slideshow img.featured-home-carousel-item { max-height: calc(35vh - 128px); margin: 0 auto; width: auto; }
+}
+
+
+@media (min-width: 1025px) and (max-height: 550px) {
+    #featured-home #slideshow { display: none; }
+}
+
+
+@media (min-width: 1025px) {
+    #hero-container { flex-direction: row; }
+    #carousel.expB { width: 70%; }
+    #featured-homes { height: calc(100vh - 128px); width: 30%; }
+    #featured-home #slideshow img.featured-home-carousel-item { max-height: calc(45vh - 128px); margin: 0 auto; width: auto; }
+}
+
+@media (min-width: 1920px) {
+    #featured-homes { height: calc(100vh - 144px); }
+    #featured-home #slideshow img.featured-home-carousel-item { max-height: calc(50vh - 128px); margin: 0 auto; width: auto; }
+}
+</style>
+<script>
+(function() {
+    'use strict';
+    var tsiTest = {
+        debug : true,
+        account : 'Pulte',
+        portfolio : 'Pulte.com',
+        test : '360i AB Local Geo Hero Test',
+        creative : 'Experience B',
+        heroBtn : '#home-carousel-cta',
+        communityModule : "div.community.row",
+        commReqInfoBtn : "button.btn.btn-default",
+        commImgs : ".community.row .CommunitySummary-image img",
+        communityPageNavButtons : '.CommunityNav__buttons',
+        firstHouse :'',
+        fhImg : '',
+        fhDesc : '',
+        fhDetails : '',
+        fhNeighborhood : '',
+        fhAddress : '',
+        fhPhnNumber : '',
+        fhPrice : '',
+        fhSummary : '',
+        fhButtonRequestInfoBtn : '',
+        fhBtnViewCommunity : '',
+        fhViewCommunityLink : '',
+        requestInfoBtn : '',
+        locName : '',
+        counter : 0,
+		init : function() {
+            tsiTest.log("Test Running...");
+            tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+            tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+
+            tsiTest.elementLoaded(tsiTest.heroBtn, function() {
+                tsiTest.changeBtnToBlue();
+                    tsiTest.elementLoaded('.CommunitySummary-image .owl-item', function(){
+                        tsiTest.addFeaturedCommunitySection();
+                });
+            });
+        },
+        changeBtnToBlue : function() {
+		    $(tsiTest.heroBtn).addClass('blue-btn');
+            $(tsiTest.heroBtn).on('click',tsiTest.trackHPCTAClick);
+        },
+        trackHPCTAClick : function(evt) {
+            try {
+              adobe.target.trackEvent({
+                mbox: "homepageCTAClicks"
+              })
+            } catch(e) {isoTest.log(e);}
+        },
+        //function adds a listener to the request info button on the community page
+        addNewCommPageReqInfoListener : function(){
+          $(tsiTest.commReqInfoBtn).on('click', tsiTest.log("onClick:: initiated"), tsiTest.trackReqInfoClick);
+        },
+        //function to get the community's carousel images
+        getCarouselImages : function(callback){
+            var fhImgOwlItems = $(tsiTest.fhImg).find('.owl-item').not('.owl-item.cloned');
+            tsiTest.log(fhImgOwlItems);
+            var carouselItems = $(fhImgOwlItems).find('.Carousel-modalTrigger img');
+            tsiTest.log(carouselItems);
+            var imgArr = [];
+            for (var j = 0; j < 1; j++) {
+                var cImg = carouselItems[j];
+                var src = $(cImg).attr('data-csrc');
+                var alt = $(cImg).attr('alt');
+                var t = '<img src="'+src+'" alt="'+alt+'" class="featured-home-carousel-item">';
+                imgArr.push(t);
+            }
+            return imgArr;
+        },
+        //function to add in the featured community section
+        addFeaturedCommunitySection : function(){
+            //JS Elements
+            tsiTest.firstHouse = $('.community.row').eq(0);
+            tsiTest.fhDesc = $(tsiTest.firstHouse).find('.CommunitySummary-detailCopy');
+            tsiTest.fhDetails = $(tsiTest.firstHouse).find('.CommunitySummary-grid');
+            tsiTest.fhNeighborhood = $(tsiTest.fhDesc).find('h1').eq(0).text().trim();
+            tsiTest.fhAddress = $(tsiTest.fhDesc).find('p.CommunitySummary-address');
+            tsiTest.fhPhnNumber = $(tsiTest.fhAddress).next();
+            tsiTest.fhPrice = $(tsiTest.fhDetails).eq(0).find('div h4').eq(0).text().trim();            
+            tsiTest.fhSummary = $(tsiTest.fhDesc).find('p:last');
+            tsiTest.fhBtnViewCommunity = $(tsiTest.firstHouse).find('.CommunitySummary-buttons a.btn.btn-primary')[0];
+            tsiTest.fhViewCommunityLink = $(tsiTest.fhBtnViewCommunity).attr('href');
+            tsiTest.fhButtonRequestInfoBtn = $(tsiTest.firstHouse).find('.CommunitySummary-buttons a.btn.btn-default')[0];
+            tsiTest.requestInfoBtn = $(tsiTest.fhButtonRequestInfoBtn).clone();
+            tsiTest.locName = $('.Title.container div.row').eq(0).find('h2');
+
+            //special div
+            var heroContainer = '<div id="hero-container"></div>';
+
+            $(document).find('#carousel').before(heroContainer);
+            //Move Carousel inside the heroContainer
+            $('#hero-container').append($('#carousel'));
+            
+            //Append ExpB class to carousel
+            $('#carousel').addClass('expB');
+
+            var featuredHomes = '<div id="featured-homes"> \n\
+            <div id="featured-home"> \n\
+            <h4 class="desktop">FEATURED NEW HOME COMMUNITY IN</h4> \n\
+            <h3>'+$(tsiTest.locName).text()+'</h3> \
+            <h4 class="mobile">FEATURED NEW HOME COMMUNITY IN</h4> \n\
+            <h3 class="neighborhood">'+tsiTest.fhNeighborhood+'</h3> \n\
+            <p class="address">'+$(tsiTest.fhAddress).html()+' \n\
+            '+$(tsiTest.fhPhnNumber).html()+'</p> \n\
+            <div id="slideshow"></div> \n';
+            if(tsiTest.fhPrice !== undefined && tsiTest.fhPrice !== '') {
+                if(tsiTest.fhPrice.indexOf('$') > -1) {
+                    featuredHomes += '<p class="starting-at">Starting at <span class="starting-at">'+tsiTest.fhPrice+'</span></p> \n';
+                }
+            }
+            featuredHomes += '<p>'+$(tsiTest.fhSummary).html()+'</p> \n\
+            </div> \n\
+            </div>';
+            
+            $('#hero-container').append(featuredHomes);
+            $('#featured-home').append(tsiTest.requestInfoBtn);
+
+            //Make the neighborhood/community name clickable
+            $('#featured-home h3.neighborhood').on('click',function() {
+                location.href = tsiTest.fhViewCommunityLink;
+            });
+
+            $('#featured-home .btn.btn-default').removeClass('btn-default').addClass('btn-primary');
+            $('#featured-home .btn.btn-primary').addClass('local-geo-request-info-btn');
+            $('.btn.btn-primary.local-geo-request-info-btn').off();
+            
+            try {
+                tsiTest.elementLoaded('.CommunitySummary-image', function(){        
+                    tsiTest.fhImg = $(tsiTest.firstHouse).find('.CommunitySummary-image');
+                    //Get images from the carousel
+                    var imgs = tsiTest.getCarouselImages();
+                    //var fhCarousel = '<div class="Carousel owl-theme owl-carousel">';
+                    var fhCarousel = '<div class="Carousel">';
+                    for (var i = 0; i < imgs.length; i++) {
+                        fhCarousel += imgs[i];
+                    }
+                    fhCarousel += '</div>';
+                    $('#featured-home #slideshow').append(fhCarousel);
+                });
+            } catch(e) { tsiTest.log(e); }
+
+            tsiTest.elementLoaded('.local-geo-request-info-btn', function(){    
+              tsiTest.addNewReqInfoListener();
+            });
+        },
+        addNewReqInfoListener : function(){
+          $('.btn.btn-primary.local-geo-request-info-btn').on('click', tsiTest.trackReqInfoClick);
+      },
+        //function tracks info request initiated events once clicked on the community page
+        trackReqInfoClick : function(){
+            try{
+                adobe.target.trackEvent( {
+                    mbox:"requestInfoInitiatedEvent", 
+                });
+            } catch(e) {isoTest.log(e);}
+        },
+        elementLoaded : function (ele1, callback) {
+            tsiTest.log('elementLoaded::  ' + ele1 + " - Checking...");
+            window.clearTimeout(tsiTest.eleTimer);
+            if ((document.querySelectorAll(ele1).length > 0)) {
+                if (typeof callback === 'function') {
+                    tsiTest.log('elementLoaded::  ' + ele1 + " - Found!");
+                    callback();
+                }
+            } else {
+                if(tsiTest.counter <= 5){
+                    tsiTest.counter++;
+                    tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele1,callback);}, 100);
+                }else{
+                  tsiTest.elementLoaded(tsiTest.communityPageNavButtons, function(){    
+                    tsiTest.addNewCommPageReqInfoListener();
+                  });
+                }
+            }
+        },
+        dependsLoaded : function (callback) {
+            tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+
+            window.clearTimeout(tsiTest.timer);
+            
+            //Check for jQuery and _a object
+            if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                if (typeof callback === "function") {
+                    tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                    callback();
+                }
+            } else {
+                tsiTest.timer = window.setTimeout(function() { tsiTest.dependsLoaded(callback); }, 100);
+            }
+        },
+        log : function(obj){
+            if(tsiTest.debug === true){
+                console.log(obj);
+            }
+        }
+    }
+    tsiTest.dependsLoaded(function(){
+        tsiTest.init();
+    });
+})();
+</script>

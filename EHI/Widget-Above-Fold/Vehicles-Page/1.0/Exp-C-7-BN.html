@@ -1,0 +1,133 @@
+<style>
+  #reservationWidget {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .booking-widget div.arrow {
+    margin: 3.5em 4px 1.5em 4px;
+  }
+  .vehicle-page-heading .left {
+    width: 100%;
+}
+  #reservationWidget h2{
+    text-transform: none;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 24px;
+    width: 100%;
+    margin-top: 10%;
+  }
+  div.options.right{
+    margin-top: 9%;
+  }
+  h1.vehicle-page-heading {
+    font-weight: 800;
+    font-style: normal;
+    font-size: 32px;
+    text-transform: uppercase;
+    line-height: 40px;
+    color: #181918;
+  }
+  h3.vehicle-page-heading {
+      font-weight: 300;
+      font-style: normal;
+      font-size: 17px;
+      margin-bottom: 1em;
+      line-height: 1.3;
+      letter-spacing: -0.020em;
+  }
+  .tsi-vehicle {    
+    float: right;
+    width: 43%;
+    margin-right: 2%;
+    margin-top: 14em;
+  }
+  .tsi-blocks {
+    margin: auto;
+  }
+  .tsi-block {    
+    text-align: center;
+  }
+  .tsi-block img {
+    height: auto;
+  }
+  .reserve-widget-band {
+    background: #fff;
+  }
+  .two-up-three-up.section{
+    clear: both;
+  }
+  #reservationWidget > div:first-of-type {
+    float: left;
+      width: 55%;
+  }
+  .reservationWidget {
+    background: #f3f3f3;
+  }
+  #reservationWidget .inner-container, .booking-widget, #reservationWidget .date-time-form, .booking-widget .age-input, .booking-widget .age-input #age, .coupon-field-wrapper, .booking-submit{
+    width: 100%;
+  }
+  #reservationWidget .inner-container > div{
+    padding: 0 3em;
+  }
+  @media (max-width: 80em) {
+    .tsi-blocks {
+      min-height: 0;
+      padding: 0.5em;
+    }
+    .tsi-vehicle.category .tsi-blocks {
+      margin: 0;
+      border-left: 0;
+    }
+  }
+  @media (max-width: 66em) {
+    #reservationWidget > div:first-of-type, .tsi-vehicle {
+      width: 100%;
+      clear: both;
+      float: none;
+      margin: 0;
+    }
+    .tsi-blocks {
+      float: none;
+      clear: both;
+      width: auto;
+    }
+    .tsi-block {
+      margin-top: 10px;
+        float: none;
+        width: auto;
+    }
+  }
+  @media (max-width: 48em){
+    #reservationWidget .date-time-form {
+      width: 94%;
+    }
+    .tsi-block {
+      margin-top: 0;
+    }
+  }
+  @media (max-width: 34em){
+    .tsi-block {
+        margin-top: 0;
+        float: none;
+      clear: both;
+        width: auto;
+    }
+  }
+  </style>
+  <script>
+  
+  var vehicleImg = $(document).find('.vehicle-detail-band__car').html().trim();
+  var vehicleSection = '<section class="tsi-vehicle"><div class="tsi-blocks cf"><div class="tsi-block">'+vehicleImg+'</div></div></section>';
+  $(document).find('#reservationWidget').append(vehicleSection);
+  $(document).find('section.cf').eq(1).insertAfter('section.band.vehicle-page-heading > div.cf');       
+  $(document).find('section.band.vehicle-page-heading > div.cf > div.left').insertBefore('#reservationWidget > div > div:nth-child(3) > div > div.cf > h2');
+  var urlHref = window.location.href;
+  var vanRE = /vans/gi;
+  var suvRE = /suvs/gi;
+  var vehicle = vanRE.test(urlHref) ? 'a Van' : suvRE.test(urlHref) ? 'an SUV' : ' a Car';
+  $(document).find('#reservationWidget h2').html('Start ' + vehicle + ' Reservation');
+ // $(document).find('body > div:nth-child(3) > div.vehicle-detail-band-wrapper').remove();
+ //$('section.band.vehicle-page-heading > div.cf').eq(0).remove();
+  </script>

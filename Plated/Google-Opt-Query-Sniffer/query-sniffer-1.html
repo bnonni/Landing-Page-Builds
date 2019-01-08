@@ -1,0 +1,14 @@
+#Note: This requires us to set up two experiments: an SEM and non-SEM experiment. Based on how Google Experiments works, we can set up an SEM experiment with only one variation 
+so all SEM users will get the same variation. We can then set up a non-SEM experiment with multiple variations, and let Google Experiment auto-set those users into one of two
+variations.
+
+<script src="//www.google-analytics.com/cx/api.js?experiment=YByMKfprRCStcMvK8zh1yw"></script>
+<script>
+  var query = window.location.search; //grabs the URL query 
+  var semExp = RegExp('&utm_campaign=search_evergreen'); //sets the parameter we're looking for in the query
+  if(semExp.test(query)){ //sniffs the query for the SEM parameter
+    cxApi.chooseVariation(sem_experimentId); //if SEM param detected, send these users to the SEM-specific Experiment
+  }else {
+    cxApi.chooseVariation(non_sem_experimentId); //otherwise, send the user to other Experiment and set their cookie to a variation
+  }
+</script>

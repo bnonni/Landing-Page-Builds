@@ -1,0 +1,785 @@
+<style>
+	/*RR Services section CSS - START*/
+		#local-services.exp-c, #local-services.exp-c.mobile {
+				background-color: rgb(226, 230, 242);
+		}
+		
+		#local-services.exp-c.mobile { display: none; }
+
+		#local-services.exp-c #local-services-location, #local-services.exp-c.mobile #local-services-location,
+	#local-services.exp-c .local-services_service_type, #local-services.exp-c.mobile .local-services_service_type
+	{
+				color: #2e3b7b;
+		}
+
+		#local-services.exp-c .local-services_service_cta {
+				color: #d3303c;
+		}
+
+		#local-services.exp-c .local-services_service_cta>svg {
+				fill: #d3303c;
+		}
+
+		#local-services.exp-c .local-services_service_copy {
+				color: #555555;
+		}
+
+		#local-services-list {
+				justify-content: space-evenly;
+				flex-wrap: wrap;
+		}
+
+		#local-services {
+				padding: 0;
+				width: 100%;
+		}
+
+		#local-services-row {
+				font-family: din-condensed-web, 'DIN Condensed Web', din-condensed, Gnuolane, Impact, sans-serif;
+				margin: 0 auto;
+		}
+
+		#local-services-location {
+				font-size: 32px;
+				line-height: normal;
+				padding: 10px 0 15px 0;
+				text-align: center;
+		}
+
+		#local-services-list {
+				display: flex;
+		}
+
+		.local-services_service {
+				padding-bottom: 20px;
+				text-align: center;
+		}
+
+		.local-services_service_type {
+				font-size: 24px;
+				padding: 12px 0 0 0;
+				text-transform: uppercase;
+		}
+
+		.local-services_service_cta {
+				font-size: 16px;
+				font-family: acumin-pro, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				line-height: 24px;
+				margin-left: 22px;
+				padding-top: 5px;
+				text-transform: uppercase;
+				vertical-align: middle;
+		}
+
+		.local-services_service_cta:hover {
+				cursor: pointer;
+		}
+
+		.local-services_service_cta>svg {
+				left: 4px;
+				position: relative;
+				top: -2px;
+				left: -2px;
+				vertical-align: middle;
+		}
+		
+		.local-services-icon { width: 70px; }
+
+		.local-services_service_copy {
+				font-family: acumin-pro, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				/*font-size: 14px;*/
+				font-size: 16px;
+				display: none;
+				padding: 20px 5px;
+		}
+
+		@media (min-width: 1024px) {
+				#local-services-row {
+						width: 64.5rem;
+				}
+
+				#local-services-list {
+						flex-direction: row;
+						margin: 0 auto;
+						width: 64.5rem;
+				}
+
+				.local-services_service {
+						flex: 0 1 24%;
+				}
+		}
+
+		@media (max-width: 1023px) {
+				#local-services-row {
+						padding: 0 24px 0 24px;
+				}
+		}
+
+		@media (max-width: 767px) {
+		body#ppc-page .content>aside { padding-bottom: 0; }
+	
+		#local-services.exp-c { display: none; }
+		#local-services.exp-c.mobile { 
+			display: block;
+			margin: 0 -5%;
+			width: 110%;
+		}
+		
+		#local-services.exp-c.mobile #local-services-location { font-size: 28px; }
+		
+		#local-services.exp-c.mobile .local-services_service_type { font-size: 22px; }
+
+				.local-services_service {
+						max-width:100%;
+			flex: 0 1 49%;
+				}
+		}
+/* RR Services Section - END*/
+/* Fix Magnification issue with widget and headers */
+	@media (max-width: 1279px) and (min-width: 1023px) {
+		.hidden-md {
+			display:none !important;
+		}
+	}
+	@media (min-width: 1279px) {
+		.hidden-lg {
+			display: none!important;
+		}
+	}
+
+	/* Splash Header reduce size on B & D */
+	@media (min-width: 768px) {
+		body#ppc-page .wrapper { padding-top: 10.5rem; }
+		body#ppc-page header { height: 10.5rem; }
+	}
+
+	/* Blue bar on B & D */
+	header #blue-bar, header #blue-bar:before { height: 3rem !important; background-color: #aebede; }
+	header #blue-bar p { font-size: 24px; color: #2e3b7b; padding-left: 0; }
+	header #blue-bar p:before { display: none; }
+
+	/* Background Image for B & D */
+	/*Temp Solution*/
+	/*body#ppc-page.webp section#hero.cap:after, body#ppc-page.nowebp section#hero.cap:after { background: rgba(62,92,173,0.85) !important; background-image: none !important; }*/
+	/*Img Solution*/
+	/*will need to utilize a profile script for this one!!*/
+	body#ppc-page.nowebp section#hero.cap:after, body#ppc-page.webp section#hero.cap:after { background-color: rgba(62,92,173,0.85) !important; background-image: ${user.MapBackground} !important; background-repeat: no-repeat; background-position: center; box-shadow: inset 0 3px 5px rgba(0,0,0,0.2); }
+
+	/* Exp B & C */
+	/* Header */
+	body#ppc-page section#hero .water-cleanup-slogan {
+		font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+	}
+
+	body#ppc-page section#hero div#hero-info h1.price-cut, body#ppc-page section#hero div#hero-info-mobile h1.price-cut {
+		padding-left: .75rem !important;
+		font-size: 4rem;
+		font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+		line-height: 4rem;
+		color: #fff;
+		text-transform: uppercase;
+		text-shadow: 3px 3px 20px rgba(0,0,0,0.92);
+		position: relative;
+		z-index: 2;
+	}
+
+	body#ppc-page section#hero div#hero-info h1.price-cut span.slash-price, body#ppc-page section#hero div#hero-info-mobile h1.price-cut span.slash-price {
+		width: auto;
+		position: relative;
+		display: inline-block;
+	}
+
+	/* For the strike-through price */
+	body#ppc-page section#hero div#hero-info h1.price-cut span.slash-price:before, body#ppc-page section#hero div#hero-info-mobile h1.price-cut span.slash-price:before {
+		content: ' ';
+		width: 110%;
+		border: 5px solid red;
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-radius: 100px;
+		display: block;
+		position: absolute;
+		right: -5px;
+		top: 40%;
+		-webkit-transform: skewY(-10deg);
+		transform: skewY(-20deg);
+	}
+
+	body#ppc-page section#hero div#hero-info h2.plumbing-cleaning-service, body#ppc-page section#hero div#hero-info-mobile h2.plumbing-cleaning-service {
+		width: 70%;
+		padding-left: .75rem;
+		color: #fff;
+		text-transform: uppercase;
+		text-shadow: 3px 3px 20px rgba(0,0,0,0.92);
+		border-top: none;
+		position: relative;
+		z-index: 2;
+	}
+
+	/* H2 B */
+	body#ppc-page section#hero div#hero-info h2.plumbing-cleaning-service, body#ppc-page section#hero div#hero-info-mobile h2.plumbing-cleaning-service { width: 100% !important; }
+
+	/* DOW Header - B & C */
+	body#ppc-page section#hero div#hero-info h3.dow, body#ppc-page section#hero div#hero-info-mobile h3.dow {
+		margin-bottom: 0;
+		padding-left: .75rem;
+		padding-bottom: 0;
+		color: #e1be44;
+		text-transform: uppercase;
+		text-shadow: 3px 3px 20px rgba(0,0,0,0.92);
+		position: relative;
+		z-index: 2;
+	}
+
+	/* guarantee seal section */
+	body#ppc-page section#hero .ppc-page-hero-message.guarantee-seal div#col-xs-12 {
+		margin-top: 10px;
+		position: relative;
+		z-index: 2;
+		color: #fff;
+		vertical-align: middle;
+	}
+
+	body#ppc-page section#hero .ppc-page-hero-message.guarantee-seal div#col-xs-12 img {
+			padding-left: .75rem;
+			vertical-align: middle;
+	}
+
+	body#ppc-page section#hero .ppc-page-hero-message.guarantee-seal div#col-xs-12 span {
+		padding-left: .75rem;
+		font-size: 1.25rem;
+		font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+		font-weight: 200;
+		line-height: 1.5rem;
+		letter-spacing: 0px;
+		text-transform: uppercase;
+		text-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+		vertical-align: middle;
+	}
+
+	/* Phone Number & Location */
+	body#ppc-page #ppc-phone-number .market-phones, body#ppc-page #ppc-phone-number .market-location {
+		margin-left: 1px;
+	}
+
+	body#ppc-page #ppc-phone-number .market-phones a, body#ppc-page #ppc-phone-number .market-location a {
+		font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+		font-size: 30px;
+		font-weight: 400;
+		color: #2d397d;
+		text-decoration: underline;
+	}
+
+	body#ppc-page #ppc-phone-number .market-phones span, body#ppc-page #ppc-phone-number .market-location span {
+		font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+		font-size: 30px;
+		font-weight: 400;
+		margin-left: 1px;
+		text-decoration: none !important;
+	}
+	body#ppc-page #ppc-phone-number .market-phones div, body#ppc-page #ppc-phone-number .market-location div {
+		font-family: din-condensed-web,DIN Condensed Web,din-condensed,Gnuolane,Impact,sans-serif;
+		font-size: 30px;
+		font-weight: 400;
+		color: #2d397d;
+		vertical-align: middle;
+		margin-top: 0.85rem;
+	}
+
+	body#ppc-page #ppc-phone-number i.phone, body#ppc-page #ppc-phone-number i.location {
+		width: 16px;
+	}
+
+	body#ppc-page #ppc-phone-number i svg {
+		height: auto;
+		width: 24px;
+		vertical-align: middle;
+		fill: #d52d37;
+	}
+
+	body#ppc-page #ppc-phone-number i.phone {
+		transform: rotate(40deg);
+		font-weight: bold;
+	}
+
+	body#ppc-page #ppc-phone-number i.location {
+		height: auto;
+		vertical-align: middle;
+		margin: 2px 7px 0;
+		color: #d52d37;
+	}
+
+	body#ppc-page section#hero #hero-info ul li {
+		font-weight: normal !important;
+		text-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+	}
+
+	@media (min-width: 992px) {
+		body#ppc-page section#hero #hero-info h1 {
+			padding-bottom: 0;
+		}
+	}
+
+	@media (max-width: 990px) {
+		header #blue-bar p { margin-top: 10px; }
+	}
+
+	@media (max-width: 767px) {
+		header #blue-bar { height: auto !important; min-height: 3rem; padding-bottom: 10px; }
+		header #blue-bar p { font-size: 16px; margin-top: 10px; }
+
+		/* Exp B Mobile Hdr */
+		body#ppc-page section#hero div#hero-info-mobile {
+			width: 80%;
+			max-width: 29rem;
+			margin: 10% auto 0 auto;
+			display: block;
+			vertical-align: middle;
+		}
+
+		body#ppc-page section#hero div#hero-info h1, body#ppc-page section#hero div#hero-info h2, body#ppc-page section#hero div#hero-info h3, body#ppc-page section#hero div#hero-info-mobile h1, body#ppc-page section#hero div#hero-info-mobile h2, body#ppc-page section#hero div#hero-info-mobile h3		{
+			width: 100% !important;
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+			text-align: center;
+		}
+
+		body#ppc-page section#hero div#hero-info-mobile h1 {
+			margin-bottom: 0;
+			font-weight: normal !important;
+		}
+
+		/* Phone Number and Location Pin */
+		body#ppc-page #ppc-phone-number {
+			text-decoration: none !important;
+			color: #2d397d;
+		}
+
+		body#ppc-page #phonenumber_dsktop, body#ppc-page #location_dsktop, .hidden-xs-down {
+			display: none !important;
+		}
+
+		body#ppc-page #ppc-phone-number .market-phones, body#ppc-page #ppc-phone-number .market-location {
+			margin-left: 1px;
+		}
+
+		body#ppc-page #ppc-phone-number .market-phones a, body#ppc-page #ppc-phone-number .market-location a {
+			margin-left: -4px;
+			font-size: 17px !important;
+			color: #2d397d !important;
+			text-decoration: none;
+		}
+
+		body#ppc-page #ppc-phone-number .market-phones span, body#ppc-page #ppc-phone-number .market-location span {
+			font-size: 17px;
+			margin-left: 1px;
+		}
+
+		body#ppc-page #ppc-phone-number i.location {
+			margin-left: 5px;
+			margin-right: -4px;
+			margin-top: -2px;
+			font-size: 16px;
+		}
+
+		body#ppc-page #ppc-phone-number i.phone {
+			width: 12px;
+			margin-right: 2px;
+			margin-top: -4px;
+		}
+
+		body#ppc-page #ppc-phone-number i.phone svg, body#ppc-page #ppc-phone-number i.location svg {
+			width: 14px;
+		}
+
+		body#ppc-page .tech { display: none; }
+
+		body#ppc-page section#hero #hero-info {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		body#ppc-page section#hero .ppc-page-hero-message.guarantee-seal div#col-xs-12 img {
+				display: block;
+				width: 80%;
+				margin: 0 auto 20px auto;
+				padding-left: 0;
+				vertical-align: middle;
+				text-align: center;
+		}
+
+		body#ppc-page section#hero .ppc-page-hero-message.guarantee-seal div#col-xs-12 span {
+			display: block;
+			width: 100%;
+			margin: 0 auto 10px auto;
+			padding: 0;
+			text-align: center;
+			font-size: 16px;
+		}
+	}
+</style>
+<script>
+var rrCity,rrState,mobileCarrier="${profile.geolocation.mobileCarrier}";
+var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
+try {
+		function triggerEScheduleClicks() {
+		try {
+			adobe.target.trackEvent( {
+				mbox: "ScheduleServiceModuleAppears"
+			});
+		} catch(e) {}
+		}
+		var pnccnt=0;
+		function tallyPhnNumClicks() {
+		try {
+			pnccnt+=1,
+			adobe.target.trackEvent( {
+				mbox:"PhoneNumberClick", params: {
+					PhoneNumberClick: pnccnt
+				}
+			});
+		} catch(e) {}
+		}
+	function removeListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {});
+			$(document).find("button.schedule-service").click(function(c) {});
+			$(document).find(".phone-formatted").click(function(c) {});
+			$(document).find(".market-phones").click(function(c) {});
+			$(document).find(".desktop-header-phone").click(function(c) {});
+			$(document).find(".call-phone-number").click(function(c) {});
+			$(document).find("#nav-phone-number").click(function(c) {});
+			$(document).find(".local-page-phone").click(function(c) {});
+			$(document).find("#mob-call-now").click(function(c) {});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {});
+		} catch(e) {}
+	}
+		function attachListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {
+				triggerEScheduleClicks()
+			});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {
+					triggerEScheduleClicks()
+				});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find("button.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find(".phone-formatted").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".market-phones").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".desktop-header-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".call-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#nav-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".local-page-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#mob-call-now").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {
+				tallyPhnNumClicks();
+			});
+		} catch(e) {}
+		}
+} catch(c) {}
+
+(function() {
+	'use strict';
+	var rrTest = {
+		connectionSpeed: '${profile.geolocation.connectionSpeed}',
+		locationNotFound:false,
+		cityStateVal:'',
+		cityVal:'',
+		stateVal:'',
+		DOW: '',
+		debug:true,
+		account : 'Roto-Rooter',
+		portfolio : 'rotorooter.com',
+		test : 'SEM MVT Urgency Price Test 06132018',
+		cookieName : 'RotoRooter',
+		creative : "Experience B - 1",
+		widget: "div.ppc-content h2",
+		widgetHeader: "div.plumbing-80-years",
+		hero: '#hero',
+		servicesSection: '',
+		servicesMobileSection: '',
+		abbrState: {"alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA","kansas":"KS","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI","minnesota":"MN","mississippi":"MS","missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK","oregon":"OR","pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY","district of columbia":"DC"},
+		us_state_name: {"AL":"Alabama","AK":"Alaska" ,"AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming","DC":"District of Columbia"},
+		init: function() {
+			rrTest.debug = Boolean(helpers.getQueryParam('debug'));
+
+			rrTest.log("Test Running...");
+			rrTest.log(rrTest.account + " - " + rrTest.portfolio);
+			rrTest.log(rrTest.test + " - " + rrTest.creative);
+
+			rrTest.getDOW();
+
+			//Check to see if the element that we're modifying for the test is present on the page
+			rrTest.elementLoaded(rrTest.widget, function() {
+				rrTest.log("Test 1 Ready!");
+				removeListeners();
+				rrTest.getGeo();
+				rrTest.servicesSection = '<section id="local-services" class="exp-c">\
+					<div id="local-services-row">\
+						<div id="local-services-location">ROTO-ROOTER SERVICES IN '+rrTest.cityVal.toUpperCase()+',&nbsp;'+rrTest.stateVal.toUpperCase()+'</div>\
+						<div id="local-services-list">\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/emergency-service-blue.png" />\
+									<div class="local-services_service_type">Emergency Service</div>\
+								</div>\
+							</div>\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/plumbing-and-drains-blue.png" />\
+									<div class="local-services_service_type">Plumbing &amp; Drains</div>\
+								</div>\
+							</div>\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/water-cleanup-blue.png" />\
+									<div class="local-services_service_type">Water Cleanup</div>\
+								</div>\
+							</div>\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/water-heaters-blue.png" />\
+									<div class="local-services_service_type">Water Heaters</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</section>';                
+							rrTest.servicesMobileSection = '<section id="local-services" class="exp-c mobile">\
+					<div id="local-services-row">\
+						<div id="local-services-location">ROTO-ROOTER SERVICES IN '+rrTest.cityVal.toUpperCase()+',&nbsp;'+rrTest.stateVal.toUpperCase()+'</div>\
+						<div id="local-services-list">\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/emergency-service-blue.png" />\
+									<div class="local-services_service_type">Emergency Service</div>\
+								</div>\
+							</div>\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/plumbing-and-drains-blue.png" />\
+									<div class="local-services_service_type">Plumbing &amp; Drains</div>\
+								</div>\
+							</div>\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/water-cleanup-blue.png" />\
+									<div class="local-services_service_type">Water Cleanup</div>\
+								</div>\
+							</div>\
+							<div class="local-services_service">\
+								<div>\
+									<img class="local-services-icon" src="https://rotorooter.com/images/ppc/icons/water-heaters-blue.png" />\
+									<div class="local-services_service_type">Water Heaters</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</section>';
+				rrTest.chall();
+			});
+		},
+		chall : function() {
+			
+
+			var cityState = rotoRooterApp.session.marketCity + "," + rotoRooterApp.session.marketState;
+			var city = rotoRooterApp.session.marketCity;
+
+			//Widget Include City
+			/* Update Header Text to include City */
+			if(city !== '') {
+				var txt = '<img class="svg" alt="80 years icon" src="/80yrs-icon.svg"> <span class="cap">THE EXPERTS YOU\'VE TRUSTED FOR OVER 80 YEARS IN '+city.toUpperCase()+'</span>';
+				$(document).find('div.plumbing-80-years').html(txt);
+			}
+
+			//Hero Background B & D
+			$(document).find('#hero').addClass('cap');
+
+			//B & D
+			//Phone Number Section
+			//Remove previous phone icon
+			$(document).find('#ppc-phone-number svg').remove();
+			//Insert new phone icon
+			var svgPhoneIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
+			var phnNumberIcon = '<i class="phone">'+svgPhoneIcon+'</i>';
+			$(document).find('#ppc-phone-number').prepend(phnNumberIcon);
+			//Insert location piece
+			var svgLocationIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#d52d37"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>';
+			var locationSection = '<i class="location">'+svgLocationIcon+'</i><div class="market-location"> <span class="visible-xs" title="'+cityState +'" data-galabel="Location '+cityState+'">'+cityState+'</span> <div id="location_dsktop" class="hidden-xs hidden-xs-down" title="'+cityState+'" data-galabel="Location '+cityState+'">'+cityState +'</div> </div>';
+			$(document).find('#ppc-phone-number').append(locationSection);
+
+		//B & C Subnav Update - based on experience in Target
+		var dynCopy = '<p> <span>Call Now For Immediate Service - Same Day Service </span> </p>'; //1
+		$(document).find('#blue-bar').html(dynCopy);
+
+			//B & C Header Update
+			var h3 = '<h3 class="dow">'+rrTest.DOW+'\'s offer:</h3>';
+			var h1 = '<h1 class="price-cut">Get <span class="slash-price" aria-label="Old Discount: $40">$40</span> <span aria-label="New Discount: $60">$60</span> OFF TODAY ONLY</h1>';
+			var h2 = '<h2 class="plumbing-cleaning-service">On Any Plumbing or Drain Cleaning Service</h2>';
+			var newHeader = h3 + h1 + h2;
+			var checkmark = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>';
+			var ul = '<ul class="tk-helvetica-neue hidden-xs hidden-xs-down"> <li>'+checkmark+' Free Estimates</li> <li>'+checkmark+' Open 24 Hours, 7 Days a Week</li> <li>'+checkmark+' Trusted &amp; Recommended Since 1935</li> </ul>';
+			var hdrUl = newHeader + ul;
+			$(document).find('body#ppc-page section#hero div#hero-info').html(hdrUl);
+
+			//B Header Before Widget (Mobile Only)
+			var heroMobile = '<div id="hero-info-mobile">'+newHeader+'</div>';
+			$(document).find('#hero-info').prev().find('.panel-default').parent().prepend(heroMobile);
+			//Hide original header on mobile
+			$(document).find('#hero-info').addClass('hidden-xs');
+
+			//B Widget Move Down
+			$(document).find('.ppc-page-hero-message').next().css('marginTop','25px').addClass('hidden-xs');
+
+			//B & D Seal Section
+			var sealsection = '<div class="gutterless-col col-sm-12 col-xs-12 ppc-page-hero-message guarantee-seal">  <div id="col-xs-12"> <img src="https://www.rotorooter.com/images/ppc/maps/plumbing-seal-desktop.png" alt="seal" class="left hidden-xs"><img src="https://www.rotorooter.com/images/ppc/maps/plumbing-seal-mobile.png" alt="seal" class="left hidden-lg hidden-md hidden-sm hidden-sl"><span>Our Professional Experts are Licensed &amp; Insured</span>  </div> </div>';
+			$(document).find('div.gutterless-col.col-sm-6.col-xs-12.ppc-page-hero-message').parent().append(sealsection);
+
+			//add new RR services section
+			$(document).find('#hero').after(rrTest.servicesSection);
+			$(document).find('#PPCcoupons').after(rrTest.servicesMobileSection);
+
+			//force coupon
+			rrTest.forceCoupon();
+
+			attachListeners();
+		},
+		forceCoupon: function() {
+			var couponContainer = $(document).find('#PPCcoupons');
+			$(couponContainer).find('a.coupon').attr('data-amount','$60 OFF').attr('data-service','Save $60 on Any Plumbing & Drain Cleaning Service').attr('data-galabel','Save $60 on Any Plumbing & Drain Cleaning Service');
+			$(couponContainer).find('a.coupon').find('h3').text("$60 OFF");
+			//Get Span
+			var span = '<span class="btn view-details">'+$(couponContainer).find('a.coupon').find('p span').html()+'</span>';
+			//Update Paragraph and span
+			$(couponContainer).find('a.coupon').find('p').html("Save $60 on Any Plumbing & Drain Cleaning Service" +span);
+		},
+		getDOW: function() {
+				var d = new Date();
+			switch(d.getDay()) {
+				case 0:
+					rrTest.DOW = 'SUNDAY';
+					break;
+				case 1:
+					rrTest.DOW = 'MONDAY';
+					break;
+				case 2:
+					rrTest.DOW = 'TUESDAY';
+					break;
+				case 3:
+					rrTest.DOW = 'WEDNESDAY';
+					break;
+				case 4:
+					rrTest.DOW = 'THURSDAY';
+					break;
+				case 5:
+					rrTest.DOW = 'FRIDAY';
+					break;
+				case 6:
+					rrTest.DOW = 'SATURDAY';
+					break;
+			};
+		},
+		getGeo : function() {
+			var connectionSpeed = '${profile.geolocation.connectionSpeed}';
+			rrTest.stateVal = rrTest.abbrState['${profile.geolocation.state}'];
+			rrTest.fullStateName = '${profile.geolocation.state}';
+			rrTest.cityStateVal = '${profile.geolocation.city},&nbsp;'+rrTest.stateVal;
+			var cityStr = '${profile.geolocation.city}'
+			rrTest.cityVal = (cityStr !== '') ? cityStr.substring(0,1).toUpperCase() + cityStr.substring(1) : "";
+			if(connectionSpeed === 'broadband') {
+					adobe.target.trackEvent({mbox:"LocationIdentified", params: {LocationIdentified: 'YES'}});
+			} else {
+					if(rotoRooterApp) {
+							if(rotoRooterApp.session) {
+									rrTest.cityVal = rotoRooterApp.session.marketCity.substring(0,1).toUpperCase() + rotoRooterApp.session.marketCity.substring(1);
+									rrTest.cityStateVal = rrTest.cityVal+",&nbsp;"+rotoRooterApp.session.marketState;
+									rrTest.fullStateName = rrTest.us_state_name[rotoRooterApp.session.marketState];
+							}
+					} else {
+							rrTest.locationNotFound = true;
+							rrTest.cityVal = '';
+							rrTest.cityStateVal = '';
+					}
+					adobe.target.trackEvent({mbox:"LocationIdentified", params: {LocationIdentified: 'NO'}});
+			}
+	},
+		elementLoaded : function (ele, callback) {
+			rrTest.log('elementLoaded::  ' + ele + " - Checking...");
+			window.clearTimeout(rrTest.eleTimer);
+			if (document.querySelectorAll(ele).length > 0) {
+				if (typeof callback === 'function') {
+					rrTest.log('elementLoaded::  ' + ele + " - Found!");
+					callback();
+				}
+			} else {
+				rrTest.eleTimer = window.setTimeout(function(){rrTest.elementLoaded(ele, callback);}, 100);
+			}
+		},
+		dependsLoaded : function (callback) {
+			rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Start...");
+
+			window.clearTimeout(rrTest.timer);
+			//Check for jQuery and _a object
+			if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+				if (typeof callback === "function") {
+					rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Ready!");
+					callback();
+				}
+			} else {
+				rrTest.timer = window.setTimeout(function() {
+					rrTest.dependsLoaded(callback);
+				}, 100);
+			}
+		},
+		log : function(obj){
+			if(rrTest.debug === true){
+				console.log(obj);
+			}
+		}
+	}
+
+	var helpers = {
+		getQueryParam: function(variable) {
+				var query = window.location.search.substring(1);
+				var vars = query.split('&');
+				for (var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split('=');
+					if (decodeURIComponent(pair[0]) == variable) {
+						return decodeURIComponent(pair[1]);
+					}
+				}
+			}
+	}
+
+	rrTest.dependsLoaded(function(){
+		rrTest.init();
+	});
+})();
+</script>

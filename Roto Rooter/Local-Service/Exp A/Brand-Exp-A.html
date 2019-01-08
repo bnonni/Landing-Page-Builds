@@ -1,0 +1,214 @@
+<style>
+  #PPCcoupons a.coupon p span.btn span { font-size: 1.1em; }
+</style>
+<script>
+try {
+  function triggerEScheduleClicks() {
+		try {
+			adobe.target.trackEvent( {
+				mbox: "ScheduleServiceModuleAppears"
+			});
+		} catch(e) {}
+  }
+  var pnccnt=0;
+  function tallyPhnNumClicks() {
+		try {
+			pnccnt+=1,
+			adobe.target.trackEvent( {
+				mbox:"PhoneNumberClick", params: {
+					PhoneNumberClick: pnccnt
+				}
+			});
+		} catch(e) {}
+  }
+  function couponClicked(evt) {
+    var tParent = $(document).find(evt.target).parent().parent();
+    var couponAmt = tParent.attr('data-amount');
+      try {
+        adobe.target.trackEvent({
+          mbox: "couponOpened", params: {
+            couponOpened: couponAmt
+          }
+        })
+      } catch(e) {}
+  }
+	function removeListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {});
+			$(document).find(".phone-formatted").click(function(c) {});
+			$(document).find(".market-phones").click(function(c) {});
+			$(document).find(".desktop-header-phone").click(function(c) {});
+			$(document).find(".call-phone-number").click(function(c) {});
+			$(document).find("#nav-phone-number").click(function(c) {});
+			$(document).find(".local-page-phone").click(function(c) {});
+			$(document).find("#mob-call-now").click(function(c) {});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {});
+      $(document).find('#PPCcoupons').find('a.coupon').off('click',function(){});
+		} catch(e) {}
+	}
+  function attachListeners() {
+		try {
+			$(document).find(".btn-group-schedule-service-online").click(function(c) {
+				triggerEScheduleClicks()
+			});
+			var c=$(document).find(".btn-red");
+			$.each(c, function(c, n) {
+				"eschedule-embedded-form"==$(n).attr("data-gacategory")&&$(n).click(function(c) {
+					triggerEScheduleClicks()
+				});
+			});
+			$(document).find("body#ppc-page section#hero #mPanel.schedule-service-panel > .panel-body-wrap a.schedule-service").click(function(c) {
+				triggerEScheduleClicks();
+			});
+			$(document).find(".phone-formatted").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".market-phones").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".desktop-header-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".call-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#nav-phone-number").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find(".local-page-phone").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#mob-call-now").click(function(c) {
+				tallyPhnNumClicks();
+			});
+			$(document).find("#local-page-contactus-sticky").click(function(c) {
+				tallyPhnNumClicks();
+			});
+      $(document).find('#PPCcoupons').find('a.coupon').on('click',function(evt){couponClicked(evt);});
+		} catch(e) {}
+  }
+} catch(c) {}
+</script>
+<script>
+(function() {
+	'use strict';
+	var rrTest = {
+		connectionSpeed: '${profile.geolocation.connectionSpeed}',
+		cityStateVal:'',
+		cityVal:'',
+    stateVal:'',
+		locationNotFound:false,
+		debug:false,
+		account : 'Roto-Rooter',
+		test : '360i_SEM MVT Coupon Execution 080118',
+		creative : "SEM Brand Coupon CTA Copy",
+		abbrState: {"alabama":"AL","alaska":"AK","arizona":"AZ","arkansas":"AR","california":"CA","colorado":"CO","connecticut":"CT","delaware":"DE","florida":"FL","georgia":"GA","hawaii":"HI","idaho":"ID","illinois":"IL","indiana":"IN","iowa":"IA","kansas":"KS","kentucky":"KY","louisiana":"LA","maine":"ME","maryland":"MD","massachusetts":"MA","michigan":"MI","minnesota":"MN","mississippi":"MS","missouri":"MO","montana":"MT","nebraska":"NE","nevada":"NV","new hampshire":"NH","new jersey":"NJ","new mexico":"NM","new york":"NY","north carolina":"NC","north dakota":"ND","ohio":"OH","oklahoma":"OK","oregon":"OR","pennsylvania":"PA","rhode island":"RI","south carolina":"SC","south dakota":"SD","tennessee":"TN","texas":"TX","utah":"UT","vermont":"VT","virginia":"VA","washington":"WA","west virginia":"WV","wisconsin":"WI","wyoming":"WY","district of columbia":"DC"},
+		us_state_name: {"AL":"Alabama","AK":"Alaska" ,"AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming","DC":"District of Columbia"},
+		phnNumber: rotoRooterApp.session.franchisePhoneNumber,
+		coupon: 'a.coupon',
+
+		init: function() {
+			rrTest.log(rrTest.test + " - " + rrTest.creative);
+
+			rrTest.elementLoaded(rrTest.coupon, function() {
+    		removeListeners();
+  			rrTest.getGeo();
+				rrTest.chall();
+        attachListeners();
+			});
+		},
+		chall : function() {
+      rrTest.updateTxt();
+		},
+    //Experience B, C, H - Should not have extra coupons BUT we need to update the headline, copy and cta
+    updateTxt: function() {
+      //Experience B, C, H
+      //find the coupon in question
+      var coupon = $(document).find('#PPCcoupons').find('a.coupon:first-child');
+	  var amount = coupon.attr('data-amount').replace('$','').replace('GET','').replace('OFF','').replace('\w','').trim();
+      var cta = 'SAVE <span>$'+amount+'</span> TODAY';
+      var arrow = '<i class="tk-material-icons"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"> <path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path> </svg> </i>';
+      coupon.find('p span.btn').html(cta+arrow);
+    },		
+        getGeo : function() {
+            var connectionSpeed = '${profile.geolocation.connectionSpeed}';
+            rrTest.stateVal = rrTest.abbrState['${profile.geolocation.state}'];
+            rrTest.fullStateName = '${profile.geolocation.state}';
+            rrTest.cityStateVal = '${profile.geolocation.city},&nbsp;'+rrTest.stateVal;
+            var cityStr = '${profile.geolocation.city}'
+            rrTest.cityVal = (cityStr !== '') ? cityStr.substring(0,1).toUpperCase() + cityStr.substring(1) : "";
+            if(connectionSpeed === 'broadband') {
+                adobe.target.trackEvent({mbox:"LocationIdentified", params: {LocationIdentified: 'YES'}});
+            } else {
+                if(rotoRooterApp) {
+                    if(rotoRooterApp.session) {
+                        rrTest.cityVal = rotoRooterApp.session.marketCity.substring(0,1).toUpperCase() + rotoRooterApp.session.marketCity.substring(1);
+                        rrTest.cityStateVal = rrTest.cityVal+",&nbsp;"+rotoRooterApp.session.marketState;
+                        rrTest.fullStateName = rrTest.us_state_name[rotoRooterApp.session.marketState];
+                    }
+                } else {
+                    rrTest.locationNotFound = true;
+                    rrTest.cityVal = '';
+                    rrTest.cityStateVal = '';
+                }
+                adobe.target.trackEvent({mbox:"LocationIdentified", params: {LocationIdentified: 'NO'}});
+            }
+        },
+		elementLoaded : function (ele, callback) {
+			rrTest.log('elementLoaded::  ' + ele + " - Checking...");
+			window.clearTimeout(rrTest.eleTimer);
+			if (document.querySelectorAll(ele).length > 0) {
+				if (typeof callback === 'function') {
+					rrTest.log('elementLoaded::  ' + ele + " - Found!");
+					callback();
+				}
+			} else {
+				rrTest.eleTimer = window.setTimeout(function(){rrTest.elementLoaded(ele, callback);}, 100);
+			}
+		},
+		dependsLoaded : function (callback) {
+			rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Start...");
+
+			window.clearTimeout(rrTest.timer);
+			//Check for jQuery and _a object
+			if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+				if (typeof callback === "function") {
+					rrTest.log(rrTest.test + " - " + rrTest.creative + " - dependsLoaded - Ready!");
+					callback();
+				}
+			} else {
+				rrTest.timer = window.setTimeout(function() {
+					rrTest.dependsLoaded(callback);
+				}, 100);
+			}
+		},
+		log : function(obj){
+			if(rrTest.debug === true){
+				console.log(obj);
+			}
+		}
+	}
+
+	var helpers = {
+		getQueryParam: function(variable) {
+	      var query = window.location.search.substring(1);
+	      var vars = query.split('&');
+	      for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	        	return decodeURIComponent(pair[1]);
+	        }
+	      }
+	    }
+	}
+
+	rrTest.dependsLoaded(function(){
+		rrTest.init();
+	});
+})();
+</script>

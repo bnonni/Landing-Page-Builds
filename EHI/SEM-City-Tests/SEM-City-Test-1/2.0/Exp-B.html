@@ -1,0 +1,14 @@
+<script>
+ (function (){
+   'use strict';
+ var query, cityURL, brandURL, categoryURL;
+ query = window.location.search;
+ cityURL = "https://www.enterprise.com/en/car-rental/locations/us/co/denver.html" + query;
+ brandURL = "https://www.enterprise.com/en/car-rental/campaigns/enterprise-cars.html" + query;
+ categoryURL = "https://www.enterprise.com/en/car-rental/campaigns/rent-a-car.html" + query;
+  if(window.location.href === brandURL || window.location.href === categoryURL){
+     window.location.href = cityURL;
+     exit();
+    }
+ })();
+ </script>

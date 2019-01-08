@@ -1,0 +1,947 @@
+<style>
+  html,body {
+      height: 100vh;
+      min-height: 100%;
+  }
+
+  #geobar-mobile-modal,
+  #geobar-mobile-modal.hide,
+  #geobar-mobile-modal.show {
+      display: none;
+  }
+
+  #geobar {
+      width: 100%;
+      background: #000000;
+      color: #ffffff;
+      padding-left: 25px;
+      padding-right: 25px;
+      transition: all .1s ease-in-out;
+      overflow: hidden;
+  }
+
+  #geobar.expanded {
+      height: 252px;
+  }
+
+  #geobar.collasped {
+      height: 40px;
+  }
+
+  #geobar.expanded .flex-container.welcome {
+      width: 100%;
+      max-width: 1500px;
+      height: auto;
+      margin: 0 auto;
+      padding: 0 35px;
+      vertical-align: middle;
+      opacity: 1;
+      visibility: visible;
+      transition: all .2s ease-in-out;
+  }
+
+  #geobar.collasped .flex-container.welcome {
+      width: 100%;
+      max-width: 1500px;
+      height: 0;
+      opacity: 0;
+      visibility: collapse;
+      transition: all .2s ease-in-out;
+  }
+
+  #geobar.collasped .flex-container.dealer-bar {
+      max-width: 1500px;
+      height: auto;
+      margin: 0 auto;
+      vertical-align: middle;
+      opacity: 1;
+      visibility: visible;
+      transition: all .2s ease-in-out;
+  }
+
+  #geobar.expanded .flex-container.dealer-bar {
+      max-width: 1500px;
+      height: 0;
+      opacity: 0;
+      visibility: collapse;
+      transition: all .2s ease-in-out;
+  }
+
+  #geobar .flex-container {
+      display: flex;
+      flex-flow: row wrap;
+      flex: 1 1 auto;
+      justify-content: center;
+      overflow: hidden;
+  }
+
+  #geobar .flex-container .flex-item {
+      width: 50%;
+      min-height: 100%;
+      margin: auto;
+      padding: 60px 0;
+      display: flex;
+      flex: 1 1 auto;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+  }
+
+  #geobar .flex-container.dealer-bar {
+      min-height: 100%;
+      flex-flow: row;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      margin-left: auto;
+      overflow: hidden;
+  }
+
+  #geobar .flex-container.dealer-bar .flex-item {
+      width: auto;
+      min-height: 100%;
+      font-size: 14px;
+      font-family: MiniSans, Arial, sans-serif;
+      padding: 10px 25px 10px 0;
+      flex-direction: row;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      overflow: hidden;
+  }
+
+  #geobar .flex-container.dealer-bar .flex-item span {
+      font-family: MiniSans, Arial, sans-serif;
+      color: #aaa;
+  }
+
+  #geobar .flex-container.dealer-bar .flex-item strong,
+  #geobar .flex-container.dealer-bar .flex-item strong span {
+      font-family: MiniSans, Arial, sans-serif;
+      color: #fff;
+      cursor: pointer;
+  }
+
+  #geobar .flex-container.dealer-bar .flex-item a {
+      color: #fff;
+      text-decoration: underline;
+      cursor: pointer;
+  }
+
+  #geobar h1,
+  #geobar-mobile-modal h1 {
+      margin: 0 0 5px 0;
+      color: #ffffff;
+      font-size: 52px;
+      font-family: MiniSerif,Times,Times New Roman,Georgia,serif;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: normal;
+  }
+  
+  #geobar-mobile-modal h1 { font-size: 42px; }
+
+  #geobar p,
+  #geobar-mobile-modal p {
+      margin-top: 0;
+      color: #8f8f8f;
+      font-size: 19px;
+      font-family: MiniSans, Arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.26;
+      letter-spacing: normal;
+  }
+
+  #geobar p {
+      padding-right: 15%;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      transition: all 5000s ease-in-out 0s;
+      -webkit-text-fill-color: #fff !important;
+  }
+
+  .form-md-geobar {
+      width: 100%;
+      min-height: 100%;
+      margin: 30px auto 30px auto;
+      font-family: MiniSans, Arial, sans-serif;
+      color: #ffffff !important;
+      display: flex;
+      flex: 1 1 auto;
+      justify-content: flex-start;
+      overflow: hidden;
+  }
+
+  .form-md-geobar .form-group-geobar {
+      position: relative;
+      margin-left: auto;
+      margin-right: 3%;
+      margin-bottom: 0;
+      max-width: 200px;
+  }
+
+  input.form-control-geobar {
+      position: relative;
+      display: block;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #DDD;
+      background-color: transparent !important;
+      margin: 0px auto;
+      padding: 20px 0px 0px 0px;
+      height: auto;
+      outline: none !important;
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-size: 20px;
+      background: -webkit-linear-gradient(bottom, #ffffff 50%, #ffffff 50%);
+      background: linear-gradient(to top, #ffffff 50%, #ffffff 50%);
+      background-position: left bottom;
+      background-size: 0 1px;
+      background-repeat: no-repeat;
+      transition: all .1s ease-in-out;
+  }
+
+  ::-webkit-input-placeholder {
+      text-align: right;
+      color: #DDD;
+      font-size: 13px;
+      font-weight: 200;
+  }
+
+  :-moz-placeholder {
+      text-align: right;
+      color: #DDD;
+      font-size: 13px;
+      font-weight: 200;
+  }
+
+  ::-moz-placeholder {
+      text-align: right;
+      color: #DDD;
+      font-size: 13px;
+      font-weight: 200;
+  }
+
+  :-ms-input-placeholder {
+      text-align: right;
+      color: #DDD;
+      font-size: 13px;
+      font-weight: 200;
+  }
+
+  label.form-control-geobar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: left;
+      display: block;
+      width: 100%;
+      height: auto;
+      line-height: 62px;
+      font-family: MiniSans, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 200;
+      text-transform: none;
+      background: transparent !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      margin: 0px auto;
+      cursor: text;
+      transition: all .15s ease-in-out;
+  }
+
+  input.form-control-geobar:hover,
+  input.form-control-geobar:focus {
+      border-color: #ffffff;
+  }
+
+  input.form-control-geobar:invalid {
+      border-color: #ac2430;
+      background: transparent;
+  }
+
+  input.form-control-geobar:focus,
+  input.form-control-geobar:invalid {
+      background-position: left bottom;
+      background-size: 100% 1px;
+  }
+
+  input.form-control-geobar:valid+label.form-control-geobar,
+  input.form-control-geobar:focus+label.form-control-geobar {
+      height: 20px;
+      line-height: 20px;
+      font-size: 11px;
+      color: #ffffff !important;
+  }
+
+  input.form-control-geobar:invalid+label.form-control-geobar,
+  input.form-control-geobar:focus+label.form-control-geobar {
+      height: 20px;
+      line-height: 20px;
+      font-size: 11px;
+      color: #ffffff !important;
+  }
+
+  input.form-control-geobar:focus ::-webkit-input-placeholder {
+      color: transparent !important;
+      font-size: 0;
+  }
+
+  input.form-control-geobar:focus :-moz-placeholder {
+      color: transparent !important;
+      font-size: 0;
+  }
+
+  input.form-control-geobar:focus ::-moz-placeholder {
+      color: transparent !important;
+      font-size: 0;
+  }
+
+  input.form-control-geobar:focus :-ms-input-placeholder {
+      color: transparent !important;
+      font-size: 0;
+  }
+
+  button.form-control-geobar {
+      width: auto;
+      height: auto;
+      max-height: 60px;
+      margin: 0;
+      padding: 18px 40px 15px 40px;
+      background: #ac2430 !important;
+      color: #fff !important;
+      font-size: 16px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+  }
+
+  @media screen and (min-width: 1001px) {
+      body.has-mainnav.expanded, section.expanded {
+          padding-top: 332px;
+      }
+
+      body.has-mainnav.collasped, section.collasped {
+          padding-top: 120px;
+      }
+      
+      section.expanded {
+          padding-top: 100px;
+          top: 100px;
+      }
+
+      section.collasped {
+          padding-top: 90px;
+          top: 90px;
+      }
+      
+      div.ratio-container.expanded, div.ratio-container.collasped {
+          padding-top: 60px;
+          top: 60px;
+      }
+      
+      .dealerLocatorResults.expanded {
+          top: 333px;
+      }
+      
+      .dealerLocatorResults.collasped {
+          top: 120px;
+      }
+      
+      div.offersApp.collasped, div.offersApp.expanded {
+          padding-top: 0px;
+      }
+
+      .SiteHeader.expanded {
+          height: 332px;
+      }
+
+      .SiteHeader.collasped {
+          height: 120px;
+      }
+
+      .SiteSubnav.expanded {
+          top: 332px;
+      }
+
+      .SiteSubnav.collasped {
+          top: 120px;
+      }
+
+      .SiteSubnav.expanded.subnav-fixed,
+      .SiteSubnav.collasped.subnav-fixed {
+          top: 0;
+      }
+  }
+
+  @media screen and (max-width: 1000px) {
+      #geobar {
+          display: none;
+      }
+
+      #geobar-mobile-modal {
+          z-index: 500;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, .9);
+          cursor: pointer;
+          text-align: center;
+          opacity: 1;
+          padding-top: 50px;
+          padding-bottom: 50px;
+          transition: opacity .3s ease-in-out, visibility .3s ease-in-out, z-index .3s ease-in-out;
+      }
+
+      #geobar-mobile-modal.show {
+          display: block;
+      }
+
+      .geobar-mobile-modal-content {
+          width: 85%;
+          cursor: auto;
+          text-align: left;
+          background-color: #000;
+          color: #fff;
+          position: relative;
+          display: inline-block;
+          vertical-align: middle;
+          padding: 25px;
+      }
+
+      .geobar-mobile-modal-inner-content {
+          padding: 2em;
+      }
+
+      .geobar-mobile-modal-inner-content header {
+          width: 100%;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          font-family: MiniSans, Arial, sans-serif;
+      }
+
+      .geobar-mobile-modal-inner-content header #geobar-mobile-modal-close-btn {
+          width: auto;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          color: #fff;
+          text-decoration: none;
+          font-size: 20px;
+          cursor: pointer;
+          position: absolute;
+          right: 15px;
+          top: 15px;
+      }
+
+      .geobar-mobile-modal-inner-content .form-md-geobar {
+          flex-direction: column;
+      }
+
+      .geobar-mobile-modal-inner-content .form-md-geobar .form-group-geobar {
+          margin: 0 0 30px 0;
+          max-width: none;
+      }
+
+      .geobar-mobile-modal-inner-content .form-md-geobar .form-control-geobar.submit {
+          width: 130px;
+          padding: 15px 0;
+      }
+  }
+
+  @media screen and (max-width: 480px) {
+      #geobar-mobile-modal {
+          padding-top: 15px;
+      }
+  }
+
+</style>
+<script>
+  (function() {
+      'use strict';
+      var geobarJS = {
+          prsnData: '',
+          geobarData: '',
+          zip: '',
+          dealername: '',
+          afterNavSection: false,
+          collaspeGeoBar: function(evt) {
+              if (evt.target.id === "mSubmit" || evt.target.id === "mGeobarZipCode") {
+                  geobarJS.zip = $('#mGeobarZipCode').val();
+              } else {
+                  geobarJS.zip = $('#geobarZipCode').val();
+              }
+              /*Update geobar input zip value to override google's autocomplete CSS bug*/
+              geobarJS.updateZip(evt);
+
+              /*Get the dealer information*/
+              geobarJS.getDealerInfo(false, function() {
+                  $(document).find('.SiteHeader,.SiteSubnav,body.has-mainnav, #geobar,div.offersApp,.dealerLocatorResults,div.ratio-container').addClass('collasped').removeClass('expanded');
+              if(geobarJS.afterNavSection) { $(document).find('nav.SiteSubnav').next().addClass('collasped').removeClass('expanded'); }
+                  geobarJS.closeModal(evt);
+              });
+          },
+          closeGeoBar: function(evt) {
+              $(document).find('.SiteHeader,.SiteSubnav,body.has-mainnav,#geobar,div.offersApp,.dealerLocatorResults,div.ratio-container').addClass('collasped').removeClass('expanded');
+          if(geobarJS.afterNavSection) { $(document).find('nav.SiteSubnav').next().addClass('collasped').removeClass('expanded'); }
+          },
+          expandGeoBar: function(evt) {
+              $(document).find('.SiteHeader,.SiteSubnav,body.has-mainnav,#geobar,.dealerLocatorResults,div.offersApp,div.ratio-container').addClass('expanded').removeClass('collasped');                  
+          if(geobarJS.afterNavSection) { $(document).find('nav.SiteSubnav').next().addClass('expanded').removeClass('collasped'); }
+          },
+          closeModal: function(evt) {
+              $('#geobar-mobile-modal').removeClass('show').addClass('hide');
+          },
+          openModal: function(evt) {
+              $('#geobar-mobile-modal').removeClass('hide').addClass('show');
+          },
+          getDealerInfo: function(initialLoad, callback) {
+              var u = 'https://www.miniusa.com/api/dealer/dealerLookup.action?offeringtypes=N,R&returnall=false&zip=' + geobarJS.zip;
+              $.ajax({
+                      url: u,
+                      dataType: 'json',
+                      cache: false
+                  })
+                  .done(function(results) {
+                      if (results.length > 0) {
+                          geobarJS.dealername = results[0].name;
+                          $('#dealer-name').text(geobarJS.dealername);
+                          $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').parent().find('span').text(geobarJS.zip).css('textDecoration', 'underline');
+                          if (geobarJS.prsnData !== '' && geobarJS.prsnData !== null && !initialLoad) {
+                              geobarJS.prsnData.user.zip.ip = geobarJS.zip;
+                              geobarJS.geobarData.user.zip.ip = geobarJS.zip;
+                              geobarJS.updateLocalStorage();
+                              if(window.location.href.indexOf('find-a-dealer.html') > -1) {
+                                  location.replace('https://www.miniusa.com/tools/shopping/find-a-dealer.html#/map/zip/'+geobarJS.zip);
+                              }
+                          }
+                      }
+                      if (typeof callback === 'function') {
+                          callback();
+                      }
+                  })
+                  .fail(function(jqXHR, err) {
+                      tsiTest.log(err);
+                      if (typeof callback === 'function') {
+                          callback();
+                      }
+                  });
+          },
+          updateLocalStorage: function(callback) {
+              if (geobarJS.prsnData !== '' && geobarJS.prsnData !== null) {
+                  localStorage.setItem('Mini.Prsn', JSON.stringify(geobarJS.prsnData));
+              }
+              if (geobarJS.geobarData !== '' && geobarJS.geobarData !== null) {
+                  localStorage.setItem('Mini.GeoBar', JSON.stringify(geobarJS.geobarData));
+              }
+              if (typeof callback === 'function') {
+                  callback();
+              }
+          },
+          localStorageCheck: function(ls, cnt, callback) {
+              tsiTest.log('localStorageLoaded::  ' + ls + " - Checking...");
+              window.clearTimeout(tsiTest.lsTimer);
+              var lsi = localStorage.getItem(ls);
+              if (lsi !== null && lsi !== '') {
+                  if (typeof callback === 'function') {
+                      tsiTest.log('localStorageLoaded::  ' + ls + " - Found!");
+                      callback();
+                  }
+              } else {
+                  /*If the ls doesn't exist then return; don't try to forever find an ls that doesn't exist*/
+                  if (cnt < 5) {
+                      cnt = cnt + 1;
+                      tsiTest.lsTimer = window.setTimeout(function() {
+                          geobarJS.localStorageCheck(ls, cnt, callback);
+                      }, 100);
+                  } else {
+                      if (typeof callback === 'function') {
+                          callback();
+                      }
+                  }
+              }
+          },
+          getLocalStorage: function(callback) {
+              try {
+                  var prsn, gbd, hasData = false,
+                      tempZip = '${profile.geolocation.zip}';
+                  /*10 attempts to get the local storage*/
+                  geobarJS.localStorageCheck('Mini.Prsn', 0, function() {
+                      prsn = localStorage.getItem('Mini.Prsn');
+
+                      geobarJS.localStorageCheck('Mini.GeoBar', 0, function() {
+                          gbd = localStorage.getItem('Mini.GeoBar');
+
+                          if (!gbd || gbd == null || gbd == '') {
+                              if (prsn || prsn != null || prsn != '') {
+                                  geobarJS.prsnData = JSON.parse(prsn);
+                                  geobarJS.geobarData = JSON.parse(prsn);
+                                  if (geobarJS.geobarData != null) {
+                                      /*Creating first instance of the Geobar local storage; use information from the person data;*/
+                                      localStorage.setItem('Mini.GeoBar', JSON.stringify(geobarJS.prsnData));
+                                      if (geobarJS.geobarData.user) {
+                                          /*Get Zipcode*/
+                                          geobarJS.zip = geobarJS.geobarData.user.zip.ip;
+                                          hasData = true;
+                                      }
+                                  } else {
+                                      tsiTest.log('Prsn Data is not available; Using default');
+                                      geobarJS.zip = tempZip;
+                                      geobarJS.geobarData = JSON.parse('{"config":{"last":{}},"model":{"last":"Hardtop","preferred":["Hardtop"],"tally":{"Convertible":0,"Hardtop4DR":0,"Clubman":0,"Countryman":0,"Hardtop":0},"isTie":false,"hasMoi":true},"trim":{"last":"cooperconvertible","preferred":["cooper"],"tally":{"jcwcountryman":0,"coopercountrymanall4":0,"coopershardtop4":0,"coopercountryman":0,"jcwhardtop":0,"cooperconvertible":0,"coopers":0,"jcwclubman":0,"cooper":0}},"user":{"interactions":{"offer_search":{"Total":1},"config_start":{"Convertible":0,"Hardtop4DR":0,"Clubman":0,"Countryman":0,"Total":0,"Hardtop":0},"model_page":{"Convertible":0,"Hardtop4DR":0,"Clubman":0,"Countryman":0,"Hardtop":0}},"state":"lead","tos":0,"visitorId":0,"visits":0,"zip":{"ip":"' + tempZip + '"},"isUnknown":false,"isLead":false,"isHandraiser":false,"isRepeat":false}}');
+                                      localStorage.setItem('Mini.GeoBar', JSON.stringify(geobarJS.geobarData));
+                                      hasData = true;
+                                  }
+                              } else {
+                                  tsiTest.log('Mini.Prsn data not available; Using default');
+                                  geobarJS.zip = tempZip;
+                                  geobarJS.geobarData = JSON.parse('{"config":{"last":{}},"model":{"last":"Hardtop","preferred":["Hardtop"],"tally":{"Convertible":0,"Hardtop4DR":0,"Clubman":0,"Countryman":0,"Hardtop":0},"isTie":false,"hasMoi":true},"trim":{"last":"cooperconvertible","preferred":["cooper"],"tally":{"jcwcountryman":0,"coopercountrymanall4":0,"coopershardtop4":0,"coopercountryman":0,"jcwhardtop":0,"cooperconvertible":0,"coopers":0,"jcwclubman":0,"cooper":0}},"user":{"interactions":{"offer_search":{"Total":1},"config_start":{"Convertible":0,"Hardtop4DR":0,"Clubman":0,"Countryman":0,"Total":0,"Hardtop":0},"model_page":{"Convertible":0,"Hardtop4DR":0,"Clubman":0,"Countryman":0,"Hardtop":0}},"state":"lead","tos":0,"visitorId":0,"visits":0,"zip":{"ip":"' + tempZip + '"},"isUnknown":false,"isLead":false,"isHandraiser":false,"isRepeat":false}}');
+                                  localStorage.setItem('Mini.GeoBar', JSON.stringify(geobarJS.geobarData));
+                                  hasData = true;
+                              }
+                          } else if (gbd) {
+                              geobarJS.geobarData = JSON.parse(gbd);
+                              if (geobarJS.geobarData.user) {
+                                  /*Get Zipcode*/
+                                  geobarJS.zip = geobarJS.geobarData.user.zip.ip;
+                                  hasData = true;
+                              }
+                              /*Get Person Data*/
+                              if (prsn) {
+                                  geobarJS.prsnData = JSON.parse(prsn);
+                                  geobarJS.prsnData.user.zip.ip = geobarJS.zip;
+                              }
+                          }
+                          if (hasData) {
+                              geobarJS.updateZip();
+                              geobarJS.getDealerInfo(true, callback);
+                          }
+                      });
+                  });
+
+              } catch (e) {
+                  tsiTest.log(e);
+              }
+              if (typeof callback === 'function') {
+                  callback();
+              }
+          },
+          updateZip: function(callback) {
+              $('#currentZipCode').text(geobarJS.zip);
+              /*Update form values*/
+              $('#geobarZipCode').val(geobarJS.zip);
+              $('#mGeobarZipCode').val(geobarJS.zip);
+              $(document).find('input[name="zip"]').val(geobarJS.zip);
+          },
+          loadLocalStorage: function(callback) {
+              geobarJS.getLocalStorage();
+              if (typeof callback === 'function') {
+                  callback();
+              }
+          },
+          validZip: function(zipcode) {
+              var zip = parseInt(zipcode);
+              var singleZips = [3217, 5751, 7039, 24517, 25813, 27565, 29020, 49036, 58282, 59044, 82941, 83254];
+              var singleFound = $.inArray(zip, singleZips);
+              if (singleFound != -1) {
+                  return true;
+              }
+              //Check ZipCode Ranges
+              if ((zip >= 2101 && zip <= 2137) || (zip >= 2840 && zip <= 2841) || (zip >= 4032 && zip <= 4034) || (zip >= 6101 && zip <= 6112) || (zip >= 10001 && zip <= 10048) || (zip >= 15201 && zip <= 15244) || (zip >= 19901 && zip <= 19905) || (zip >= 20001 && zip <= 20020) || (zip >= 21201 && zip <= 21237) || (zip >= 30001 && zip <= 30381) || (zip >= 32501 && zip <= 32509) || (zip >= 32801 && zip <= 32837) || (zip >= 33124 && zip <= 33190) || (zip >= 35801 && zip <= 35816) || (zip >= 37201 && zip <= 37222) || (zip >= 39530 && zip <= 39535) || (zip >= 41701 && zip <= 41702) || (zip >= 44101 && zip <= 44179) || (zip >= 46201 && zip <= 46209) || (zip >= 49734 && zip <= 49735) || (zip >= 50301 && zip <= 50323) || (zip >= 52801 && zip <= 52809) || (zip >= 53201 && zip <= 53228) || (zip >= 55801 && zip <= 55808) || (zip >= 57401 && zip <= 57402) || (zip >= 60601 && zip <= 60641) || (zip >= 62701 && zip <= 62709) || (zip >= 63101 && zip <= 63141) || (zip >= 68901 && zip <= 68902) || (zip >= 70112 && zip <= 70119) || (zip >= 72201 && zip <= 72217) || (zip >= 74101 && zip <= 74110) || (zip >= 78701 && zip <= 78705) || (zip >= 80201 && zip <= 80239) || (zip >= 84321 && zip <= 84323) || (zip >= 85001 && zip <= 85055) || (zip >= 87500 && zip <= 87506) || (zip >= 89501 && zip <= 89513) || (zip >= 90001 && zip <= 90089) || (zip >= 90209 && zip <= 90213) || (zip >= 94203 && zip <= 94209) || (zip >= 96801 && zip <= 96830) || (zip >= 97201 && zip <= 97225) || (zip >= 98004 && zip <= 98009) || (zip >= 99501 && zip <= 99524)) {
+                  return true;
+              }
+              return false;
+          },
+          checkZipcode: function(evt, elem) {
+              var id = (elem === 'dSubmit') ? 'geobarZipCode' : (elem === 'mSubmit') ? 'mGeobarZipCode' : elem;
+              var input = $(document).find('#' + id);
+              var re = /^(?!0{3})[0-9]{5}$/;
+              var is_zip = re.test(input.val());
+              var is_validZip = geobarJS.validZip(input.val());
+              var label = input.parent().find('label');
+
+              if (is_zip && is_validZip) {
+                  document.getElementById(id).setCustomValidity("");
+                  label.text('Enter ZIP Code');
+                  return true;
+              } else {
+                  document.getElementById(elem).setCustomValidity("Please Enter a Valid ZIP Code");
+                  label.text('Please Enter a Valid ZIP Code');
+                  $('#' + id).focus();
+                  return false;
+              }
+          },
+          onEnter: function(evt) {
+              var key = evt.keyCode || evt.which;
+              if (key) {
+                  if (key === 13) {
+                      evt.preventDefault();
+                      if (geobarJS.checkZipcode(evt, evt.target.id)) {
+                          geobarJS.collaspeGeoBar(evt);
+                      }
+                  } else if (key === 8 || key === 46 || key === 37 || key === 39) {
+                      return;
+                  } else if ((key < 48 || key > 57) && (key < 96 || key > 105)) {
+                      evt.preventDefault();
+                  }
+              }
+          },
+          removeListeners: function() {
+              $(document).find('#geobar-mobile-modal ,#geobar-mobile-modal-close-btn, #mSubmit,#dSubmit, #geobar #currentZipCode, div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin, #geobar').off('click');
+              $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').parent().off('click');
+              $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').off('click');
+              $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').parent().find('span').off('click');
+              $(document).find('#dealer-name').parent().off('click');
+              $(document).find('#geobarZipCode, #mGeobarZipCode').off('keydown');
+              $(document).find('#geobarZipCode, #mGeobarZipCode').off('input')
+              //$(document).off('click');
+          },
+          addListeners: function() {
+              $(document).find('#geobar-mobile-modal').on('click', function(evt) {
+                  var t = evt.target.id;
+                  if (t === 'geobar-mobile-modal') {
+                      geobarJS.closeModal(evt);
+                  }
+              });
+              $(document).find('#geobar-mobile-modal-close-btn').on('click', function(evt) {
+                  geobarJS.closeModal(evt);
+              });
+              $(document).find('#dSubmit, #mSubmit').on('click', function(evt) {
+                  trackClickEvents('SubmitButtonGeoBar-clicked');
+                  if (geobarJS.checkZipcode(evt, evt.target.id)) {
+                      geobarJS.collaspeGeoBar(evt);
+                  }
+              });
+              $(document).find('#geobar #currentZipCode').on('click', function(evt) {
+                  trackClickEvents('ZipCodeGeoBar-clicked');
+                  geobarJS.expandGeoBar(evt);
+              });
+              $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').parent().on('click', function(evt) {
+                  evt.preventDefault();
+              });
+              $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').on('click', function(evt) {
+                  evt.preventDefault();
+                  trackClickEvents('DealershipNameGeoBar-clicked');
+                  window.location = 'https://www.miniusa.com/tools/shopping/find-a-dealer.html#/map/zip/' + geobarJS.zip;
+              });
+              $(document).find('div.SiteNav-mobile a.SiteNav-mobile-item i.icon-mapPin').parent().find('span').on('click', function(evt) {
+                  evt.preventDefault();
+                  geobarJS.openModal();
+              });
+              $(document).find('#dealer-name').parent().on('click', function() {
+                  trackClickEvents('DealershipNameGeoBar-clicked');
+                  window.location = 'https://www.miniusa.com/tools/shopping/find-a-dealer.html#/map/zip/' + geobarJS.zip;
+              });
+              $(document).find('#geobarZipCode, #mGeobarZipCode').on('keydown', function(evt) {
+                  geobarJS.onEnter(evt);
+              });
+              $(document).find('#geobarZipCode').on('input', function(evt) {
+                  geobarJS.checkZipcode(evt, 'geobarZipCode');
+              });
+              $(document).find('#mGeobarZipCode').on('input', function(evt) {
+                  geobarJS.checkZipcode(evt, 'mGeobarZipCode');
+              });
+              $(document).on('click', function(evt) {
+                  var gb = $('#geobar');
+                  if (!gb.is(evt.target) && gb.has(evt.target).length === 0) {
+                      geobarJS.closeGeoBar(evt);
+                  }
+              });
+          },
+          geobarState: function() {
+              if($(document).find('nav.SiteSubnav').next().is('section')) {
+                  if($(document).find('nav.SiteSubnav').next().css('padding')) {
+                      $(document).find('nav.SiteSubnav').next().removeAttr('style');
+                      geobarJS.afterNavSection = true;
+                      //Add padding to section after the first on the your-saved-minis page
+                      if(window.location.href.indexOf('your-saved-minis.html') > -1) {
+                          $(document).find('nav.SiteSubnav').next().next().css('padding-top','80px');
+                      }
+                  }
+              }
+              /*Determine if the geobar needs to be expanded (for entry page) or collasped for in site navigation*/
+              var referring_MINISite_URLMatch = document.referrer.match(/miniusa\.com/);
+              if (referring_MINISite_URLMatch === null) {
+                  $(document).find('.SiteHeader,body.has-mainnav,.SiteSubnav,div.offersApp,.dealerLocatorResults,div.ratio-container').addClass('expanded');
+                  if(geobarJS.afterNavSection) { $(document).find('nav.SiteSubnav').next().addClass('expanded'); }
+                  geobarJS.openModal();
+              } else {
+                  $(document).find('.SiteHeader, body.has-mainnav, .SiteSubnav,div.offersApp,.dealerLocatorResults,div.ratio-container').addClass('collasped');
+                  if(geobarJS.afterNavSection) { $(document).find('nav.SiteSubnav').next().addClass('collasped'); }
+                  $(document).find('#geobar').addClass('collasped').removeClass('expanded');
+              }
+          },
+          init: function(callback) {
+              geobarJS.removeListeners();
+              geobarJS.geobarState();
+              /*Hide the find a dealer navigation on the desktop version of the site*/
+              $(document).find('li.SiteNav-submenu-trigger a.SiteNav-topLevelTitle i.icon-mapPin').parent().hide();
+              geobarJS.addListeners();
+              if (typeof callback === 'function') {
+                  callback();
+              }
+          }
+      };
+      var tsiTest = {
+          debug: true,
+          account: 'MINI USA',
+          portfolio: 'miniusa.com',
+          test: '360i_GeoBar Test',
+          cookieName: 'miniusa_geobar_ExpB',
+          customMbox: 'miniusa_geobar_ExpB',
+          creative: "Exp. B",
+          nav: 'nav.SiteNav',
+          tries: 0,
+          prsn: null,
+          zipcode: null,
+          geobarDsktopTemplate: '<div id="geobar" class="expanded">\
+            <div class="flex-container welcome">\
+              <div class="flex-item">\
+                <div class="content">\
+                  <h1>${user.WelcomeMsgHdr}!</h1>\
+                  <p>${user.WelcomeMsg}</p>\
+                </div>\
+              </div>\
+              <div class="flex-item">\
+                <form class="form-md-geobar">\
+                  <div class="form-group-geobar">\
+                    <input type="text" id="geobarZipCode" class="form-control-geobar" minlength="5" maxlength="5" placeholder required>\
+                    <label for="geobarZipCode" class="form-control-geobar">Enter ZIP Code</label>\
+                  </div>\
+                  <button id="dSubmit" type="button" class="form-control-geobar submit">submit</button>\
+                </form>\
+              </div>\
+            </div>\
+            <div class="flex-container dealer-bar">\
+              <div class="flex-item">\
+                <span>Your local dealer is</span>\
+                <strong>&nbsp;<i class="icon-mapPin"></i> <span id="dealer-name"></span>,&nbsp;</strong>\
+                <a id="currentZipCode"></a>\
+              </div>\
+            </div>\
+          </div>',
+          geobarModalTemplate: '<div id="geobar-mobile-modal" class="Modal">\
+            <div class="geobar-mobile-modal-content">\
+              <div class="geobar-mobile-modal-inner-content">\
+                  <header>\
+                    <a id="geobar-mobile-modal-close-btn" aria-label="CLOSE">\
+                      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">\
+                          <path d="M23,23.8l0.8-0.8l-11-11l11-11L23,0.2l-11,11L1,0.2L0.2,1l11,11l-11,11L1,23.8l11-11L23,23.8z" fill="white"/>\
+                          <path d="M0,0h24v24H0V0z" fill="none"/>\
+                      </svg>\
+                    </a>\
+                  </header>\
+                  <section>\
+                    <h1>${user.WelcomeMsgHdr}!</h1>\
+                    <p>${user.WelcomeMsg}</p>\
+                    <form id="geobar-mobile-modal-form" class="form-md-geobar">\
+                      <div class="form-group-geobar">\
+                        <input type="text" id="mGeobarZipCode" class="form-control-geobar" minlength="5" maxlength="5" placeholder required>\
+                        <label for="mGeobarZipCode" class="form-control-geobar">Enter ZIP Code</label>\
+                      </div>\
+                      <button id="mSubmit" type="button" class="form-control-geobar submit">submit</button>\
+                    </form>\
+                  </section>\
+              </div>\
+            </div>\
+          </div>',
+          init: function() {
+              tsiTest.log("Test Running...");
+              tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+              tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+
+              tsiTest.elementLoaded(tsiTest.nav, function() {
+                  tsiTest.log(tsiTest.test + tsiTest.creative + " Ready!");
+                  tsiTest.chall();
+              });
+          },
+          chall: function() {
+              /*Insert GeoBar*/
+              $(document).find('header.SiteHeader').prepend(tsiTest.geobarDsktopTemplate);
+              /*Insert GeoBar Modal*/
+              $(document).find('body.has-mainnav').prepend(tsiTest.geobarModalTemplate);
+              /*Get Local Storage*/
+              geobarJS.loadLocalStorage();
+              /*Init GeoBar*/
+              geobarJS.init();
+          },
+          elementLoaded: function(ele, callback) {
+              tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+              window.clearTimeout(tsiTest.eleTimer);
+              if (document.querySelectorAll(ele).length > 0) {
+                  if (typeof callback === 'function') {
+                      tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                      callback();
+                  }
+              } else {
+                  /*If the element doesn't exist then return; don't try to forever find an element that doesn't exist*/
+                  if (tsiTest.tries < 10) {
+                      tsiTest.tries = tsiTest.tries + 1;
+                      tsiTest.eleTimer = window.setTimeout(function() {
+                          tsiTest.elementLoaded(ele, callback);
+                      }, 100);
+                  } else {
+                      if (typeof callback === 'function') {
+                          callback();
+                      }
+                  }
+              }
+          },
+          dependsLoaded: function(callback) {
+              tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+
+              window.clearTimeout(tsiTest.timer);
+              /*Check for jQuery and _a object*/
+              if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                  if (typeof callback === "function") {
+                      tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                      callback();
+                  }
+              } else {
+                  tsiTest.timer = window.setTimeout(function() {
+                      tsiTest.dependsLoaded(callback);
+                  }, 100);
+              }
+          },
+          log: function(obj) {
+              if (tsiTest.debug === true) {
+                  console.log(obj);
+              }
+          }
+
+      }
+      var helpers = {
+          getQueryParam: function(variable) {
+              var query = window.location.search.substring(1);
+              var vars = query.split('&');
+              for (var i = 0; i < vars.length; i++) {
+                  var pair = vars[i].split('=');
+                  if (decodeURIComponent(pair[0]) == variable) {
+                      return decodeURIComponent(pair[1]);
+                  }
+              }
+          }
+      }
+
+      tsiTest.dependsLoaded(function() {
+          tsiTest.init();
+      });
+
+      function trackClickEvents(mboxName) {
+          try {
+              adobe.target.trackEvent({
+                  mbox: mboxName
+              });
+          } catch (e) {}
+      }
+  })()
+
+</script>

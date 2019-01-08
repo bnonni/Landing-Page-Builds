@@ -1,0 +1,186 @@
+<style>
+ #exp-c-wrapper { width: 100%; border-bottom: 1px solid #eee; }
+ 
+#home-carousel-cta, .HeroHomeFull #home-carousel-cta, .HeroHomeFull .carousel-inner #home-carousel-cta, .HeroHomeFull .carousel-inner .item #home-carousel-cta, .home-carousel #home-carousel-cta { display: none; }
+ 
+#exp-c.fhCriteria__dropdown {position: static;display: flex; border: none; margin: 0 auto;}
+#exp-c .fhCriteria__items {display: flex; flex-grow: 1; margin-bottom: 0;}
+#exp-c .fhCriteria__items .fhCriteria__item {flex-grow: 1;}
+#exp-c .fhCriteria__actions {display:flex; flex-grow: 1;}
+#exp-c .fhCriteria__actions .btn {flex-grow: 1;}
+
+ @media (min-width: 768px) {
+     #exp-c.fhCriteria__dropdown { width: 768px; }
+     #exp-c .fhCriterion__label {
+         padding: 15px 10px 15px 0;
+         min-width: fit-content;
+         width: auto;
+     }
+     #exp-c .fhCriterion__button { padding: 15px 20px 15px 15px; }
+ }    
+@media (min-width: 1025px) {
+#carousel, .HeroHomeFull, .HeroHomeFull .carousel-inner, .HeroHomeFull .carousel-inner .item, .home-carousel { background-position: top; height: calc(90vh - 128px); }
+     #exp-c-wrapper { border: none; margin-bottom: -45px; position: relative; top: -45px; }
+     #exp-c.fhCriteria__dropdown { width: 1024px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.06);  }
+}
+ @media (min-width: 1920px) {
+     #exp-c.fhCriteria__dropdown { width: 1600px; }
+ }
+ 
+@media screen and (max-width:1024px) {
+#carousel, .HeroHomeFull, .HeroHomeFull .carousel-inner, .HeroHomeFull .carousel-inner .item, .home-carousel { 
+         background-position: top; 
+         background-size: 250%;
+         height: calc(80vh - 83px); 
+     }
+#exp-c.fhCriteria__dropdown { display: block !important; }
+#exp-c .fhCriteria__actions {
+display: block !important;
+text-align: center;
+}
+}	
+@media screen and (max-width:767px) {
+#carousel, .HeroHomeFull, .HeroHomeFull .carousel-inner, .HeroHomeFull .carousel-inner .item, .home-carousel { background-size: 300%; height: calc(50vh - 59px); }	
+#exp-c.fhCriteria__dropdown { display: block !important; overflow-y: auto; padding-top: 10px; padding-bottom: 10px; }
+#exp-c ul.fhCriteria__items { display:block; width: 100%;  }
+#exp-c .fhCriteria__actions {
+display: block !important;
+         padding-top: 10px;
+text-align: center;
+width: 100%;
+}
+#exp-c .fhCriteria__MobileHeader {
+font-size: 28px;
+margin-top: 0;
+padding-top: 0;
+position: relative;
+}
+}
+</style>
+<script>
+(function() {
+ 'use strict';
+ var tsiTest = {
+     debug : false,
+     account : 'Pulte',
+     portfolio : 'Pulte.com',
+     test : '360i AB Homepage CTA Test',
+     creative : 'Experience C',
+originalDropDown : '.fhCriteria--location .fhCriteria__dropdown',
+carousel : '#carousel',
+init : function() {
+         tsiTest.log("Test Running...");
+         tsiTest.log(tsiTest.account + " - " + tsiTest.portfolio);
+         tsiTest.log(tsiTest.test + " - " + tsiTest.creative);
+
+         tsiTest.elementLoaded(tsiTest.originalDropDown, function() {
+             tsiTest.insertNewSearchBar();
+         });
+},
+     trackHPCTAClick: function(evt) {
+       try {
+         adobe.target.trackEvent({
+           mbox: "homepageCTAClicks"
+         })
+       } catch(e) {}
+     },
+insertNewSearchBar : function() {
+//todo: autofocus and autoscroll
+var test, vm, nD, cityTemplate, regionTemplate, stateTemplate;
+
+//element to be copied
+test = $('.fhCriteria--location .fhCriteria__dropdown')[0];
+         
+         //Create wrapper
+         var wrapper = '<div id="exp-c-wrapper"></div>';            
+         $('#carousel').after(wrapper);
+
+//clone
+$('.fhCriteria--location .fhCriteria__dropdown').clone().insertAfter('#carousel').attr("id", "exp-c");
+         $('#exp-c').appendTo('#exp-c-wrapper');
+
+//keep the first item as a template, empty out the rest
+cityTemplate = $('#exp-c .fhCriterion-city .fhCriterion__items div')[0];
+$('#exp-c .fhCriterion-city .fhCriterion__items div').remove();
+$('#exp-c .fhCriterion-city .fhCriterion__items').append(cityTemplate);
+
+//keep the first item as a template, empty out the rest
+regionTemplate = $('#exp-c .fhCriterion-region .fhCriterion__items li')[0];
+$('#exp-c .fhCriterion-region .fhCriterion__items li').remove();
+$('#exp-c .fhCriterion-region .fhCriterion__items').append(regionTemplate);
+
+//keep the first item as a template, empty out the rest
+stateTemplate = $('#exp-c .fhCriterion-state .fhCriterion__items li')[0];
+$('#exp-c .fhCriterion-state .fhCriterion__items li').remove();
+$('#exp-c .fhCriterion-state .fhCriterion__items').append(stateTemplate);
+
+//get a handle on the new menu
+nD = $('#exp-c')[0];			
+
+//update mobile header to hide on mobile since we want to keep it consistent
+         $('#exp-c .fhCriteria__MobileHeader:eq(0)').hide();
+         
+         //Hide the cancel button because we don't need it
+         $('#exp-c .fhCriteria__action--cancel').hide();
+
+//Let's wait a few seconds before grabbing the KO functionality for the new search bar					
+setTimeout(function(){
+ //associated KO model
+ vm = ko.dataFor(test);
+ //(re)apply bindings
+ ko.applyBindings(vm, nD);
+ 
+ //Add ability to close dropdown if the person clicks outside the dropdown
+ $(document).on('click.Bst',function(evt){
+  if(evt.target.closest(".fhCriterion__dropdown")) return;
+  if($('.fhCriterion--select').hasClass('is-open')) $('.fhCriterion--select').removeClass('is-open');
+ });
+ 
+ //Scroll to the mega button when the user clicks on it 
+ $('#exp-c .fhCriteria__dropdown, #exp-c .fhCriteria__items .btn').on('click',function(evt) {
+  $('html,body').animate({
+   scrollTop: $('#exp-c').offset().top
+  },1000);
+ });
+             
+             //Add Listener to CTA
+             $('#exp-c .fhCriteria__action--find').on('click',tsiTest.trackHPCTAClick);
+},3000);
+},
+     elementLoaded : function (ele, callback) {
+         tsiTest.log('elementLoaded::  ' + ele + " - Checking...");
+         window.clearTimeout(tsiTest.eleTimer);
+         if (document.querySelectorAll(ele).length > 0) {
+             if (typeof callback === 'function') {
+                 tsiTest.log('elementLoaded::  ' + ele + " - Found!");
+                 callback();
+             }
+         } else {
+             tsiTest.eleTimer = window.setTimeout(function(){tsiTest.elementLoaded(ele, callback);}, 100);
+         }
+     },
+     dependsLoaded : function (callback) {
+         tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Start...");
+
+         window.clearTimeout(tsiTest.timer);
+         //Check for jQuery and _a object
+         if (((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) && (window.ko)) {
+             if (typeof callback === "function") {
+                 tsiTest.log(tsiTest.test + " - " + tsiTest.creative + " - dependsLoaded - Ready!");
+                 callback();
+             }
+         } else {
+             tsiTest.timer = window.setTimeout(function() { tsiTest.dependsLoaded(callback); }, 100);
+         }
+     },
+     log : function(obj){
+         if(tsiTest.debug === true){
+             console.log(obj);
+         }
+     }
+ }
+ tsiTest.dependsLoaded(function(){
+     tsiTest.init();
+ });
+})();
+</script>
