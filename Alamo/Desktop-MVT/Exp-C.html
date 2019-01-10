@@ -1,9 +1,7 @@
   <style>
     @media screen and (min-width: 560px) and (max-width: 900px){ div#content div.semResWidget section label.required{ font-size: 0.85em} }
     
-    @media screen and (max-width: 759px){
-      div.parsys_column.cq-colctrl-lt5{ display: block; }
-    }
+    @media screen and (max-width: 759px){ div.parsys_column.cq-colctrl-lt5{ display: block; } }
     
     div.start div.utilityRail select{ height: 25px; }
   </style>
@@ -31,7 +29,7 @@
     fixPage : function(){
       $('fieldset.whenSection div.field div.label-input-group a.modal').remove();
       $('label.required.lblInput.bubble-icon').append(tsiTest.modal);
-      $('a.modal img').attr('src', '/etc/designs/alamorwd/images/ico-info-yellow.png');
+      //$('a.modal img').attr('src', '/etc/designs/alamorwd/images/ico-info-yellow.png');
     },
     elementLoaded : function (ele, callback) {
       tsiTest.log("elementLoaded::  " + ele + " - Checking...");

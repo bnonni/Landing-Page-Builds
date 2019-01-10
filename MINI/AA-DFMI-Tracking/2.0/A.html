@@ -1,0 +1,142 @@
+<script>
+  (() => {
+      'use strict';
+      var mcusaTest = {
+          debug : true,
+          account : 'MINIUSA',
+          portfolio : 'miniusa.com',
+          test : 'Personalization - DFMI Tracking',
+          creative : 'DFMI_Handraiser',
+          learnMore_DFMI: 'a.Btn.Btn--black',
+          modal_DFMI: '#DFMI_LeadModal',
+          attempts: 0,
+          timer: null,
+          eleTimer: null,
+          init : () => {
+              mcusaTest.log("Test Running...");
+              mcusaTest.log(mcusaTest.account + " - " + mcusaTest.portfolio);
+              mcusaTest.log(mcusaTest.test + " - " + mcusaTest.creative);
+
+              mcusaTest.elementLoaded(mcusaTest.learnMore_DFMI, () => {
+                  mcusaTest.elementLoaded(mcusaTest.modal_DFMI, () =>{
+                    mcusaTest.addDFMIButtonListener();
+                    mcusaTest.addDFMIFormSubmitListener();
+                  })
+              });
+          },
+          addDFMIButtonListener : () => {
+              try{
+                  var learnMore_attr_DFMI = $('a.Btn.Btn--black').attr('data-modal-target', '#DFMI_LeadModal');
+                  if(learnMore_attr_DFMI.length > 0){
+                      mcusaTest.log('DFMI_addButtonListener:: Listener Added to ' + learnMore_attr_DFMI);
+                      learnMore_attr_DFMI.attr('id', 'DFMI_TargetTracking_360i');
+                      $('#DFMI_TargetTracking_360i').on('click', () => {
+                          mcusaTest.log('DFMI_addButtonListener:: Button Clicked ' + learnMore_attr_DFMI);
+                          mcusaTest.trackDFMIModalClicks();
+                          mcusaTest.updateCookie('m_DFMI_Data', '{"state" : "DFMI_Interest"}');
+                        });
+                    };
+                }catch(e){mcusaTest.log(e);};
+            },
+          trackDFMIModalClicks : () =>{
+           try{
+               adobe.target.trackEvent({
+                   mbox: "DFMI_LeadModal-clicked"
+               });
+           }catch(e){mcusaTest.log(e);}
+          },
+          addDFMIFormSubmitListener : () => {
+            try{
+                var submit_btn_DFMI = $('#DFMI_LeadModal button.Btn.Btn--primary');
+                if(submit_btn_DFMI.length > 0){
+                    mcusaTest.log('DFMI_addFormSubmitListener:: Listener Added to ' + submit_btn_DFMI);
+                    $(submit_btn_DFMI).on('click', () => {
+                        mcusaTest.log('DFMI_addFormSubmitListener:: Submit Fired ' + submit_btn_DFMI);
+                        mcusaTest.trackDFMIModalFormSubmits();
+                        var zipCode = $('#DFMI_LeadModal input[name=zip]').val();
+                        mcusaTest.updateCookie('m_DFMI_Data', '{"state" : "DFMI_Handraiser", "zip" : "'+zipCode+'"}');
+                      });
+                  };
+              }catch(e){mcusaTest.log(e);};
+          },
+          trackDFMIModalFormSubmits : () => {
+           try{ 
+               adobe.target.trackEvent({
+                   mbox: "DFMI_LeadModal-submitted"
+               });
+
+           }catch(e){mcusaTest.log(e);}
+          },
+          updateCookie : (cookieName, cookieValue) => {
+            m_cookie_management.eraseCookie(cookieName);
+            m_cookie_management.createCookie(cookieName, JSON.stringify(cookieValue), 30);
+        },
+           elementLoaded : (ele, callback) => {
+               try{
+                   mcusaTest.log('elementLoaded::  ' + ele + " - Checking...");
+                   window.clearTimeout(mcusaTest.eleTimer);
+                   if (document.querySelectorAll(ele).length > 0) {
+                       if (typeof callback === 'function') {
+                           mcusaTest.log('elementLoaded::  ' + ele + " - Found!");
+                           callback();
+                        }
+                    } else {
+                        if(mcusaTest.attempts <= 10){
+                            mcusaTest.attempts++;
+                            mcusaTest.timer = window.setTimeout(() => {mcusaTest.elementLoaded(ele, callback); }, 100);
+                        }
+                    }
+                }catch(e){mcusaTest.log(e);}
+          },
+          dependsLoaded : (callback) => {
+              mcusaTest.log(mcusaTest.test + " - " + mcusaTest.creative + " - dependsLoaded - Start...");
+              window.clearTimeout(mcusaTest.timer);
+              //Check for jQuery and _a object
+              if ((window.$ && $.isReady) || (window.jQuery && jQuery.isReady)) {
+                  if (typeof callback === "function") {
+                      mcusaTest.log(mcusaTest.test + " - " + mcusaTest.creative + " - dependsLoaded - Ready!");
+                      callback();
+                    }
+                } else {
+                    if(mcusaTest.attempts <= 5){
+                        mcusaTest.attempts++;
+                        mcusaTest.timer = window.setTimeout( () => {mcusaTest.dependsLoaded(callback); }, 100);
+                    }
+                }
+            },
+            log : (obj) => {
+                if(mcusaTest.debug === true){
+                    console.log(obj);
+                }
+            }
+        }
+        var m_cookie_management = {
+            createCookie : (name, value, days) => {
+                var date, expires;
+                if (days) {
+                    date = new Date();
+                    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                    expires = "; expires=" + date.toGMTString();
+                    document.cookie = name + "=" + value + expires + "; path=/; domain=.miniusa.com";
+                } else {;
+                    expires = "";
+                    document.cookie = name + "=" + value + expires + "; path=/; domain=.miniusa.com";
+                }
+            },
+            readCookie : (name) => {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i=0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            },
+            eraseCookie : (name) => {
+                m_cookie_management.createCookie(name,"",-1);
+            }
+        };
+        mcusaTest.dependsLoaded(() => { mcusaTest.init(); });
+    })();
+  </script>

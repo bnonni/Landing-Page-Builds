@@ -1,0 +1,9 @@
+{
+ "state" : "DFMI_Handraiser", 
+ "userData" : { 
+  "email" : "'+email+'", 
+  "first" : "'+firstName+'", 
+  "last" : "'+lastName+'", 
+  "zip" : "'+zip+'" 
+  }
+ }
