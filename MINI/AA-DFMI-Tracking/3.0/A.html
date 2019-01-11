@@ -41,7 +41,7 @@
            try{
                adobe.target.trackEvent({
                    mbox: "DFMI_LeadModal-clicked",
-                   params: { "state":"DFMI_Interest"},
+                   params: {"DFMI":"Interest"},
                });
            }catch(e){mcusaTest.log(e);}
           },
@@ -52,16 +52,17 @@
                     mcusaTest.log('DFMI_addFormSubmitListener:: Listener Added to ' + submit_btn_DFMI);
                     $(submit_btn_DFMI).on('click', () => {
                         mcusaTest.log('DFMI_addFormSubmitListener:: Submit Fired ' + submit_btn_DFMI);
-                        mcusaTest.trackDFMIModalFormSubmits();
+                        var zipCode = $('#DFMI_LeadModal input[name=zip]').val();
+                        mcusaTest.trackDFMIModalFormSubmits(zipCode);
                       });
                   };
               }catch(e){mcusaTest.log(e);};
           },
-          trackDFMIModalFormSubmits : () => {
+          trackDFMIModalFormSubmits : (zip) => {
            try{ 
                adobe.target.trackEvent({
                    mbox: "DFMI_LeadModal-submitted",
-                   params: { "state":"DFMI_Handraiser","zipcode":zipCode }
+                   params: { "DFMI":"Handraiser","zipcode":zip }
                });
           
            }catch(e){mcusaTest.log(e);}
